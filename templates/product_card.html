@@ -1,0 +1,20 @@
+
+
+ <!-- Main content area for Products -->
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product">
+            <img src="{{ product.image_url }}" alt="{{ product.name }}">
+             {% if product.on_sale %}
+            <p class="sale-tag">SALE</p>
+            {% endif %}
+            <h4>{{ product.name }}</h4>
+            <p class="reviews">Rated: {{ product.rating }} Stars ({{ product.review_count }} Reviews)</p>
+            <p class="price">
+                <!--<span class="old-price">$289.95</span>-->
+                ${{ product.price }}</p>
+            <p>{{ product.description }}</p>
+        </div>
+
+
+    </div>
