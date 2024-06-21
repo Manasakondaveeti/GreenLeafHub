@@ -1,0 +1,57 @@
+body {
+    background-image: url('assets/green-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    background-color: #00f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure the body covers the full viewport height */
+}
+
+.form-style {
+    max-width: 500px;
+    width: 100%;
+    padding: 2em;
+    background: rgba(255, 255, 255, 0.8); /* White background with transparency */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-style h1 {
+    text-align: center;
+    margin-top: 0; /* Remove default margin */
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.form-style input[type="text"],
+.form-style input[type="email"],
+.form-style input[type="password"] {
+    width: 100%;
+    padding: 0.5em;
+    margin: auto; /* Add spacing between input fields */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-style input[type="submit"] {
+    width: 100%;
+    padding: 0.75em;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.form-style input[type="submit"]:hover {
+    background-color: #0056b3;
+}

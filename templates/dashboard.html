@@ -15,6 +15,14 @@
                <li><a href="#">SHOP</a></li>
                <li><a href="#">LEARN</a></li>
                <li><a href="#">OUR STORY</a></li>
+
+                {% if user.is_authenticated %}
+                    <li><a href="/logout">logout</a></li>
+                {% else %}
+                    <li><a href="/signup">signup</a></li>
+                    <li><a href="/login">login</a></li>
+                {% endif %}
+
             </ul>
             <div class="nav-icons">
                <img src="{% static 'assets/search-icon.jpg' %}"  alt="Search">
