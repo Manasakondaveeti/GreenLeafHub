@@ -249,3 +249,45 @@ payment-methods {
     background-color: #f4f4f4; /* Optional: background color for the footer */
 }
 
+.form-body{
+    /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,255,0,1) 50%, rgba(0,212,255,1) 100%);*/
+    /*background: linear-gradient(90deg, rgba(0,100,0,1) 0%, rgba(0,210,0,1) 45%,rgba(0,210,0,1) 55%, rgba(0,100,0,1) 100%);*/
+    background: linear-gradient(90deg, rgba(0,100,0,1) 0%, rgba(0,150,0,1) 25%, rgba(0,210,0,1) 50%, rgba(0,150,0,1) 75%, rgba(0,100,0,1) 100%);
+
+
+    /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(75,14,154,1) 35%, rgba(0,212,255,1) 100%);*/
+    font-family: 'Poppins', sans-serif;
+    padding: 20px ;
+    margin-top: 10px;
+}
+
+.form-body form{
+    width: 40%;
+    background-color: white;
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.form-body .btn-primary{
+    width: 100%;
+    border:none;
+    border-radius:50px;
+    background: linear-gradient(90deg, rgba(0,100,0,1) 0%, rgba(0,150,0,1) 60%, rgba(0,210,0,1) 100%);
+}
+
+.form-body .form-control{
+    color: rgba(0,0,0,.87);
+    border-bottom-color: rgba(0,0,0,.42);
+    box-shadow: none !important;
+    border:none;
+    border-bottom: 1px solid ;
+    border-radius: 4px 4px 0 0;
+}
+
+.form-body h4{
+    font-size: 2rem !important;
+    font-weight: 700;
+}
+

@@ -1,19 +1,26 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'forms.css' %}">
-    <title>Title</title>
-</head>
-<body>
-    <div class="form-style">
-        <h1>Login</h1>
-        <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
+{% block title %} Login Page {% endblock %}
+{% block body %}
+    <div class="form-body">
+        <div class="container-fluid">
+            <form method="post" class="mx-auto">
+                {% csrf_token %}
+                <h4 class="text-center">Login</h4>
+                  <div class="mb-3 mt-5">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+{#                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">#}
+                      {{ form.username }}
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+{#                    <input type="password" class="form-control" id="exampleInputPassword1">#}
+                      {{ form.password }}
+                    <div id="emailHelp" class="form-text">Forget password?</div>
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-4">Login</button>
+            </form>
+        </div>
     </div>
-</body>
-</html>
+
+{% endblock %}

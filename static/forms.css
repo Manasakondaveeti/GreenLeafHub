@@ -1,16 +1,4 @@
-body {
-    background-image: url('assets/green-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    font-family: Arial, sans-serif;
-    background-color: #00f9;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ensure the body covers the full viewport height */
-}
+
 
 .form-style {
     max-width: 500px;
