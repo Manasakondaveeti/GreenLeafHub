@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect
 from .models import Product,UserProfile
+from django.contrib import messages
 from . import forms
 
 def dashboard(request):
@@ -11,15 +11,21 @@ def dashboard(request):
 
 
 def signup_view(request):
-    form = forms.UserForm()
+
     if request.method == 'POST':
-        form = forms.UserForm(request.POST)
+        form = forms.UserRegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            user.set_password(user.password)
-            user.save()
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}')
             return redirect('login')
-    print("this should print",request.method)
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.warning(request, f'{field}: {error}')
+    else:
+        form = forms.UserRegisterForm()
+
     return render(request, 'registration/signup.html', {'form':form})
 
 
@@ -33,10 +39,12 @@ def login_user(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
+                messages.success(request, f'{username} logged in successfully')
                 return redirect('dashboard')  # Redirect to dashboard on successful login
             else:
                 # Handle invalid credentials
                 form.add_error(None, 'Invalid username or password.')
+                messages.warning(request, f'Invalid username or password.')
     else:
         form = forms.LoginForm()
 

@@ -12,14 +12,17 @@ class Product(models.Model):
     review_count = models.IntegerField(default=0)
     rating = models.FloatField(default=0.0)
 
-class UserProfile(User):
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     address_line1 = models.CharField(max_length=100)
-    address_line2 = models.CharField(max_length=100)
+    address_line2 = models.CharField(max_length=100, blank=True, null=True)
     phone_number = models.CharField(max_length=10)
     city = models.CharField(max_length=20)
     province = models.CharField(max_length=20)
     country = models.CharField(max_length=15)
-    zip_code = models.CharField(max_length=6)
+    zip_code = models.CharField(max_length=7)
 
     def __str__(self):
-        return self.username
+        return self.user.username
