@@ -18,14 +18,17 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 
-from GreenWebsite.views import dashboard, logout_user, signup_view, login_user
+from GreenWebsite.views import dashboard, logout_user, signup_view, login_user ,add_product , edit_product, product_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', dashboard, name='home'),
     path('dashboard/', dashboard, name='dashboard'),
-    #path('accounts/', include('django.contrib.auth.urls')),
+
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
     path('signup/', signup_view, name='signup'),
+    path('add_product/', add_product, name='add_product'),
+    path('product_list/',product_list, name='product_list'),
+    path('edit_product/<int:pk>/', edit_product, name='edit_product'),
 ]
