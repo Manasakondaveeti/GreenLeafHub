@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import PasswordResetForm
 from .models import ReviewRating
-
+from .models import Product
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
@@ -42,3 +42,25 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = ReviewRating
         fields = ['subject','review','rating']
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            'name',
+            'price',
+            'on_sale',
+            'image_url',
+            'description',
+            'review_count',
+            'rating',
+        ]
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'maxlength': 200, 'required': True}),
+            'price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01', 'required': True}),
+            'on_sale': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'image_url': forms.URLInput(attrs={'class': 'form-control', 'required': True}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'required': True}),
+            'review_count': forms.NumberInput(attrs={'class': 'form-control', 'required': True}),
+            'rating': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1', 'required': True}),
+        }

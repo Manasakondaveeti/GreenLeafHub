@@ -4,9 +4,10 @@ from .models import Product, UserProfile, ReviewRating
 from django.contrib import messages
 from . import forms
 from django.contrib.auth.views import PasswordResetView
-
+from .forms import ProductForm
 from django.core.mail import send_mail
-
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.shortcuts import get_object_or_404
 
 def send_test_email(request):
     send_mail(
@@ -105,3 +106,49 @@ def submit_review(request,product_id):
 
 def add_cart(request,pk):
     pass
+
+
+@login_required
+@user_passes_test(lambda u: u.is_staff)
+def add_product(request):
+    if request.method == 'POST':
+        # Your logic for processing the form and adding a product
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Optionally, redirect to the product list page after adding the product
+            return redirect('product_list')
+    else:
+        form = ProductForm()
+
+    return render(request, 'add_product.html', {'form': form})
+
+
+@login_required
+@user_passes_test(lambda u: u.is_staff)
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'product_list.html', {'products': products})
+
+
+@login_required
+@user_passes_test(lambda u: u.is_staff)
+def edit_product(request, pk):
+    try:
+        product = get_object_or_404(Product, pk=pk)
+        products = Product.objects.get(pk=pk)
+        print(products)
+        print(product)
+    except Exception as e:
+        print(e)
+        return render(request, 'error.html', {'message': 'Product not found'})
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product_list')
+    else:
+        form = ProductForm(instance=product)
+
+    return render(request, 'edit_product.html', {'form': form, 'product': product})

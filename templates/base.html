@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -15,23 +17,41 @@
          <nav class="navbar">
             <img src="{% static 'assets/logo2.PNG' %}" alt="Site Logo" class="img-fluid" style="max-height: 80px;">
             <ul class="nav-links">
-               <li><a href="#">SHOP</a></li>
+               <li><a  href="/#shop-section">SHOP</a></li>
                <li><a href="#">LEARN</a></li>
                <li><a href="#">OUR STORY</a></li>
 
-                {% if user.is_authenticated %}
-                    <li><a href="/logout">logout</a></li>
-                {% else %}
-                    <li><a href="/signup">signup</a></li>
-                    <li><a href="/login">login</a></li>
+             {% if user.is_authenticated %}
+
+                {% if user.is_staff %}
+                    <li><a href="/add_product">ADD PRODUCT</li>
+                     <li><a href="/product_list">EDIT PRODUCT</a></li>
+                {% endif %}
                 {% endif %}
 
+
             </ul>
-            <div class="nav-icons">
-               <img src="{% static 'assets/search-icon.jpg' %}" alt="Search">
-               <img src="{% static 'assets/account-icon.png' %}" alt="Account">
-               <img src="{% static 'assets/cart-icon.jpg' %}" alt="Cart" style="">
-            </div>
+            <div class="nav-icons d-flex align-items-center">
+    <a class="nav-link" href="#"><img src="{% static 'assets/search-icon.jpg' %}" alt="Search" class="img-fluid"></a>
+    <li class="nav-item dropdown list-unstyled">
+        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="{% static 'assets/account-icon.png' %}" alt="Account" class="img-fluid">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="accountDropdown">
+            {% if user.is_authenticated %}
+
+            <a class="dropdown-item" href="/logout">Logout</a>
+             {% else %}
+            <a class="dropdown-item" href="/login">Login</a>
+            <a class="dropdown-item" href="/signup">Signup</a>
+             {% endif %}
+        </div>
+    </li>
+    <a class="nav-link" href="#"><img src="{% static 'assets/cart-icon.jpg' %}" alt="Cart" class="img-fluid"></a>
+</div>
+
+
+
          </nav>
 
 
