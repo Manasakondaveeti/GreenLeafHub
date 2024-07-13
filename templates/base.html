@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Leaf Hub {% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'forms.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap5/css/bootstrap.css' %}">
+</head>
+<body>
+    <header>
+         <nav class="navbar">
+            <img src="{% static 'assets/logo2.PNG' %}" alt="Site Logo" class="logo">
+            <ul class="nav-links">
+               <li><a href="#">SHOP</a></li>
+               <li><a href="#">LEARN</a></li>
+               <li><a href="#">OUR STORY</a></li>
+
+                {% if user.is_authenticated %}
+                    <li><a href="/logout">logout</a></li>
+                {% else %}
+                    <li><a href="/signup">signup</a></li>
+                    <li><a href="/login">login</a></li>
+                {% endif %}
+
+            </ul>
+            <div class="nav-icons">
+               <img src="{% static 'assets/search-icon.jpg' %}" alt="Search">
+               <img src="{% static 'assets/account-icon.png' %}" alt="Account">
+               <img src="{% static 'assets/cart-icon.jpg' %}" alt="Cart" style="">
+            </div>
+         </nav>
+
+
+
+    </header>
+
+    {% if messages %}
+        <div class="container-fluid">
+            {% for message in messages %}
+                <div class="alert alert-dismissible fade show alert-{{ message.tags }} mb-0" role="alert">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            {{ message }}
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+     {% block banner %}
+     {% endblock %}
+
+    {% block body %}
+    {% endblock %}
+    <footer>
+         <div class="footer-container">
+            <div class="footer-column">
+               <h4>About GreenHouseHub</h4>
+               <ul>
+                  <li><a href="#">Our Story</a></li>
+                  <li><a href="#">The Team</a></li>
+                  <li><a href="#">Our Mission</a></li>
+                  <!-- More links -->
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h4>Shop Categories</h4>
+               <ul>
+                  <li><a href="#">Yard & Garden</a></li>
+                  <li><a href="#">Green Home</a></li>
+                  <li><a href="#">Lifestyle</a></li>
+                  <!-- More links -->
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h4>Customer Service</h4>
+               <ul>
+                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="#">Gift Certificates</a></li>
+                  <li><a href="#">Shipping Information</a></li>
+                  <!-- More links -->
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h4>Stay Connected</h4>
+               <div class="social-media-links">
+                  <a href="#"><img src="{% static 'assets/Facebook.png' %}" alt="Facebook"></a>
+                   <a href="#"><img src="{% static 'assets/instagram.jpg' %}" alt="instagram"></a>
+              <a href="#"><img src="{% static 'assets/pinterest.png' %}" alt="pinterest"></a>
+              <a href="#"><img src="{% static 'assets/twitter.png' %}" alt="twitter"></a>
+              <a href="#"><img src="{% static 'assets/youtube.png' %}" alt="youtube"></a>
+
+           </div>
+           <div class="newsletter">
+              <input type="email" placeholder="Email">
+              <button>Submit</button>
+           </div>
+        </div>
+     </div>
+     <div class="footer-lastrow">
+        <div class="certifications">
+
+           <img src="{% static 'assets/privacy-guaranteed.jpg' %}" alt="Privacy Guaranteed">
+
+           <!-- More logos as needed -->
+        </div>
+        <p class="copyright">© 2024 University of Windsor All Rights Reserved</p>
+        <div class="payment-methods">
+           <img src="{% static 'assets/payment.jpg' %}" alt="payment img">
+        </div>
+     </div>
+    </footer>
+<script src="{% static 'bootstrap5/js/bootstrap.bundle.js' %}"></script>
+</body>
+</html>

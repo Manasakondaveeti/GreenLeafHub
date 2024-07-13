@@ -5,7 +5,7 @@ class UserForm(forms.ModelForm):
     confirm_password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = UserProfile
-        fields = ['email','password','confirm_password','username','first_name', 'last_name', 'address_line1', 'address_line2','phone_number', 'city', 'province', 'zip_code', 'country']
+        fields = ['email','password','confirm_password','username','first_name', 'last_name', 'address_line1', 'address_line2','phone_number', 'city', 'province', 'zip_code', 'country' ,'is_admin']
         widgets = {
             'password': forms.PasswordInput(),  # Use PasswordInput widget for password field
         }
@@ -24,3 +24,10 @@ class UserForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
+
+from .models import Product
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'price', 'on_sale', 'image_url', 'description', 'review_count', 'rating']

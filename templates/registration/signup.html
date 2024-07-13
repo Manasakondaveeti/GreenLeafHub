@@ -1,21 +1,32 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'forms.css' %}">
-    <title>Title</title>
-</head>
-<body>
-    
-    <div class="form-style">
-        <h1>Registration Form</h1>
-        <form class="" method="post">
-        {{form.as_p}}
-        {% csrf_token %}
-        <input type="submit" class="btn btn-primary" value="Submit">
-    </form>
+{% block title %} Login Page {% endblock %}
+{% block body %}
+    <div class="form-body">
+        <div class="container-fluid">
+            <form method="post" class="mx-auto">
+                {% csrf_token %}
+                <h4 class="text-center">Sign Up</h4>
+                  <div class="mb-3 mt-5">
+                    <label for="username" class="form-label">Username</label>
+                      {{ form.username }}
+                  </div>
+                  <div class="mb-3 mt-5">
+                    <label for="email" class="form-label">Email id</label>
+                      {{ form.email }}
+                  </div>
+                  <div class="mb-3">
+                    <label for="password1" class="form-label">Password</label>
+                      {{ form.password1 }}
+                  </div>
+                  <div class="mb-3">
+                    <label for="password2" class="form-label">Confirm Password</label>
+                      {{ form.password2 }}
+                  </div>
+                  
+                  <button type="submit" class="btn btn-primary mt-4">Sign Up</button>
+            </form>
+        </div>
     </div>
 
-</body>
-</html>
+{% endblock %}
