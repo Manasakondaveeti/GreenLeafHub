@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d22d73dd-6d32-48f2-95cf-39ea183d8e15" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/GreenLeafHub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GreenLeafHub.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GreenLeafHub/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenLeafHub/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0006_alter_userprofile_user_reviewrating.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +103,7 @@
       <recent name="C:\Users\Joshua Daniel\PycharmProjects\GreenLeafHub\templates\registration" />
     </key>
   </component>
-  <component name="RunManager" selected="Django Server.GreenLeaf">
+  <component name="RunManager" selected="Django Server.GreenLeafHub">
     <configuration name="Unnamed" type="DjangoTestsConfigurationType" nameIsGenerated="true">
       <module name="GreenLeafHub" />
       <option name="ENV_FILES" value="" />
@@ -158,6 +152,31 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="GreenLeafHub" type="Python.DjangoServer" factoryName="Django server">
+      <module name="GreenLeafHub" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (GreenLeafHub)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="localhost" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
       <module name="GreenLeafHub" />
       <option name="ENV_FILES" value="" />
@@ -184,8 +203,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django tests.Unnamed" />
+      <item itemvalue="Django Server.GreenLeafHub" />
       <item itemvalue="Django Server.GreenLeaf" />
+      <item itemvalue="Django tests.Unnamed" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -214,6 +234,7 @@
       <workItem from="1719855092821" duration="6102000" />
       <workItem from="1719923902144" duration="1348000" />
       <workItem from="1720883847615" duration="320000" />
+      <workItem from="1720897657268" duration="483000" />
     </task>
     <servers />
   </component>
