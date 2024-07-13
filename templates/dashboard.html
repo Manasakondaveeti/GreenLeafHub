@@ -17,6 +17,8 @@
                <li><a href="#">OUR STORY</a></li>
 
                 {% if user.is_authenticated %}
+                    <li><a href="/add_product">admin_add_product</a></li>
+                    <li><a href="/product_list">admin_edit_product</a></li>
                     <li><a href="/logout">logout</a></li>
                 {% else %}
                     <li><a href="/signup">signup</a></li>
