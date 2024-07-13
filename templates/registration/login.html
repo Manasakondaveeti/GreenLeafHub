@@ -16,7 +16,7 @@
                     <label for="exampleInputPassword1" class="form-label">Password</label>
 {#                    <input type="password" class="form-control" id="exampleInputPassword1">#}
                       {{ form.password }}
-                    <div id="emailHelp" class="form-text">Forget password?</div>
+                      <div id="emailHelp" class="form-text"><a href="{% url 'password_reset' %}">Forget password?</a></div>
                   </div>
                   <button type="submit" class="btn btn-primary mt-4">Login</button>
             </form>

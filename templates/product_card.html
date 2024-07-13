@@ -14,6 +14,6 @@
                 <!--<span class="old-price">$289.95</span>-->
                 ${{ product.price }}</p>
             <p>{{ product.description }}</p>
+            <a href="{% url 'product' product.id %}">View product</a>
         </div>
-
     </div>
