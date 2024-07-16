@@ -64,3 +64,5 @@ class ProductForm(forms.ModelForm):
             'review_count': forms.NumberInput(attrs={'class': 'form-control', 'required': True}),
             'rating': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1', 'required': True}),
         }
+
+

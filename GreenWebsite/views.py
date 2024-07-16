@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .models import Product, UserProfile, ReviewRating
+from .models import Product, UserProfile, ReviewRating , Cart , CartItem
 from django.contrib import messages
 from . import forms
 from django.contrib.auth.views import PasswordResetView
@@ -8,7 +8,8 @@ from .forms import ProductForm
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
-
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 def send_test_email(request):
     send_mail(
         'Testing Email Sending',  # Subject
@@ -136,9 +137,7 @@ def product_list(request):
 def edit_product(request, pk):
     try:
         product = get_object_or_404(Product, pk=pk)
-        products = Product.objects.get(pk=pk)
-        print(products)
-        print(product)
+
     except Exception as e:
         print(e)
         return render(request, 'error.html', {'message': 'Product not found'})
@@ -152,3 +151,89 @@ def edit_product(request, pk):
         form = ProductForm(instance=product)
 
     return render(request, 'edit_product.html', {'form': form, 'product': product})
+
+
+@login_required(login_url='/login/')
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+    if not created:
+        cart_item.quantity += 1
+    cart_item.save()
+    return redirect('view_cart')
+
+
+
+@login_required
+def view_cart(request):
+    cart_items = CartItem.objects.all()
+    cart_items_with_totals = []
+    cart_subtotal = 0
+
+    for item in cart_items:
+        total_price = item.product.price * item.quantity
+        cart_items_with_totals.append({
+            'product': item.product,
+            'quantity': item.quantity,
+            'total_price': total_price
+        })
+        cart_subtotal += total_price
+
+    cart_grand_total = cart_subtotal  # Add additional calculations for discounts, etc., if needed
+
+    context = {
+        'cart_items': cart_items_with_totals,
+        'cart_subtotal': cart_subtotal,
+        'cart_grand_total': cart_grand_total,
+        'is_cart_empty': len(cart_items) == 0
+    }
+    return render(request, 'cart.html', context)
+
+@login_required
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+    if not created:
+        cart_item.quantity += 1
+    cart_item.save()
+    #cart_items_count=CartItem.objects.all().size()
+    cart_items_count = CartItem.objects.all().count()
+
+    messages.success(request, f'Product {product.name} added to cart successfully.')
+    print("manasa",cart_items_count)
+    return redirect( '/dashboard', {'cart_items_count': cart_items_count})
+
+@login_required
+def payment_view(request):
+    return render(request, 'payment.html')
+
+@csrf_exempt
+def process_payment(request):
+    if request.method == 'POST':
+        card_number = request.POST.get('cardNumber')
+        expiry_date = request.POST.get('expiryDate')
+        cvv = request.POST.get('cvv')
+        card_name = request.POST.get('cardName')
+
+        # Process the payment here
+        # You can use a payment gateway API like Stripe, PayPal, etc.
+
+        # For simplicity, let's assume the payment is successful
+        # For simplicity, let's assume the payment is successful
+        cart = Cart.objects.get(user=request.user)
+        cart_items = CartItem.objects.filter(cart=cart)
+        cart_items.delete()
+        return render(request, 'payment_success.html')
+
+    return redirect('payment_page')
+def search(request):
+    query = request.GET.get('q')
+    results = []
+
+    if query:
+        results = Product.objects.filter(name__icontains=query)
+        print(results)
+
+    return render(request, 'dashboard.html', {'query': query, 'products': results})
