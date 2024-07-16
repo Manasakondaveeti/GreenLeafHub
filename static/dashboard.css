@@ -352,3 +352,41 @@ ul.thumb li img{
   height: 80px;
   border: 1px solid grey;
 }
+
+.cart-table th, .cart-table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.cart-table img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.cart-table input {
+    max-width: 60px;
+    display: inline-block;
+}
+
+.cart-table td {
+    text-align: center;
+}
+
+.cart-table .img-thumbnail {
+    max-width: 80px;
+    height: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 1.5rem !important;
+}
+
+.mt-5 {
+    margin-top: 3rem !important;
+}
+
+
