@@ -2,6 +2,13 @@
 {% load static %}
 {% block title %} Product Page {% endblock %}
 {% block body %}
+    <style>
+        .card-img-top {
+            width: 100%;
+            height: 400px; /* Adjust the height as needed */
+            object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
+        }
+    </style>
 <section class="section-content padding-y bg">
     <div class="container">
         <div class="row justify-content-center">
@@ -9,12 +16,24 @@
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{ product.image_url }}" class="img-fluid rounded-start" alt="...">
+                            <img src="{{ product.image_url }}" class="img-fluid rounded-start card-img-top" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.name }}</h5>
                                 <p class="card-text">Description : {{ product.description }}</p>
+                                <div class="rating-star">
+                                    <span>
+                                        <i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                        <i class="fa fa-star{% if product.averageReview < 1.5 %}-o{% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                        <i class="fa fa-star{% if product.averageReview < 2.5 %}-o{% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                        <i class="fa fa-star{% if product.averageReview < 3.5 %}-o{% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                        <i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                        <span>{{product.averageReview}} rating</span>
+                                        <br><span>{{product.reviews.count}} reviews</span>
+                                    </span>
+                                </div>
+                                <p>rating stars , number of reviews, number of orders </p>
                                 {% if product.on_sale %}
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
@@ -25,6 +44,9 @@
                                 {% else %}
                                     ${{ product.price }}
                                 {% endif %}
+                                <hr>
+                                <a href="#" class="btn  btn-primary"> Buy now </a>
+                                <a href="{% url 'add_to_cart' product.id %}" class="btn  btn-outline-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
                             </div>
                         </div>
                     </div>

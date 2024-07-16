@@ -19,7 +19,7 @@ from django.urls import path
 from django.conf.urls import include
 from django.contrib.auth import views as auth_views
 
-from GreenWebsite.views import dashboard, logout_user, signup_view, login_user, CustomPasswordResetView, send_test_email,product,submit_review,add_to_cart,view_cart,add_product ,product_list,edit_product, payment_view, process_payment , search
+from GreenWebsite.views import dashboard, logout_user, signup_view, login_user, CustomPasswordResetView, send_test_email,product,submit_review,add_to_cart,view_cart,add_product ,product_list,edit_product, payment_view, process_payment , search,product_gallery
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,7 +36,7 @@ urlpatterns = [
     path('product/<int:pk>',product,name='product'),
     path('search/', search, name='search'),
     # path('product_detail/<int:pk>',product,name='product'),
-
+    path('product-gallery/',product_gallery,name='product_gallery'),
 
     path('submit_review/<int:product_id>/',submit_review,name='submit_review'),
     path('add_product', add_product, name='add_product'),

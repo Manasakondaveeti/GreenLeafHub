@@ -82,6 +82,10 @@ def product(request,pk):
     reviews = ReviewRating.objects.filter(product=product)
     return render(request,'product.html',{'product':product,'reviews':reviews})
 
+def product_gallery(request):
+    products = Product.objects.all()
+    return render(request,'product_gallery.html',{'products':products})
+
 def submit_review(request,product_id):
     url = request.META.get('HTTP_REFERER')
     if request.method == 'POST':
@@ -153,15 +157,15 @@ def edit_product(request, pk):
     return render(request, 'edit_product.html', {'form': form, 'product': product})
 
 
-@login_required(login_url='/login/')
-def add_to_cart(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
-    if not created:
-        cart_item.quantity += 1
-    cart_item.save()
-    return redirect('view_cart')
+# @login_required(login_url='/login/')
+# def add_to_cart(request, product_id):
+#     product = get_object_or_404(Product, id=product_id)
+#     cart, created = Cart.objects.get_or_create(user=request.user)
+#     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+#     if not created:
+#         cart_item.quantity += 1
+#     cart_item.save()
+#     return redirect('cart')
 
 
 
@@ -192,18 +196,19 @@ def view_cart(request):
 
 @login_required
 def add_to_cart(request, product_id):
+    url = request.META.get('HTTP_REFERER')
     product = get_object_or_404(Product, id=product_id)
-    cart, created = Cart.objects.get_or_create(user=request.user)
+    cart, created = Cart.objects.get_or_create(user=request.user,is_paid=False)
     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
     if not created:
         cart_item.quantity += 1
     cart_item.save()
     #cart_items_count=CartItem.objects.all().size()
     cart_items_count = CartItem.objects.all().count()
-
     messages.success(request, f'Product {product.name} added to cart successfully.')
     print("manasa",cart_items_count)
-    return redirect( '/dashboard', {'cart_items_count': cart_items_count})
+    # return redirect( '/dashboard', {'cart_items_count': cart_items_count})
+    return redirect(url)
 
 @login_required
 def payment_view(request):

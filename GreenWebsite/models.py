@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Sum
 
 # Create your models here.
 
@@ -26,6 +27,10 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+    def get_cart_count(self):
+        total_quantity = CartItem.objects.filter(cart__is_paid=False, cart__user=self.user).aggregate(total_quantity=Sum('quantity'))['total_quantity']
+        print("total_quantity", total_quantity)
+        return total_quantity
 
 class ReviewRating(models.Model):
     product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
@@ -42,6 +47,7 @@ class ReviewRating(models.Model):
 class Cart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_paid = models.BooleanField(default=False)
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
