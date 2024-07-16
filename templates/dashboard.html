@@ -15,7 +15,6 @@
 
 {% block body %}
     <div class="container" id="shop-section">
-        <!-- Sidebar for Filtering -->
         <div class="row">
             <div class="col-md-3 sidebar">
                 <div class="filter-group">
@@ -30,9 +29,12 @@
                 </div>
             </div>
             <div class="col-md-9 products">
-                {% for product in products %}
-                {% include "product_card.html" %}
-                {% endfor %}
+                {% if query %}
+                    <h2>Search Results for "{{ query }}":</h2>
+                    {% include "product_card.html" with products=products %}
+                {% else %}
+                    {% include "product_card.html" with products=products %}
+                {% endif %}
             </div>
         </div>
     </div>

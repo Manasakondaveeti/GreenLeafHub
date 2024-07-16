@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'forms.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <header>
@@ -24,7 +25,7 @@
              {% if user.is_authenticated %}
 
                 {% if user.is_staff %}
-                    <li><a href="/add_product">ADD PRODUCT</li>
+                    <li><a href="/add_product">ADD PRODUCT</a></li>
                      <li><a href="/product_list">EDIT PRODUCT</a></li>
                 {% endif %}
                 {% endif %}
@@ -32,7 +33,13 @@
 
             </ul>
             <div class="nav-icons d-flex align-items-center">
-    <a class="nav-link" href="#"><img src="{% static 'assets/search-icon.jpg' %}" alt="Search" class="img-fluid"></a>
+    <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get" style="position: relative;">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" required style="padding-right: 40px;">
+    <button class="btn btn-link" type="submit" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+        <img src="{% static 'assets/search-icon.jpg' %}" alt="Search" class="img-fluid" style="width: 20px; height: 20px;">
+    </button>
+</form>
+
     <li class="nav-item dropdown list-unstyled">
         <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="{% static 'assets/account-icon.png' %}" alt="Account" class="img-fluid">
@@ -46,9 +53,14 @@
             <a class="dropdown-item" href="/signup">Signup</a>
              {% endif %}
         </div>
+
     </li>
-    <a class="nav-link" href="#"><img src="{% static 'assets/cart-icon.jpg' %}" alt="Cart" class="img-fluid"></a>
-</div>
+
+<a class="nav-link position-relative" href="{% url 'cart' %}" style="display: inline-block;">
+            <img src="{% static 'assets/cart-icon.jpg' %}" alt="Cart" class="img-fluid" style="width: 40px; height: 40px;">
+            <span id="cart-count" class="position-absolute badge rounded-pill" style="top: 2px; right: 8px; padding: 3px 6px; font-size: 14px; background-color: red; color: white;">{{ cart_items_count }}</span>
+        </a>
+   </div>
 
 
 

@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Payment Success{% endblock %}
+{% block body %}
+<style>
+    .payment-success-wrapper {
+        background-image: url("{% static 'assets/successbg.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+    .payment-success-content {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
+    .payment-success-content h1 {
+        color: #28a745;
+    }
+    .payment-success-content p {
+        font-size: 1.2rem;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+</style>
+<div class="payment-success-wrapper">
+    <div class="payment-success-content">
+        <header class="page-header mb-4">
+            <div class="section-title">
+                <h1 class="page-heading">Payment Successful</h1>
+                <img src="{% static 'assets/tick.jpg' %}" alt="Success" class="mt-3" style="width: 50px; height: 50px;">
+            </div>
+        </header>
+        <p>Your payment was successful. Thank you for your purchase!</p>
+        <a class="btn btn-primary mt-3" href="{% url 'dashboard' %}">Continue Shopping</a>
+    </div>
+</div>
+{% endblock %}
