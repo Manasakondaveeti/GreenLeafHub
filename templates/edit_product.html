@@ -4,7 +4,7 @@
 {% block body %}
     <div class="form-body">
         <div class="container-fluid">
-            <form method="post" class="mx-auto">
+            <form method="post" class="mx-auto" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h4 class="text-center">Edit Product</h4>
                 <div class="mb-3 mt-5">
@@ -16,12 +16,12 @@
                     <input type="number" name="price" id="id_price" class="form-control" value="{{ product.price }}" step="0.01" required>
                 </div>
                 <div class="mb-3 form-check">
+                    <label for="id_on_sale" class="form-check-label" >On Sale</label>
                     <input type="checkbox" name="on_sale" id="id_on_sale" class="form-check-input" {% if product.on_sale %}checked{% endif %}>
-                    <label for="id_on_sale" class="form-check-label">On Sale</label>
                 </div>
                 <div class="mb-3">
-                    <label for="id_image_url" class="form-label">Image URL</label>
-                    <input type="url" name="image_url" id="id_image_url" class="form-control" value="{{ product.image_url }}" required>
+                    <label for="image" class="form-label">Product Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" >
                 </div>
                 <div class="mb-3">
                     <label for="id_description" class="form-label">Description</label>

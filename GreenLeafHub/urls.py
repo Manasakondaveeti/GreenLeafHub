@@ -18,14 +18,18 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from django.contrib.auth import views as auth_views
-
-from GreenWebsite.views import dashboard, logout_user, signup_view, login_user, CustomPasswordResetView, send_test_email,product,submit_review,add_to_cart,view_cart,add_product ,product_list,edit_product, payment_view, process_payment , search,product_gallery
+from django.conf.urls.static import static
+from django.conf import settings
+from GreenWebsite.views import (dashboard, logout_user, signup_view, login_user, CustomPasswordResetView,
+                                send_test_email,product,submit_review,add_to_cart,view_cart,add_product ,
+                                product_list,edit_product, payment_view, process_payment , search,
+                                product_gallery,delete_product)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', dashboard, name='home'),
     path('dashboard/', dashboard, name='dashboard'),
-    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
     path('signup/', signup_view, name='signup'),
     path('password_reset/',CustomPasswordResetView.as_view(),name='password_reset'),
@@ -42,8 +46,10 @@ urlpatterns = [
     path('add_product', add_product, name='add_product'),
     path('product_list', product_list, name='product_list'),
     path('edit_product/<int:pk>', edit_product, name='edit_product'),
+    path('delete_product/<int:pk>', delete_product, name='delete_product'),
     path('add_to_cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
     path('cart/', view_cart, name='cart'),
     path('payment/', payment_view, name='payment_page'),
     path('process_payment/', process_payment, name='process_payment'),
 ]
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
