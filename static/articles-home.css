@@ -1,0 +1,112 @@
+.content-section {
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.article-content {
+  white-space: pre-line;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.article-img {
+  height: auto;
+  width: 100%;
+  max-width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: auto;
+  width: 100%;
+  max-width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+.btn-quarternary {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.75rem 1.5rem; /* Increased padding for larger button */
+  font-size: 1.25rem; /* Larger font size */
+  line-height: 1.5;
+  border-radius: 40px; /* Large rounded corners */
+  background-color: #218838; /* Default green background */
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 1rem; /* Margin around the button */
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
+}
+
+.btn-quarternary:hover, .btn-quarternary:focus {
+  border-color: #29d47d !important;
+  background-color: #29d47d !important; /* Darker green on hover */
+  outline: none; /* Remove outline on focus */
+}
+
+.btn-quarternary.disabled, .btn-quarternary:disabled {
+  opacity: 0.65;
+}
+
+
+body {
+  background-color: #e8f5e9; /* Light green background */
+  font-family: 'Arial', sans-serif;
+  color: #2e7d32; /* Dark green text */
+}
+
+.container-fluid {
+  padding: 30px;
+}
+
+h2, .article-title, .article-metadata a {
+  color: #1b5e20; /* Dark green */
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
