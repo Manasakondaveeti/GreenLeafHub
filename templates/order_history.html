@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Edit Product {% endblock %}
+{% block body %}
+<style>
+    #main-content-area {
+    display: flex;
+    padding: 20px; /* Adjust as necessary */
+}
+
+#main-content-area .sidebar {
+    flex: 0 0 200px; /* fixed width */
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+}
+
+#main-content-area .order-container {
+    flex: 1; /* take up the remaining space */
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+    .order-container {
+    width: 100%;
+    max-width: 600px;
+
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.order {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.order:last-child {
+    border-bottom: none;
+}
+
+.order img {
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+    margin-right: 20px;
+}
+.order-info {
+    width: 1000px;
+    height: 100px;
+}
+.order-info h4 {
+    margin: 0;
+    color: #333;
+}
+
+.order-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.order-info a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.reorder {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.sidebar {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #34495e;
+}
+
+</style>
+<div id="main-content-area">
+ <div class="sidebar">
+        <ul>
+            <li><a href="#">Profile</a></li>
+            <!--<li><a href="#">Address and Phone</a></li>
+            <li><a href="#">Payments</a></li>
+            <li><a href="#">Gift cards</a></li>
+            <li><a href="#">Saved restaurants</a></li>-->
+            <li><a href="#">Orders</a></li>
+
+        </ul>
+    </div>
+    <div class="order-container">
+       <!-- <div class="search-bar">
+            <input type="text" placeholder="Search your orders">
+            <button>Most recent</button>
+        </div>-->{% for item in order_items %}
+<div class="order">
+    <img src="{{ item.product.image_url }}" alt="Product Image">
+    <div class="order-info">
+        <h4>{{ item.product.name }} - {{ item.quantity }} x ${{ item.price }}</h4>
+
+        <p>Delivered {{ item.order.created_at|date:"F j, Y" }} - {{ item.order.user.userprofile.address_line1 }}</p>
+    </div>
+    <button class="reorder" onclick="location.href='{% url 'product_gallery' %}'">Reorder</button>
+</div>
+{% endfor %}
+
+
+
+        <!-- Add more orders as needed -->
+    </div>
+</div>
+{% endblock %}
