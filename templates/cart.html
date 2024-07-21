@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}My Cart{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <div class="page-content" data-cart="">
+        <header class="page-header text-center">
+            <div class="section-title">
+                <h1 class="page-heading" data-cart-page-title="">My Cart</h1>
+            </div>
+        </header>
+
+        <div data-cart-status=""></div>
+        <div class="loadingOverlay" style="display: none;"></div>
+
+        {% if is_cart_empty %}
+            <p class="text-center">Your cart is empty. <a href="{% url 'dashboard' %}">Continue shopping</a></p>
+        {% else %}
+            <div data-cart-content="" class="cart-content">
+                <table class="cart table table-bordered" data-cart-quantity="1">
+                    <thead class="cart-header">
+                        <tr>
+                            <th class="cart-header-item" colspan="2">Item</th>
+                            <th class="cart-header-item">Unit Price</th>
+                            <th class="cart-header-item cart-header-quantity">Quantity</th>
+                            <th class="cart-header-item">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="cart-list">
+                        {% for item in cart_items %}
+                            <tr class="cart-item" data-item-row="">
+                                <td class="cart-item-block cart-item-figure">
+                                    <img src="{{ item.product.image_url }}" alt="{{ item.product.name }}" title="{{ item.product.name }}" class="cart-item-image img-thumbnail" loading="lazy">
+                                </td>
+                                <td class="cart-item-block cart-item-title">
+                                    <p class="cart-item-sku">{{ item.product.sku }}</p>
+                                    <h2 class="cart-item-name">
+                                        <a class="cart-item-name__label" href="#">{{ item.product.name }}</a>
+                                    </h2>
+                                </td>
+                                <td class="cart-item-block cart-item-info">
+                                    <span class="cart-item-label">Unit Price</span>
+                                    <span class="cart-item-value">${{ item.product.price }}</span>
+                                </td>
+                                <td class="cart-item-block cart-item-info cart-item-quantity">
+                                    <div class="form-increment">
+                                        <button class="button button--icon btn btn-outline-secondary btn-sm" data-action="dec">-</button>
+                                        <input class="form-input form-input--incrementTotal cart-item-qty-input form-control" type="number" value="{{ item.quantity }}" min="1" pattern="[0-9]*" aria-label="{{ item.product.name }}" aria-live="polite">
+                                        <button class="button button--icon btn btn-outline-secondary btn-sm" data-action="inc">+</button>
+                                    </div>
+                                </td>
+                                <td class="cart-item-block cart-item-info">
+                                    <span class="cart-item-label">Total</span>
+                                    <span class="cart-item-value">${{ item.total_price }}</span>
+                                    <button class="cart-remove btn btn-outline-danger btn-sm" data-confirm-delete="Are you sure you want to delete this item?" aria-label="Remove {{ item.product.name }} from cart">×</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div data-cart-totals="" class="cart-totals-container">
+                <ul class="cart-totals">
+                    <li class="cart-total">
+                        <div class="cart-total-label"><strong>Subtotal:</strong></div>
+                        <div class="cart-total-value"><span>${{ cart_subtotal }}</span></div>
+                    </li>
+                    <li class="cart-total">
+                        <div class="cart-total-label"><strong>Coupon Code:</strong></div>
+                        <div class="cart-total-value"><a href="#">Add Coupon</a></div>
+                    </li>
+                    <li class="cart-total">
+                        <div class="cart-total-label"><strong>Gift Certificate:</strong></div>
+                        <div class="cart-total-value"><a href="#">Gift Certificate</a></div>
+                    </li>
+                    <li class="cart-total">
+                        <div class="cart-total-label"><strong>Grand total:</strong></div>
+                        <div class="cart-total-value cart-total-grandTotal"><span>${{ cart_grand_total }} USD</span></div>
+                    </li>
+                    <li class="cart-total">
+                        <p class="cart-notice">Free shipping over $125 (U.S lower 48)</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cart-actions">
+                <a class="button btn btn-outline-primary" href="{% url 'dashboard' %}" title="Keep shopping">Keep shopping</a>
+                <a class="button btn btn-primary" href="{% url 'payment_page' %}" title="Click here to proceed to checkout">Check out</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+<style>
+    .page-content {
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+
+    .cart-header-item, .cart-item-block {
+        text-align: center;
+    }
+
+    .cart-item-image {
+        max-width: 80px;
+        margin-right: 10px;
+    }
+
+    .cart-item-title {
+        text-align: left;
+    }
+
+    .cart-item-sku {
+        font-size: 0.8rem;
+        color: #888;
+    }
+
+    .cart-item-name {
+        font-size: 1.2rem;
+        color: #000;
+    }
+
+    .cart-item-name__label {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .cart-item-name__label:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+    .form-increment {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-increment button {
+        border: 1px solid #ccc;
+        background: none;
+        padding: 0.25rem;
+        width: 30px;
+        text-align: center;
+    }
+
+    .form-increment input {
+        max-width: 60px;
+        text-align: center;
+        margin: 0 5px;
+    }
+
+    .cart-total {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+    }
+
+    .cart-total-label, .cart-total-value {
+        display: block;
+        font-size: 1rem;
+    }
+
+    .cart-notice {
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    .cart-actions {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+    }
+
+    .cart-actions .button {
+        width: 48%;
+        font-size: 1rem;
+    }
+
+    .cart-totals-container {
+        margin-top: 2rem;
+        padding: 1rem;
+        border-top: 1px solid #e9e9e9;
+    }
+
+    .cart-header-item {
+        font-weight: bold;
+    }
+
+    .cart-item-value {
+        font-size: 1rem;
+    }
+
+    .cart-remove {
+        margin-left: 10px;
+    }
+
+    .button--primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .button--secondary {
+        background-color: white;
+        color: #007bff;
+        border: 1px solid #007bff;
+    }
+
+    .button--primary:hover, .button--secondary:hover {
+        opacity: 0.8;
+    }
+
+    a {
+        color: #28a745; /* Green color */
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #218838; /* Darker green */
+        text-decoration: underline;
+    }
+</style>
