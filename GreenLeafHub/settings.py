@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'GreenWebsite.apps.GreenwebsiteConfig',
+    'crispy_forms',
+    'crispy_bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 #LOGIN_REDIRECT_URL='/'
 #LOGOUT_REDIRECT_URL='/logout'
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
