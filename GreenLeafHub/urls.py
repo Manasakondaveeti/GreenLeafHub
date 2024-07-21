@@ -19,12 +19,20 @@ from django.urls import path
 from django.conf.urls import include
 from django.contrib.auth import views as auth_views
 
+
 from GreenWebsite.views import dashboard, logout_user, signup_view, login_user, CustomPasswordResetView, send_test_email,product,submit_review,add_to_cart,view_cart,add_product ,product_list,edit_product, payment_view, process_payment , search,product_gallery
 from GreenWebsite.views import (Articles,
                                 ArticleListView,
                                 ArticleDetailView,
                                 ArticleCreateView, ArticleUpdateView,
                                 ArticleDeleteView,UserArticleListView)
+
+from GreenWebsite.views import (dashboard, logout_user, signup_view, login_user, CustomPasswordResetView, send_test_email,product,submit_review,add_to_cart,view_cart,add_product ,product_list,edit_product, payment_view, process_payment ,
+                                search,
+                                order_history,
+                                product_gallery)
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', dashboard, name='home'),
@@ -50,7 +58,6 @@ urlpatterns = [
     path('cart/', view_cart, name='cart'),
     path('payment/', payment_view, name='payment_page'),
     path('process_payment/', process_payment, name='process_payment'),
-
     # path for articles and contact us pages.
     path('article-home/', ArticleListView.as_view(), name='article-home'),
     path('article-detail/<int:pk>/', ArticleDetailView.as_view(), name='article-detail'), # pk is default for the DetailView to fetch from db.
@@ -58,4 +65,7 @@ urlpatterns = [
     path('article-detail/<int:pk>/update/', ArticleUpdateView.as_view(), name='article-update'), # pk is default for the DetailView to fetch from db.
     path('article-detail/<int:pk>/delete', ArticleDeleteView.as_view(), name='article-delete'),
     path('user-articles/<str:username>', UserArticleListView.as_view(), name='user-articles')
+    path('order_history/', order_history, name='order_history'),
+    path('payment/', payment_view, name='payment_page'),
+
 ]

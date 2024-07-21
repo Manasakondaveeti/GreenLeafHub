@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .models import Product, UserProfile, ReviewRating, Cart, CartItem, Articles
+from .models import Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles
 from django.contrib import messages
 from . import forms
 from django.contrib.auth.views import PasswordResetView
@@ -237,14 +237,38 @@ def process_payment(request):
         # You can use a payment gateway API like Stripe, PayPal, etc.
 
         # For simplicity, let's assume the payment is successful
-        # For simplicity, let's assume the payment is successful
         cart = Cart.objects.get(user=request.user)
         cart_items = CartItem.objects.filter(cart=cart)
+
+        # Create an order
+        order = Order.objects.create(
+            user=request.user,
+            total_amount=sum(item.product.price * item.quantity for item in cart_items),
+            status='Completed'
+        )
+
+        # Create order items
+        for item in cart_items:
+            OrderItem.objects.create(
+                order=order,
+                product=item.product,
+                quantity=item.quantity,
+                price=item.product.price
+            )
+
+        # Clear the cart
         cart_items.delete()
+        cart.is_paid = True
+        cart.save()
+
         return render(request, 'payment_success.html')
 
     return redirect('payment_page')
 
+def order_history(request):
+    order_items = OrderItem.objects.filter(order__user=request.user).order_by('-order__created_at')
+    context = {'order_items': order_items}
+    return render(request, 'order_history.html', context)
 
 def search(request):
     query = request.GET.get('q')

@@ -11,31 +11,26 @@
             </div>
         </div>
     </div>
+
+
+
+
+
 {% endblock %}
 
-{% block body %}
+  {% block body %}
     <div class="container" id="shop-section">
         <div class="row">
-            <div class="col-md-3 sidebar">
-                <div class="filter-group">
-                    <h3>Price</h3>
-                    <input type="range" min="0" max="100" value="50">
-                    <button>Apply</button>
+            <div class="col-md-12 products">
+                <h2>Recently Added</h2>
+                {% include "product_card.html" with products=products|slice:":4" %}
+                <div class="view-all text-center">
+                    <a href="{% url 'product_gallery' %}" class="btn btn-primary">View All</a>
                 </div>
-                <div class="promotion">
-                    <p>FREE SHIPPING</p>
-                    <p>Over $125</p>
-                    <p>TO THE U.S. LOWER 48</p>
-                </div>
-            </div>
-            <div class="col-md-9 products">
-                {% if query %}
-                    <h2>Search Results for "{{ query }}":</h2>
-                    {% include "product_card.html" with products=products %}
-                {% else %}
-                    {% include "product_card.html" with products=products %}
-                {% endif %}
             </div>
         </div>
     </div>
+
+
+
 {% endblock %}
