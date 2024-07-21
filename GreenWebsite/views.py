@@ -118,7 +118,7 @@ def add_cart(request,pk):
 def add_product(request):
     if request.method == 'POST':
         # Your logic for processing the form and adding a product
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             # Optionally, redirect to the product list page after adding the product
@@ -147,7 +147,7 @@ def edit_product(request, pk):
         return render(request, 'error.html', {'message': 'Product not found'})
 
     if request.method == 'POST':
-        form = ProductForm(request.POST, instance=product)
+        form = ProductForm(request.POST,request.FILES, instance=product)
         if form.is_valid():
             form.save()
             return redirect('product_list')
@@ -156,7 +156,19 @@ def edit_product(request, pk):
 
     return render(request, 'edit_product.html', {'form': form, 'product': product})
 
+@login_required
+@user_passes_test(lambda u: u.is_staff)
+def delete_product(request, pk):
+    try:
+        product = get_object_or_404(Product, pk=pk)
 
+    except Exception as e:
+        print(e)
+        return render(request, 'error.html', {'message': 'Product not found'})
+
+    product.delete()
+
+    return redirect('product_list')
 # @login_required(login_url='/login/')
 # def add_to_cart(request, product_id):
 #     product = get_object_or_404(Product, id=product_id)

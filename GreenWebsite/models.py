@@ -8,7 +8,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     on_sale = models.BooleanField(default=False)
-    image_url = models.URLField()
+    image = models.ImageField(default='default.png',blank=True, null=True,upload_to='product_img/')
     description = models.TextField()
     review_count = models.IntegerField(default=0)
     rating = models.FloatField(default=0.0)
