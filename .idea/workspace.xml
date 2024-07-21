@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d22d73dd-6d32-48f2-95cf-39ea183d8e15" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenLeafHub/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenLeafHub/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenLeafHub/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenLeafHub/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product_card.html" afterDir="false" />
-    </list>
+    <list default="true" id="d22d73dd-6d32-48f2-95cf-39ea183d8e15" name="Changes" comment="order-history update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +38,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Manasa" />
+        <entry key="$PROJECT_DIR$" value="Arniish" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,31 +66,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.Django.executor&quot;: &quot;Run&quot;,
-    &quot;Django Server.GreenLeaf.executor&quot;: &quot;Run&quot;,
-    &quot;Django Server.GreenLeafHub.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.dashboard.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.product_card.html.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/konda/Downloads/us_visa_scheduler-main&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.Django.executor": "Run",
+    "Django Server.GreenLeaf.executor": "Run",
+    "Django Server.GreenLeafHub.executor": "Run",
+    "JavaScript Debug.dashboard.html.executor": "Run",
+    "JavaScript Debug.product_card.html.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "Arniish",
+    "last_opened_file_path": "C:/Users/konda/Downloads/us_visa_scheduler-main",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Joshua Daniel\PycharmProjects\GreenLeafHub\static\assets" />
@@ -120,7 +109,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
-      <option name="SDK_NAME" value="Python 3.12 (GreenLeafHub)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -143,7 +131,6 @@
         <env name="DJANGO_SETTINGS_MODULE" value="settings" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (GreenLeafHub)" />
       <option name="WORKING_DIRECTORY" value="C:\Users\konda\PycharmProjects\GreenLeafHub" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -169,7 +156,6 @@
         <env name="DJANGO_SETTINGS_MODULE" value="GreenLeafHub.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (GreenLeafHub)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -194,7 +180,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (GreenLeafHub)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -245,6 +230,23 @@
       <workItem from="1720897657268" duration="45674000" />
       <workItem from="1721096252029" duration="6248000" />
     </task>
+    <task id="LOCAL-00001" summary="revert-arniish">
+      <option name="closed" value="true" />
+      <created>1721529744155</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1721529744155</updated>
+    </task>
+    <task id="LOCAL-00002" summary="order-history update">
+      <option name="closed" value="true" />
+      <created>1721530220937</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1721530220937</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,5 +262,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="order-history update" />
+    <option name="LAST_COMMIT_MESSAGE" value="order-history update" />
   </component>
 </project>

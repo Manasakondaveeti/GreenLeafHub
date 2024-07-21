@@ -50,7 +50,7 @@ class ProductForm(forms.ModelForm):
             'name',
             'price',
             'on_sale',
-            'image',
+            'image_url',
             'description',
             'review_count',
             'rating',
@@ -59,11 +59,10 @@ class ProductForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control', 'maxlength': 200, 'required': True}),
             'price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01', 'required': True}),
             'on_sale': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'image_url': forms.URLInput(attrs={'class': 'form-control', 'required': True}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'required': True}),
             'review_count': forms.NumberInput(attrs={'class': 'form-control', 'required': True}),
             'rating': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1', 'required': True}),
         }
-
-    image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'form-control'}))
 
 

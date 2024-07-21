@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .models import Product, UserProfile, ReviewRating , Cart , CartItem
+from .models import Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem
 from django.contrib import messages
 from . import forms
 from django.contrib.auth.views import PasswordResetView
@@ -118,7 +118,7 @@ def add_cart(request,pk):
 def add_product(request):
     if request.method == 'POST':
         # Your logic for processing the form and adding a product
-        form = ProductForm(request.POST,request.FILES)
+        form = ProductForm(request.POST)
         if form.is_valid():
             form.save()
             # Optionally, redirect to the product list page after adding the product
@@ -147,7 +147,7 @@ def edit_product(request, pk):
         return render(request, 'error.html', {'message': 'Product not found'})
 
     if request.method == 'POST':
-        form = ProductForm(request.POST,request.FILES, instance=product)
+        form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
             return redirect('product_list')
@@ -156,19 +156,7 @@ def edit_product(request, pk):
 
     return render(request, 'edit_product.html', {'form': form, 'product': product})
 
-@login_required
-@user_passes_test(lambda u: u.is_staff)
-def delete_product(request, pk):
-    try:
-        product = get_object_or_404(Product, pk=pk)
 
-    except Exception as e:
-        print(e)
-        return render(request, 'error.html', {'message': 'Product not found'})
-
-    product.delete()
-
-    return redirect('product_list')
 # @login_required(login_url='/login/')
 # def add_to_cart(request, product_id):
 #     product = get_object_or_404(Product, id=product_id)
@@ -238,13 +226,38 @@ def process_payment(request):
         # You can use a payment gateway API like Stripe, PayPal, etc.
 
         # For simplicity, let's assume the payment is successful
-        # For simplicity, let's assume the payment is successful
         cart = Cart.objects.get(user=request.user)
         cart_items = CartItem.objects.filter(cart=cart)
+
+        # Create an order
+        order = Order.objects.create(
+            user=request.user,
+            total_amount=sum(item.product.price * item.quantity for item in cart_items),
+            status='Completed'
+        )
+
+        # Create order items
+        for item in cart_items:
+            OrderItem.objects.create(
+                order=order,
+                product=item.product,
+                quantity=item.quantity,
+                price=item.product.price
+            )
+
+        # Clear the cart
         cart_items.delete()
+        cart.is_paid = True
+        cart.save()
+
         return render(request, 'payment_success.html')
 
     return redirect('payment_page')
+
+def order_history(request):
+    order_items = OrderItem.objects.filter(order__user=request.user).order_by('-order__created_at')
+    context = {'order_items': order_items}
+    return render(request, 'order_history.html', context)
 def search(request):
     query = request.GET.get('q')
     results = []
