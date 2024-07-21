@@ -2,24 +2,28 @@
 {% load static %}
 {% block title %} Login Page {% endblock %}
 {% block body %}
-    <div class="form-body">
-        <div class="container-fluid">
-            <form method="post" class="mx-auto">
-                {% csrf_token %}
-                <h4 class="text-center">Login</h4>
-                  <div class="mb-3 mt-5">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-{#                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">#}
-                      {{ form.username }}
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-{#                    <input type="password" class="form-control" id="exampleInputPassword1">#}
-                      {{ form.password }}
-                    <div id="emailHelp" class="form-text">Forget password?</div>
-                  </div>
-                  <button type="submit" class="btn btn-primary mt-4">Login</button>
-            </form>
+    <div class="bg-success  py-5">
+        <div class="container-fluid form-body">
+            <div class="container">
+                <form method="post" class="mx-auto">
+                    {% csrf_token %}
+                    <h4 class="text-center">Login</h4>
+                    <div class="mb-3 mt-5">
+                        <label for="username" class="form-label">Username</label>
+    {#                    <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp">#}
+                                              {{ form.username }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+    {#                    <input type="password" name="password" class="form-control" id="password">#}
+                                              {{ form.password }}
+                        <div id="forget_pass" class="form-text">
+                            <a href="{% url 'password_reset' %}" class="text-muted text-decoration-none">Forgot password?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4">Login</button>
+                </form>
+            </div>
         </div>
     </div>
 
