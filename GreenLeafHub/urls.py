@@ -64,7 +64,7 @@ urlpatterns = [
     path('article-new/', ArticleCreateView.as_view(), name='article-create'),
     path('article-detail/<int:pk>/update/', ArticleUpdateView.as_view(), name='article-update'), # pk is default for the DetailView to fetch from db.
     path('article-detail/<int:pk>/delete', ArticleDeleteView.as_view(), name='article-delete'),
-    path('user-articles/<str:username>', UserArticleListView.as_view(), name='user-articles')
+    path('user-articles/<str:username>', UserArticleListView.as_view(), name='user-articles'),
     path('order_history/', order_history, name='order_history'),
     path('payment/', payment_view, name='payment_page'),
 
