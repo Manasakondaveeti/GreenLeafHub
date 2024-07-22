@@ -2,7 +2,7 @@ from django import forms
 from GreenWebsite.models import UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from .models import ReviewRating
 from .models import Product
 class UserRegisterForm(UserCreationForm):
@@ -25,10 +25,8 @@ class UserProfileForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label='Username', max_length=100,
-                               widget=forms.TextInput(attrs={'class': 'form-control'}))
+    username = forms.CharField(label='Username', max_length=100,widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email or Username'}))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-
 
 
 class CustomPasswordResetForm(PasswordResetForm):
@@ -37,6 +35,10 @@ class CustomPasswordResetForm(PasswordResetForm):
         widget=forms.EmailInput(attrs={'class': 'form-control'})
     )
     Password = forms.PasswordInput()
+
+class CustomPassResetConfirmForm(SetPasswordForm):
+    new_password1 = forms.CharField(label='New Password ', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    new_password2 = forms.CharField(label='Confirm New Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
 class ReviewForm(forms.ModelForm):
     class Meta:
@@ -50,7 +52,7 @@ class ProductForm(forms.ModelForm):
             'name',
             'price',
             'on_sale',
-            'image_url',
+            'image',
             'description',
             'review_count',
             'rating',
@@ -59,10 +61,10 @@ class ProductForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control', 'maxlength': 200, 'required': True}),
             'price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01', 'required': True}),
             'on_sale': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'image_url': forms.URLInput(attrs={'class': 'form-control', 'required': True}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'required': True}),
             'review_count': forms.NumberInput(attrs={'class': 'form-control', 'required': True}),
             'rating': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1', 'required': True}),
         }
 
+    image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'form-control'}))
 
