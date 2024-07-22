@@ -1,161 +1,227 @@
-
-
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Leaf Hub {% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
-    <link rel="stylesheet" href="{% static 'forms.css' %}">
-    {% block article-bootstrap %} {% endblock %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   <head>
+      <!-- Basic -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <!-- Mobile Metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <!-- Site Metas -->
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="">
+      <title>Green Leaf Hub {% block title %} {% endblock %}</title>
+      <!-- bootstrap core css -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" >
+        <link rel="stylesheet" href="{% static 'dashboard.css' %}">
 
-</head>
-<body>
-    <header>
-         <nav class="navbar">
-            <img src="{% static 'assets/logo2.PNG' %}" alt="Site Logo" class="img-fluid" style="max-height: 80px;">
-            <ul class="nav-links">
-               <li><a  href="{% url 'product_gallery' %}">SHOP</a></li>
-               <li><a href="#">LEARN</a></li>
-               <li><a href="#">OUR STORY</a></li>
-
-             {% if user.is_authenticated %}
-
-                {% if user.is_staff %}
-                    <li><a href="/add_product">ADD PRODUCT</a></li>
-                     <li><a href="/product_list">EDIT PRODUCT</a></li>
-                {% endif %}
-                {% endif %}
-
-
-            </ul>
-            <div class="nav-icons d-flex align-items-center">
-    <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get" style="position: relative;">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" required style="padding-right: 40px;">
-    <button class="btn btn-link" type="submit" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
-        <img src="{% static 'assets/search-icon.jpg' %}" alt="Search" class="img-fluid" style="width: 20px; height: 20px;">
-    </button>
-</form>
-
-    <li class="nav-item dropdown list-unstyled">
-        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="{% static 'assets/account-icon.png' %}" alt="Account" class="img-fluid">
-        </a>
-        <div class="dropdown-menu" aria-labelledby="accountDropdown">
-            {% if user.is_authenticated %}
-
-            <a class="dropdown-item" href="/logout">Logout</a>
-             {% else %}
-            <a class="dropdown-item" href="/login">Login</a>
-            <a class="dropdown-item" href="/signup">Signup</a>
-             {% endif %}
-        </div>
-
-    </li>
-
-        <a href="{% url 'cart' %}" class="btn btn-success position-relative">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    {{ request.user.userprofile.get_cart_count }}
-            {#        <span class="visually-hidden">items in cart</span>#}
-                </span>
-        </a>
-   </div>
+      <!-- font awesome style -->
+      <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+      <!-- Custom styles for this template -->
+      <link href="{% static 'css/style.css' %}?v={{ STATIC_VERSION }}" rel="stylesheet" />
+      <!-- responsive style -->
+      <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+   </head>
+   <body>
+      <div class="hero_area">
+         <!-- header section strats -->
+         <header class="header_section">
+            <div class="container">
+               <nav class="navbar navbar-expand-lg custom_nav-container ">
+                  <a class="navbar-brand" href="#"><img width="250" src="{% static 'images/logo.png' %}" alt="#" /></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav">
+                        <li class="nav-item active">
+                           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                       <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Account <span class="caret"></span></span></a>
+                           <ul class="dropdown-menu">
 
 
+                                {% if user.is_authenticated %}
+                                    <li><a href="about.html">Profile</a></li>
+                              <li><a href="testimonial.html">Order History</a></li>
+                                    <li><a href="/logout">Logout</a></li>
 
-         </nav>
+
+                        {% else %}
+                                    <li><a href="/login">Login</a></li>
+                           <li><a href="/signup">Signup</a></li>
+
+                        {% endif %}
+                           </ul>
+                        </li>
+
+                        <li class="nav-item">
+                           <a class="nav-link" href="blog_list.html">ARTICLES</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="contact.html">Contact Us</a>
+                        </li>
+                         <li class="nav-item">
+                           <a class="nav-link" href="{% url 'product_gallery' %}">SHOP PRODUCTS</a>
+                        </li>
+
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url 'cart' %}">
+                              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                                 <g>
+                                    <g>
+                                       <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                                          c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                    </g>
+                                 </g>
+                                 <g>
+                                    <g>
+                                       <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                                          C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                          c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                          C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                    </g>
+                                 </g>
+                                 <g>
+                                    <g>
+                                       <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                                          c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                    </g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                                 <g>
+                                 </g>
+                              </svg>
+                           </a>
+                        </li>
+                        <form class="form-inline">
+                           <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                           <i class="fa fa-search" aria-hidden="true"></i>
+                           </button>
+                        </form>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+         </header>
+           {% block content %}
+         {% endblock content %}
+
+              </div>
 
 
-
-    </header>
-
-    {% if messages %}
-        <div class="container-fluid">
-            {% for message in messages %}
-                <div class="alert alert-dismissible fade show alert-{{ message.tags }} mb-0" role="alert">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            {{ message }}
-                        </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-     {% block banner %}
-     {% endblock %}
 
     {% block body %}
     {% endblock %}
-    <footer>
-         <div class="footer-container">
-            <div class="footer-column">
-               <h4>About GreenHouseHub</h4>
-               <ul>
-                  <li><a href="#">Our Story</a></li>
-                  <li><a href="#">The Team</a></li>
-                  <li><a href="#">Our Mission</a></li>
-                  <!-- More links -->
-               </ul>
-            </div>
-            <div class="footer-column">
-               <h4>Shop Categories</h4>
-               <ul>
-                  <li><a href="#">Yard & Garden</a></li>
-                  <li><a href="#">Green Home</a></li>
-                  <li><a href="#">Lifestyle</a></li>
-                  <!-- More links -->
-               </ul>
-            </div>
-            <div class="footer-column">
-               <h4>Customer Service</h4>
-               <ul>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Gift Certificates</a></li>
-                  <li><a href="#">Shipping Information</a></li>
-                  <!-- More links -->
-               </ul>
-            </div>
-            <div class="footer-column">
-               <h4>Stay Connected</h4>
-               <div class="social-media-links">
-                  <a href="#"><img src="{% static 'assets/Facebook.png' %}" alt="Facebook"></a>
-                   <a href="#"><img src="{% static 'assets/instagram.jpg' %}" alt="instagram"></a>
-              <a href="#"><img src="{% static 'assets/pinterest.png' %}" alt="pinterest"></a>
-              <a href="#"><img src="{% static 'assets/twitter.png' %}" alt="twitter"></a>
-              <a href="#"><img src="{% static 'assets/youtube.png' %}" alt="youtube"></a>
+      <footer>
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                   <div class="full">
+                      <div class="logo_footer">
+                        <a href="#"><img width="210" src="{% static 'images/logo.png' %}" alt="#" /></a>
+                      </div>
+                      <div class="information_f">
+                        <p><strong>ADDRESS:</strong> 300 Ouellette Building , Windsor , Canada</p>
+                        <p><strong>TELEPHONE:</strong> +1 226 961 3314</p>
+                        <p><strong>EMAIL:</strong> internetapplicationsproject@gmail.com</p>
+                      </div>
+                   </div>
+               </div>
+               <div class="col-md-8">
+                  <div class="row">
+                  <div class="col-md-7">
+                     <div class="row">
+                        <div class="col-md-6">
+                     <div class="widget_menu">
+                        <h3>Menu</h3>
+                        <ul>
+                           <li><a href="#">Home</a></li>
+                           <li><a href="#">About</a></li>
+                           <li><a href="#">Services</a></li>
+                           <li><a href="#">Our Team</a></li>
+                           <li><a href="#">Blog</a></li>
+                           <li><a href="#">Contact</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="widget_menu">
+                        <h3>Account</h3>
+                        <ul>
+                           <li><a href="#">Account</a></li>
+                           <li><a href="#">Checkout</a></li>
+                           <li><a href="#">Login</a></li>
+                           <li><a href="#">Register</a></li>
+                           <li><a href="#">Shopping</a></li>
 
-           </div>
-           <div class="newsletter">
-              <input type="email" placeholder="Email">
-              <button>Submit</button>
-           </div>
-        </div>
-     </div>
-     <div class="footer-lastrow">
-        <div class="certifications">
+                        </ul>
+                     </div>
+                  </div>
+                     </div>
+                  </div>
+                  <div class="col-md-5">
+                     <div class="widget_menu">
+                        <h3>Newsletter</h3>
+                        <div class="information_f">
+                          <p>Subscribe by our newsletter and get update protidin.</p>
+                        </div>
+                        <div class="form_sub">
+                           <form>
+                              <fieldset>
+                                 <div class="field">
+                                    <input type="email" placeholder="Enter Your Mail" name="email" />
+                                    <input type="submit" value="Subscribe" />
+                                 </div>
+                              </fieldset>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- footer end -->
 
-           <img src="{% static 'assets/privacy-guaranteed.jpg' %}" alt="Privacy Guaranteed">
-
-           <!-- More logos as needed -->
-        </div>
-        <p class="copyright">© 2024 University of Windsor All Rights Reserved</p>
-        <div class="payment-methods">
-           <img src="{% static 'assets/payment.jpg' %}" alt="payment img">
-        </div>
-     </div>
-    </footer>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
+      <!-- jQery -->
+      <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+      <!-- popper js -->
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <!-- bootstrap js -->
+      <script src="{% static 'js/bootstrap.js' %}"></script>
+      <!-- custom js -->
+      <script src="{% static 'js/custom.js '%}"></script>
+   </body>
 </html>

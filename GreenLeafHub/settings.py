@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'GreenWebsite.apps.GreenwebsiteConfig',
-    'crispy_forms',
-    'crispy_bootstrap4'
+   
 ]
 
 MIDDLEWARE = [
@@ -135,4 +134,4 @@ LOGIN_URL = '/login/'
 #LOGOUT_REDIRECT_URL='/logout'
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+

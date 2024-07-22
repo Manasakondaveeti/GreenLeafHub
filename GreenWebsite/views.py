@@ -1,19 +1,30 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+
+from django.urls import reverse_lazy
+
+
 from .models import Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles
+
 from django.contrib import messages
 from . import forms
-from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
 from .forms import ProductForm
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+
+
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+
 
 def send_test_email(request):
     send_mail(
@@ -38,10 +49,14 @@ def signup_view(request):
     if request.method == 'POST':
         form = forms.UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}')
-            return redirect('login')
+            email = form.cleaned_data.get('email')
+            if User.objects.filter(email=email).exists():
+                messages.warning(request, f'email: A User with that email already exists')
+            else:
+                form.save()
+                username = form.cleaned_data.get('username')
+                messages.success(request, f'Account created for {username}')
+                return redirect('login')
         else:
             for field, errors in form.errors.items():
                 for error in errors:
@@ -56,17 +71,37 @@ def login_user(request):
     if request.method == 'POST':
         form = forms.LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
+            username_or_email = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
+
+            # Try authenticating with the provided username
+            user = authenticate(request, username=username_or_email, password=password)
+
+            # If authentication fails, check if the input is an email
+            if user is None:
+                try:
+                    # Validate if the input is an email
+                    validate_email(username_or_email)
+                    # Try to find the user by email
+                    user = User.objects.get(email=username_or_email)
+                    # Attempt to authenticate using the username from the email
+                    user = authenticate(request, username=user.username, password=password)
+                except (ValidationError, User.DoesNotExist):
+                    # If it's not a valid email or user with that email doesn't exist
+                    user = None
+
             if user is not None:
                 login(request, user)
-                messages.success(request, f'{username} logged in successfully')
+                messages.success(request, f'{user.username} logged in successfully')
                 return redirect('dashboard')  # Redirect to dashboard on successful login
             else:
                 # Handle invalid credentials
                 form.add_error(None, 'Invalid username or password.')
-                messages.warning(request, f'Invalid username or password.')
+                messages.warning(request, 'Invalid username or password.')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.warning(request, f'{field}: {error}')
     else:
         form = forms.LoginForm()
 
@@ -82,6 +117,22 @@ class CustomPasswordResetView(PasswordResetView):
     form_class = forms.CustomPasswordResetForm
     template_name = 'registration/password_reset.html'
 
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    form_class = forms.CustomPassResetConfirmForm
+    template_name = 'registration/password_reset_confirm.html'
+    success_url = reverse_lazy('password_reset_complete')
+
+    def form_valid(self, form):
+        print("Form is valid")
+        return super().form_valid(form)
+
+
+    def form_invalid(self, form):
+        print("Form is invalid")
+        print(form.errors)  # Print form errors to debug
+        return super().form_invalid(form)
+
+
 
 def product(request, pk):
     product = Product.objects.get(id=pk)
@@ -92,7 +143,6 @@ def product(request, pk):
 def product_gallery(request):
     products = Product.objects.all()
     return render(request, 'product_gallery.html', {'products': products})
-
 
 def submit_review(request, product_id):
     url = request.META.get('HTTP_REFERER')
@@ -127,7 +177,7 @@ def add_cart(request, pk):
 def add_product(request):
     if request.method == 'POST':
         # Your logic for processing the form and adding a product
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             # Optionally, redirect to the product list page after adding the product
@@ -156,7 +206,7 @@ def edit_product(request, pk):
         return render(request, 'error.html', {'message': 'Product not found'})
 
     if request.method == 'POST':
-        form = ProductForm(request.POST, instance=product)
+        form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
             return redirect('product_list')
@@ -164,6 +214,21 @@ def edit_product(request, pk):
         form = ProductForm(instance=product)
 
     return render(request, 'edit_product.html', {'form': form, 'product': product})
+
+
+@login_required
+@user_passes_test(lambda u: u.is_staff)
+def delete_product(request, pk):
+    try:
+        product = get_object_or_404(Product, pk=pk)
+
+    except Exception as e:
+        print(e)
+        return render(request, 'error.html', {'message': 'Product not found'})
+
+    product.delete()
+
+    return redirect('product_list')
 
 
 # @login_required(login_url='/login/')
@@ -179,7 +244,7 @@ def edit_product(request, pk):
 
 @login_required
 def view_cart(request):
-    cart_items = CartItem.objects.all()
+    cart_items = CartItem.objects.filter(cart__user=request.user)
     cart_items_with_totals = []
     cart_subtotal = 0
 
@@ -218,6 +283,18 @@ def add_to_cart(request, product_id):
     print("manasa", cart_items_count)
     # return redirect( '/dashboard', {'cart_items_count': cart_items_count})
     return redirect(url)
+
+
+
+@login_required
+def remove_from_cart(request, product_id):
+    url = request.META.get('HTTP_REFERER')
+    cart = get_object_or_404(Cart, user=request.user)
+    cart_item = get_object_or_404(CartItem, cart=cart, product_id=product_id)
+    cart_item.delete()
+    return redirect(url)
+
+
 
 
 @login_required
@@ -265,10 +342,12 @@ def process_payment(request):
 
     return redirect('payment_page')
 
+
 def order_history(request):
     order_items = OrderItem.objects.filter(order__user=request.user).order_by('-order__created_at')
     context = {'order_items': order_items}
     return render(request, 'order_history.html', context)
+
 
 def search(request):
     query = request.GET.get('q')
@@ -280,6 +359,15 @@ def search(request):
 
     return render(request, 'dashboard.html', {'query': query, 'products': results})
 
+
+
+def product_search(request):
+    query = request.GET.get('q')
+    results = []
+    if query:
+        results = Product.objects.filter(name__icontains=query)
+        print(results)
+    return render(request, 'product_gallery.html', {'products': results})
 
 # article and contact-us related methods from here on
 # @login_required()
@@ -351,3 +439,4 @@ class UserArticleListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Articles.objects.filter(author=user).order_by('-date_posted')
+
