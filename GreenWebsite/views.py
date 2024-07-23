@@ -335,8 +335,7 @@ def process_payment(request):
 
         # Clear the cart
         cart_items.delete()
-        cart.is_paid = True
-        cart.save()
+        cart.delete()
 
         return render(request, 'payment_success.html')
 
