@@ -6,22 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d22d73dd-6d32-48f2-95cf-39ea183d8e15" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenLeafHub/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenLeafHub/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/arrival-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/p9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,6 +197,7 @@
       <workItem from="1721668562940" duration="846000" />
       <workItem from="1721669921417" duration="422000" />
       <workItem from="1721672026662" duration="107000" />
+      <workItem from="1721706748191" duration="4034000" />
     </task>
     <servers />
   </component>

@@ -134,6 +134,33 @@
                </nav>
             </div>
          </header>
+      
+      
+     {% if messages %}
+    <div class="container-fluid">
+        {% for message in messages %}
+            <div class="alert alert-dismissible fade show alert-{{ message.tags }} mb-0" role="alert" id="alert-{{ forloop.counter }}">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>{{ message }}</div>
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const alerts = document.querySelectorAll('.alert-dismissible');
+            alerts.forEach(alert => {
+                setTimeout(() => {
+                    $(alert).alert('close');  // use jQuery to close alerts for Bootstrap 4
+                }, 5000); // dismiss alerts after 5000 milliseconds
+            });
+        });
+    </script>
+{% endif %}
+
+
            {% block content %}
          {% endblock content %}
 
