@@ -3,11 +3,11 @@
 {% block title %} Product Gallery {% endblock %}
 {% block body %}
     <style>
-        .container-fluid {
+        .gallery .container-fluid {
             background: #f8f9fa;
             padding: 20px 0;
         }
-        .container {
+        .gallery .container {
             background: #ffffff;
             border-radius: 10px;
             padding: 20px;
@@ -82,8 +82,8 @@
 
     </style>
 
-    <div class="container-fluid">
-        <div class="container">
+    <div class="gallery container-fluid">
+        <div class="gallery container">
             <div class="row product-grid">
                 {% for product in products %}
                     <div class="col-md-4 mb-4 d-flex align-items-stretch  product-column">
@@ -97,7 +97,7 @@
                                     <p class="reviews">Rated: {{ product.rating }} Stars ({{ product.review_count }} Reviews)</p>
                                     <p class="card-text price">${{ product.price }}</p>
                                     <a href="#" class="btn  btn-outline-success"> Buy now </a>
-                                    <a href="{% url 'add_to_cart' product.id %}" class="btn  btn-outline-success"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+                                    <a href="{% url 'add_to_cart' product.id %}" class="btn  btn-outline-success"> <span class="text">Add to cart</span> <i class="fa fa-shopping-cart"></i>  </a>
     {#                                    {% if product.on_sale %}#}
     {#                                        <p class="sale-tag">SALE</p>#}
     {#                                    {% endif %}#}
