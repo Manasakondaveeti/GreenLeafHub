@@ -1,6 +1,5 @@
 import os
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'"""EMAIL_HOST = 'smtp.gmail.com'"""
 
 from pathlib import Path
 
@@ -30,7 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'GreenWebsite.apps.GreenwebsiteConfig',
-
 ]
 
 MIDDLEWARE = [
