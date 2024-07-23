@@ -28,10 +28,9 @@ from GreenWebsite.views import (Articles,
                                 ArticleCreateView, ArticleUpdateView,
                                 ArticleDeleteView,UserArticleListView)
 
-from GreenWebsite.views import (dashboard, logout_user, signup_view, login_user,CustomPasswordResetConfirmView, CustomPasswordResetView,send_test_email,product,submit_review,add_to_cart,view_cart,add_product ,product_list,edit_product, payment_view, process_payment ,
-                                search,
-                                order_history,
-                                product_gallery)
+from GreenWebsite.views import (dashboard, logout_user, signup_view, login_user,CustomPasswordResetConfirmView, CustomPasswordResetView,
+                                send_test_email,product,submit_review,add_to_cart,remove_from_cart,view_cart,add_product ,
+                                product_list,edit_product, payment_view, process_payment,search,order_history,product_gallery)
 
 
 urlpatterns = [
@@ -61,6 +60,7 @@ urlpatterns = [
     path('product_list', product_list, name='product_list'),
     path('edit_product/<int:pk>', edit_product, name='edit_product'),
     path('add_to_cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
+    path('remove_from_cart/<int:product_id>/', remove_from_cart, name='remove_from_cart'),
     path('cart/', view_cart, name='cart'),
     path('payment/', payment_view, name='payment_page'),
     path('process_payment/', process_payment, name='process_payment'),

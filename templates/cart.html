@@ -38,18 +38,21 @@
             margin:0;
         }
         .cart-actions {
-            {#display: flex;#}
+            display: flex;
             {#justify-content: space-between;#}
             {#background-color: black;#}
-            {#padding: 1rem 0;#}
+            padding: 1rem 0;
             margin:0;
+            {#border: 2px solid deeppink;#}
         }
 
         .cart-actions .button {
             {#width: 48%;#}
             {#font-size: 1rem;#}
-            width:100%;
+            {#width:100%;#}
             padding: 5px;
+            margin:0;
+            {#border: 2px solid deeppink;#}
         }
     </style>
     <div class="container-fluid">
@@ -66,10 +69,10 @@
                     <div class="col-md-9 cart-table" >
                         <div class="row">
                             <div class="col-md-2">Product</div>
-                            <div class="col-md-4">Product Name</div>
+                            <div class="col-md-4"></div>
                             <div class="col-md-2">Quantity</div>
                             <div class="col-md-2">Price</div>
-                            <div class="col-md-2">Remove</div>
+                            <div class="col-md-2"></div>
                         </div>
                         {% for item in cart_items %}
                             <div class="row">
@@ -83,22 +86,23 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2">${{ item.product.price }}</div>
-                                <div class="col-md-2"><a href="#" class="btn btn-outline-success">Remove</a></div>
+                                <div class="col-md-2"><a href="{% url 'remove_from_cart' item.product.id %}" class="btn btn-outline-success">Remove</a></div>
                             </div>
                         {% endfor %}
                     </div>
-                    <div class="col-md-3" >
+                    <div class="col-md-3">
                         <div class="row cart-coupon mb-3">
                             <div class="cart-total-label"><strong>Have Coupon?</strong></div>
-                            <form class="d-flex">
-                                <div class="col-lg-8">
-                                    <input type="text" class="form-control" name="couponCode" id="couponCode" placeholder="Enter Coupon Code">
-                                </div>
-                                <div class="col-lg-4 d-flex justify-content-end">
-                                    <button type="button" class="btn btn-outline-success">Apply</button>
+                            <form class="d-flex w-100">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="couponCode" id="couponCode" placeholder="Coupon Code">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-success">Apply</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
+
                         <div class="row cart-total">
                             <div class="col-md-6">
                                 <strong>Total Price:</strong>
@@ -121,12 +125,12 @@
                                 <span>${{ cart_grand_total }}</span>
                             </div>
                         </div>
-                        <div class="row cart-actions">
-                            <div class="col-md-7">
-                                <a class="button btn btn-outline-primary" href="{% url 'dashboard' %}" title="Keep shopping">Keep shopping</a>
+                        <div class="row cart-actions w-100">
+                            <div class="col-md-12 mb-3">
+                                <a class="button btn btn-outline-primary btn-block" href="{% url 'dashboard' %}" title="Keep shopping">Keep shopping</a>
                             </div>
-                            <div class="col-md-5">
-                                <a class="button btn btn-primary" href="{% url 'payment_page' %}" title="Click here to proceed to checkout">Check out</a>
+                            <div class="col-md-12">
+                                <a class="button btn btn-primary btn-block" href="{% url 'payment_page' %}" title="Click here to proceed to checkout">Check out</a>
                             </div>
                         </div>
                     </div>
