@@ -20,6 +20,7 @@ class Product(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='userprofile', on_delete=models.CASCADE)
+    image = models.ImageField(default='default.png', blank=True, null=True, upload_to='profile_img/')
     address_line1 = models.CharField(max_length=100)
     address_line2 = models.CharField(max_length=100, blank=True, null=True)
     phone_number = models.CharField(max_length=10)
@@ -28,14 +29,20 @@ class UserProfile(models.Model):
     country = models.CharField(max_length=15)
     zip_code = models.CharField(max_length=7)
 
+    def delete(self, *args, **kwargs):
+        if self.image and self.image.name != 'default.png':
+            self.image.delete(save=False)
+        super(UserProfile, self).delete(*args, **kwargs)
+
     def __str__(self):
         return self.user.username
 
     def get_cart_count(self):
-        total_quantity = \
-            CartItem.objects.filter(cart__is_paid=False, cart__user=self.user).aggregate(
-                total_quantity=Sum('quantity'))[
-                'total_quantity']
+        total_quantity = CartItem.objects.filter(
+            cart__is_paid=False, cart__user=self.user
+        ).aggregate(
+            total_quantity=Sum('quantity')
+        )['total_quantity'] or 0
         print("total_quantity", total_quantity)
         return total_quantity
 

@@ -447,3 +447,51 @@ class UserArticleListView(ListView):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Articles.objects.filter(author=user).order_by('-date_posted')
 
+
+def get_profile_context(request):
+    user = request.user
+    user_profile = UserProfile.objects.filter(user=user).first()
+    context = {
+        'user': user,
+        'profile': user_profile,
+    }
+
+    return context
+
+
+# Displays profile detail
+def profile(request):
+    context = get_profile_context(request)
+    return render(request, 'profile.html', context)
+
+# Edit profile profile
+@login_required
+def edit_profile(request):
+    user = request.user
+    profile = UserProfile.objects.get(user=user)
+
+    if request.method == 'POST':
+        user.first_name = request.POST.get('fname', '')
+        user.last_name = request.POST.get('lname', '')
+        user.email = request.POST.get('email', '')
+        user.save()
+
+        profile.phone_number = request.POST.get('phno', '')
+        profile.city = request.POST.get('city', '')
+        profile.province = request.POST.get('province', '')
+        profile.country = request.POST.get('country', '')
+        profile.zip_code = request.POST.get('zip', '')
+        profile.address_line1 = request.POST.get('address1', '')
+        profile.address_line2 = request.POST.get('address2', '')
+
+        if 'profile_img' in request.FILES:
+            profile.image.delete(save=False)
+            profile.image = request.FILES['profile_img']
+
+        profile.save()
+
+        messages.success(request, 'Your profile has been updated successfully.')
+        return redirect('profile')
+
+    context = {'user': user, 'profile': profile}
+    return render(request, 'edit_profile.html', context)
