@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ user.first_name }}</title>
+{% endblock %}
+
+{% block body %}
+<div class="m-5 numans">
+    <form method="post" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="d-flex gap-2">
+            <div class="row border shadow rounded-3 p-4 justify-content-center align-items-center">
+                <img class="img-fluid col-6 img-crop center-cropped" src="{{ profile.image.url }}" alt="{{ profile.image }}">
+                <div class="w-50 d-flex flex-column">
+                    <label for="file-upload" class="custom-file-upload mb-1 rounded">
+                        Change Picture
+                    </label>
+                    <input id="file-upload" type="file" name="profile_img" id="profile_img">
+                    <button type="submit" class="btn btn-primary">Apply Changes <span><i class="fa fa-solid fa-check"></i></span></button>
+                </div>
+            </div>
+            <div class="border p-4 ms-3 shadow rounded-3">
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <label for="fname" class="form-label">First Name</label>
+                        <div class="">
+                            <input type="text" required class="form-control" name="fname" id="fname" value="{{ user.first_name }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label for="lname" class="form-label">Last Name</label>
+                        <div class="">
+                            <input type="text" required class="form-control" name="lname" id="lname" value="{{ user.last_name }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label for="email" class="form-label">Email</label>
+                        <div class="">
+                            <input type="email" required class="form-control" name="email" id="email" value="{{ user.email }}">
+                        </div>
+                    </div>
+                </div>
+    
+                <hr>
+    
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <label for="phno" class="form-label">Phone Number</label>
+                        <div class="">
+                            <input type="tel" required class="form-control" name="phno" id="phno" value="{{ profile.phone_number }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label for="city" class="form-label">City</label>
+                        <div class="">
+                            <input type="text" required class="form-control" name="city" id="city" value="{{ profile.city }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label for="province" class="form-label">Province</label>
+                        <div class="">
+                            <input type="text" required class="form-control" name="province" id="province" value="{{ profile.province }}">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <label for="country" class="form-label">Country</label>
+                        <div class="">
+                            <input type="text" required class="form-control" name="country" id="country" value="{{ profile.country }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label for="zip" class="form-label">Zip Code</label>
+                        <div class="">
+                            <input type="text" required class="form-control" name="zip" id="zip" value="{{ profile.zip_code }}">
+                        </div>
+                    </div>
+                </div>
+    
+                <hr>
+    
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="address1" class="form-label">Address Line 1</label>
+                        <div class="">
+                            <input type="text" required class="form-control" name="address1" id="address1" value="{{ profile.address_line1 }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label for="address2" class="form-label">Address Line 2</label>
+                        <div class="">
+                            <input type="text" class="form-control" name="address2" id="address2" value="{{ profile.address_line2 }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
