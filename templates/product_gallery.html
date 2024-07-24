@@ -3,11 +3,11 @@
 {% block title %} Product Gallery {% endblock %}
 {% block body %}
     <style>
-        .container-fluid {
+        .gallery .container-fluid {
             background: #f8f9fa;
             padding: 20px 0;
         }
-        .container {
+        .gallery .container {
             background: #ffffff;
             border-radius: 10px;
             padding: 20px;
@@ -66,6 +66,7 @@
         }
         .text-decoration-none {
             text-decoration: none !important;
+            color: black; /* Change this to your desired color */
         }
         .product-column {
             padding-left: 10px; /* Adjust this value to set the gap */
@@ -82,32 +83,57 @@
 
     </style>
 
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row product-grid">
-                {% for product in products %}
-                    <div class="col-md-4 mb-4 d-flex align-items-stretch  product-column">
-                        <a href="{% url 'product' product.id %}" class="text-decoration-none">
-                            <div class="card" style="width: 100%">
-                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                                <div class="card-body">
+    <div class="gallery container-fluid">
+            <section class="product_section layout_padding">
+                 <div class="container" style=" width: 100%;  margin: 0 auto; ">
+                    <div class="heading_container heading_center" style=" width: 100%;text-align: center;" >
+                       <h2>
+                          Our <span>products</span>
+                       </h2>
 
-                                    <h5 class="card-title">{{ product.name }}</h5>
-        {#                            <p class="card-text">{{ product.description }}</p>#}
-                                    <p class="reviews">Rated: {{ product.rating }} Stars ({{ product.review_count }} Reviews)</p>
-                                    <p class="card-text price">${{ product.price }}</p>
-                                    <a href="#" class="btn  btn-outline-success"> Buy now </a>
-                                    <a href="{% url 'add_to_cart' product.id %}" class="btn  btn-outline-success"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
-    {#                                    {% if product.on_sale %}#}
-    {#                                        <p class="sale-tag">SALE</p>#}
-    {#                                    {% endif %}#}
-                                </div>
 
-                            </div>
+                    <div class="row" style="width: 100%;">
+                        {% for product in products %}
+                       <div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="box">
+                            <a href="{% url 'product' product.id %}" class="text-decoration-none">
+                        <div class="img-box">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </div>
+                        <div class="detail-box">
+                            <h5>{{ product.name}}</h5>
+                            <br>
+                            <h6>${{ product.price }}</h6>
+                        </div>
+
+                        {% if product.rating != 0 %}
+                        <div class="rating-star">
+                            <span>
+                                <i class="fa fa-star{% if product.rating < 0.5 %}-o{% elif product.rating >= 0.5 and product.rating < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if product.rating < 1.5 %}-o{% elif product.rating >= 1.5 and product.rating < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if product.rating < 2.5 %}-o{% elif product.rating >= 2.5 and product.rating < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if product.rating < 3.5 %}-o{% elif product.rating >= 3.5 and product.rating < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if product.rating < 4.5 %}-o{% elif product.rating >= 4.5 and product.rating < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                <span style="color:#8aa479">&nbsp;&nbsp;{{product.reviews.count}} Review{{product.reviews.count|pluralize}}</span>
+                            </span>
+                        </div>
+                        {% endif %}
                         </a>
                     </div>
-                {% endfor %}
-            </div>
-        </div>
+                 </div>
+
+
+
+                   {% endfor %}
+
+
+
+
+                    </div>
+
+                    {% include "pagination.html" with page=products %}
+                 </div>
+                 </div>
+              </section>
     </div>
 {% endblock %}

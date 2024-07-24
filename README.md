@@ -8,3 +8,7 @@ cd C:\Users\konda\PycharmProjects\GreenLeafHub
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+
+
+install packages in requirements.txt
+pip install -r requirements.txt

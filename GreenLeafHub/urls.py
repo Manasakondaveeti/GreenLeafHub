@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from django.contrib.auth import views as auth_views
-
+from django.conf.urls.static import static
+from django.conf import settings
 
 from GreenWebsite.views import dashboard, logout_user, signup_view, login_user, CustomPasswordResetView, send_test_email,product,submit_review,add_to_cart,view_cart,add_product ,product_list,edit_product, payment_view, process_payment , search,product_gallery
 from GreenWebsite.views import (Articles,
@@ -27,23 +28,27 @@ from GreenWebsite.views import (Articles,
                                 ArticleCreateView, ArticleUpdateView,
                                 ArticleDeleteView,UserArticleListView)
 
-from GreenWebsite.views import (dashboard, logout_user, signup_view, login_user, CustomPasswordResetView, send_test_email,product,submit_review,add_to_cart,view_cart,add_product ,product_list,edit_product, payment_view, process_payment ,
-                                search,
-                                order_history,
-                                product_gallery)
+from GreenWebsite.views import (dashboard, logout_user, signup_view, login_user,CustomPasswordResetConfirmView, CustomPasswordResetView,
+                                send_test_email,product,submit_review,add_to_cart,remove_from_cart,view_cart,add_product ,
+                                product_list,edit_product, payment_view, process_payment,search,order_history,product_gallery)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', dashboard, name='home'),
     path('dashboard/', dashboard, name='dashboard'),
-    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
     path('signup/', signup_view, name='signup'),
-    path('password_reset/',CustomPasswordResetView.as_view(),name='password_reset'),
-    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
-    path('password_reset_confirm/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'),name='password_reset_confirm'),
-    path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
+    path('password_reset/', CustomPasswordResetView.as_view(), name='password_reset'),
+    path('password_reset_done/',
+         auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'),
+         name='password_reset_done'),
+    path('password_reset_confirm/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(),
+         name='password_reset_confirm'),
+    path('password_reset_complete/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'),
+         name='password_reset_complete'),
     path('send_mail/',send_test_email,name='send_mail'),
     path('product/<int:pk>',product,name='product'),
     path('search/', search, name='search'),
@@ -55,6 +60,7 @@ urlpatterns = [
     path('product_list', product_list, name='product_list'),
     path('edit_product/<int:pk>', edit_product, name='edit_product'),
     path('add_to_cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
+    path('remove_from_cart/<int:product_id>/', remove_from_cart, name='remove_from_cart'),
     path('cart/', view_cart, name='cart'),
     path('payment/', payment_view, name='payment_page'),
     path('process_payment/', process_payment, name='process_payment'),
@@ -69,3 +75,4 @@ urlpatterns = [
     path('payment/', payment_view, name='payment_page'),
 
 ]
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

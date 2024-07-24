@@ -253,7 +253,7 @@ payment-methods {
 .form-body{
     /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,255,0,1) 50%, rgba(0,212,255,1) 100%);*/
     /*background: linear-gradient(90deg, rgba(0,100,0,1) 0%, rgba(0,210,0,1) 45%,rgba(0,210,0,1) 55%, rgba(0,100,0,1) 100%);*/
-    background: linear-gradient(90deg, rgba(0,100,0,1) 0%, rgba(0,150,0,1) 25%, rgba(0,210,0,1) 50%, rgba(0,150,0,1) 75%, rgba(0,100,0,1) 100%);
+    /*background: linear-gradient(90deg, rgba(0,100,0,1) 0%, rgba(0,150,0,1) 25%, rgba(0,210,0,1) 50%, rgba(0,150,0,1) 75%, rgba(0,100,0,1) 100%);*/
 
 
     /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(75,14,154,1) 35%, rgba(0,212,255,1) 100%);*/

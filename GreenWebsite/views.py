@@ -18,7 +18,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse
@@ -141,7 +141,15 @@ def product(request, pk):
 
 
 def product_gallery(request):
-    products = Product.objects.all()
+    all_products = Product.objects.all()
+    paginator = Paginator(all_products, 6)
+    page = request.GET.get('page')
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
     return render(request, 'product_gallery.html', {'products': products})
 
 def submit_review(request, product_id):
@@ -335,8 +343,7 @@ def process_payment(request):
 
         # Clear the cart
         cart_items.delete()
-        cart.is_paid = True
-        cart.save()
+        cart.delete()
 
         return render(request, 'payment_success.html')
 
