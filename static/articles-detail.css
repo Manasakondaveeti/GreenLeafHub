@@ -1,0 +1,120 @@
+
+.container-fluid {
+    padding: 30px;
+}
+
+h2, .article-title, .article-metadata a {
+    color: #1b5e20; /* Dark green */
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.content-section {
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 5px; /* Slightly more rounded corners */
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    color: #2e7d32; /* Ensure text is dark green for visibility */
+}
+
+.content-section:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+}
+
+.article-title {
+    color: #2e7d32; /* Ensure title is visible */
+    font-weight: bold; /* Make the title bold */
+}
+
+.article-title a {
+    color: inherit; /* Inherit color from .article-title */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.article-title a:hover {
+    color: #d4af37; /* Gold color on hover */
+}
+
+.article-content {
+    white-space: pre-line;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #2e7d32; /* Ensure content is visible */
+}
+
+.article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.article-metadata .metadata-right {
+    display: flex;
+    align-items: center;
+}
+
+.article-metadata .metadata-right a {
+    margin-left: 10px; /* Add space between author and date */
+    color: #2e7d32; /* Ensure metadata is visible */
+}
+
+.article-metadata .metadata-right a:hover {
+    color: #d4af37; /* Gold color on hover */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.btn-update, .btn-delete {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.75rem 1.5rem; /* Increased padding for larger button */
+    font-size: 1.25rem; /* Larger font size */
+    line-height: 1.5;
+    border-radius: 40px; /* Large rounded corners */
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 1rem; /* Margin around the button */
+    margin-right: 10px; /* Space between buttons */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
+}
+
+
+.btn-update:hover, .btn-update:focus {
+    border-color: #d4af37 !important;
+    background-color: #d4af37 !important; /* Gold color on hover */
+    outline: none; /* Remove outline on focus */
+}
+
+.btn-quarternary.disabled, .btn-quarternary:disabled {
+    opacity: 0.65;
+}
+
+.btn-update {
+    background-color: #007bff; /* Blue background for update */
+}
+
+.btn-update:hover, .btn-update:focus {
+    background-color: #0056b3; /* Darker blue on hover */
+    outline: none; /* Remove outline on focus */
+}
+
+.btn-delete {
+    background-color: #dc3545; /* Red background for delete */
+}
+
+.btn-delete:hover, .btn-delete:focus {
+    background-color: #c82333; /* Darker red on hover */
+    outline: none; /* Remove outline on focus */
+}

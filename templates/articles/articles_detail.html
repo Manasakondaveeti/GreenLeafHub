@@ -1,31 +1,42 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} Leaf Article {% endblock title %}
-{% block article-bootstrap %} <link rel="stylesheet" href="{% static 'articles-home.css' %}"> {% endblock %}
+{% block article-bootstrap %} <link rel="stylesheet" href="{% static 'articles-detail.css' %}"> {% endblock %}
 
 {% block body %}
+    <style>
+        body {
+            background-color: #e8f5e9; /* Light green background */
+        }
+    </style>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-6 col-md-6">
-                <article class="media content-section">
-                  <div class="media-body">
-                    <div class="article-metadata">
-                      <a class="mr-2" href="{% url 'user-articles' object.author.username %}">{{ object.author }}</a>
-                      <small class="text-muted">{{ object.date_posted|date:"M d, Y" }}</small>
-                          {% if object.author == user %}
-                            <div>
-                                <a class="btn btn-success btn-sm mt-1 mb-1" href="{% url 'article-update' object.id %}">Update</a>
-                                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'article-delete' object.id %}">Delete</a>
-                            </div>
-                          {% endif %}
-                    </div>
-                    <h2>{{ object.title }}</h2>
-                    <p class="article-content">{{ object.content }}</p>
-                  </div>
-                </article>
+    <div class="background-div" style="background: url('{% static '../media/article_bg_img/article_b_img_1.jpg' %}') no-repeat center center fixed; background-size: cover; min-height: 100vh;">
+        <div class="container-fluid">
+            <div class="row justify-content-center mb-2">
+                <div class="col-auto mt-3">
+                    {% if object.author == user %}
+                        <a class="btn-update" href="{% url 'article-update' object.id %}"><strong>Update</strong></a>
+                        <a class="btn-delete" href="{% url 'article-delete' object.id %}"><strong>Delete</strong></a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-8">
+                    <article class="media content-section">
+                      <div class="media-body">
+                        <div class="article-metadata d-flex justify-content-between align-items-center">
+                          <h2 class="article-title font-weight-bold">{{ object.title }}</h2>
+                          <div class="metadata-right">
+                            <a class="mr-2" href="{% url 'user-articles' object.author.username %}">{{ object.author }}</a>
+                            <small class="text-muted">{{ object.date_posted|date:"M d, Y" }}</small>
+                          </div>
+                        </div>
+                        <p class="article-content">{{ object.content }}</p>
+                      </div>
+                    </article>
+                </div>
             </div>
         </div>
     </div>

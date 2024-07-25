@@ -1,0 +1,186 @@
+ body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            color: #2e7d32; /* Dark green text */
+        }
+
+        .container-fluid {
+            padding: 30px;
+        }
+
+        h2, .article-title, .article-metadata a {
+            color: #1b5e20; /* Dark green */
+        }
+
+        .font-weight-bold {
+            font-weight: bold;
+        }
+
+        .content-section {
+            background-size: cover; /* Ensure the background image covers the whole element */
+            background-position: center; /* Center the background image */
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 5px; /* Slightly more rounded corners */
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            transition: transform 0.3s ease; /* Smooth transition for hover effect */
+            color: white; /* Ensure text is visible on dark backgrounds */
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6); /* Text shadow for better readability */
+        }
+
+        .content-section:hover {
+            transform: scale(1.02); /* Slight zoom effect on hover */
+        }
+
+        .article-title {
+            color: white; /* Ensure title is visible on dark backgrounds */
+        }
+
+        .article-title a {
+            color: inherit; /* Inherit color from .article-title */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .article-title a:hover {
+            color: #d4af37; /* Gold color on hover */
+        }
+
+        .article-content {
+            white-space: pre-line;
+            line-height: 1.6;
+            font-size: 1rem;
+            color: white; /* Ensure content is visible on dark backgrounds */
+        }
+
+        .article-content a {
+            color: white; /* Ensure link is visible on dark backgrounds */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .article-content a:hover {
+            color: #d4af37; /* Gold color on hover */
+        }
+
+        .article-metadata {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1px;
+            margin-bottom: 4px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5); /* Light border for better visibility */
+        }
+
+        .article-metadata .metadata-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .article-metadata .metadata-right a {
+            margin-left: 10px; /* Add space between author and date */
+            color: white; /* Ensure metadata is visible on dark backgrounds */
+        }
+
+        .article-metadata .metadata-right a:hover {
+            color: #d4af37; /* Gold color on hover */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .btn-quarternary {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.75rem 1.5rem; /* Increased padding for larger button */
+            font-size: 1.25rem; /* Larger font size */
+            line-height: 1.5;
+            border-radius: 40px; /* Large rounded corners */
+            background-color: #218838; /* Default green background */
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 1rem; /* Margin around the button */
+            transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
+        }
+
+        .btn-quarternary:hover, .btn-quarternary:focus {
+            border-color: #d4af37 !important;
+            background-color: #d4af37 !important; /* Gold color on hover */
+            outline: none; /* Remove outline on focus */
+        }
+
+        .btn-quarternary.disabled, .btn-quarternary:disabled {
+            opacity: 0.65;
+        }
+
+        .btn-outline-info {
+            color: #17a2b8;
+            border-color: #17a2b8;
+            transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        .btn-outline-info:hover {
+            color: #fff;
+            background-color: #d4af37;
+            border-color: #d4af37;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        .btn-info:hover {
+            color: #fff;
+            background-color: #d4af37;
+            border-color: #d4af37;
+        }
+
+        .btn {
+            border-radius: 50px; /* Rounded corners for buttons */
+            padding: 10px 20px; /* Increased padding for larger buttons */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        .btn:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        /* Pagination button styles */
+        .pagination a {
+            background-color: transparent;
+            color: #218838; /* Green color for buttons */
+            padding: 10px 15px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid #218838; /* Border color */
+            margin: 0 5px; /* Space between buttons */
+        }
+
+        .pagination a:hover {
+            background-color: #d4af37; /* Gold background on hover */
+            color: #fff; /* White text on hover */
+        }
+
+        .pagination .current {
+            background-color: #218838; /* Green background for current page */
+            color: #fff; /* White text for current page */
+            border: 1px solid #218838; /* Border color for current page */
+        }
+
+        .pagination .disabled {
+            color: #ccc; /* Gray color for disabled buttons */
+            border: 1px solid #ccc; /* Border color for disabled buttons */
+            cursor: not-allowed; /* Not-allowed cursor for disabled buttons */
+        }
