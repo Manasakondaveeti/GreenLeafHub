@@ -136,13 +136,12 @@ class Subscriber(models.Model):
     def __str__(self):
         return self.email
 
-class UserDailyVisit(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateField()
-    visits = models.IntegerField(default=0)
 
-    class Meta:
-        unique_together = ('user', 'date')
+
+
+class SiteVisit(models.Model):
+    visit_count = models.IntegerField(default=0)
+    login_site_visit = models.IntegerField(default=0)
 
     def _str_(self):
-        return f"{self.user.username} on {self.date}: {self.visits}visits"
+        return f"Site Visit Count: {self.visit_count}, Login Visit Count: {self.login_site_visit}"

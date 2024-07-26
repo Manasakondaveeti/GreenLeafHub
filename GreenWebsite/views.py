@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.db.models import Sum
-from .models import UserDailyVisit ,Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles
+from .models import SiteVisit ,Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles
 
 from django.contrib import messages
 from . import forms
@@ -38,36 +38,39 @@ def send_test_email(request):
 
 
 def dashboard(request):
-    today = timezone.now().date()
-    session_key = f"visited_{today}"
+    # response = render(request, 'dashboard.html', {'products': products})
+    site_visit, created = SiteVisit.objects.get_or_create(id=1)
     context = {
         'products': Product.objects.all(),
 
     }
 
     if request.user.is_authenticated:
-        user_visit, created = UserDailyVisit.objects.get_or_create(
-            user=request.user, date=today,
-            defaults={'visits': 0}
-        )
-        if not request.session.get(session_key):
-            user_visit.visits += 1
-            user_visit.save()
-            request.session[session_key] = True
+        # Check if the site_visit cookie is present
+        if request.COOKIES.get('site_visit'):
+            # Delete the site_visit cookie
+            response.delete_cookie('site_visit')
 
-        # Context data only for authenticated users
-        context.update({
-            'user_visits_today': user_visit.visits,
-            'total_user_visits': UserDailyVisit.objects.filter(user=request.user).aggregate(Sum('visits'))[
-                                     'visits__sum'] or 0,
-            'total_visits_today': UserDailyVisit.objects.filter(date=today).aggregate(Sum('visits'))[
-                                      'visits__sum'] or 0,
-            'total_visits_all_time': UserDailyVisit.objects.aggregate(Sum('visits'))['visits__sum'] or 0,
-            'user': request.user  # Passing the user object to the template
-        })
+            # Increment the login_site_visit counter
 
-    if request.method == 'POST' and context['form'].is_valid():
-        return redirect('main')
+            site_visit.login_site_visit += 1
+            site_visit.save()
+            print(f"Updated login visit count to: {site_visit.login_site_visit}")
+    else:
+        # Check if the site_visit cookie is present
+        if not request.COOKIES.get('site_visit'):
+            # Increment the site_visit counter
+            site_visit.visit_count += 1
+            site_visit.save()
+            print(f"Updated global visit count to: {site_visit.visit_count}")
+
+            # Set the site_visit cookie with a 24-hour expiration
+            # response.set_cookie('site_visit', 'true', max_age=60 * 60 * 24)
+    context.update({
+        'user_visits_today': site_visit.visit_count,
+        'login_user_visits': site_visit.login_site_visit,
+
+    })
 
     return render(request, 'dashboard.html', context)
 

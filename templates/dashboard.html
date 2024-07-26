@@ -442,11 +442,12 @@
                            <h3>Subscribe To Get Discount Offers</h3>
                         </div>
                         <p>Please subscribe so that you dont miss out on offers</p>
-                        <form action="">
-                           <input type="email" placeholder="Enter your email">
-                           <button>
-                           subscribe
-                           </button>
+                        <form method="post" action="{% url 'subscribe' %}">
+                         {% csrf_token %}
+                           <input type="email" placeholder="Enter your email"  name="email" required >
+                           <input style="background-color: #7c7205 ; width: 50% ;text-align: center" type="submit" value="Subscribe" >
+
+                           </input>
                         </form>
                      </div>
                   </div>
@@ -485,7 +486,7 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            <p class="user-visits-count">{{ total_visits_all_time }}</p>
+                            <p class="user-visits-count">{{ login_user_visits }}</p>
                              <h5>Total Visits All Time</h5>
                         </h5>
                     </div>
@@ -498,7 +499,7 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            <p class="user-visits-count">{{ total_user_visits }}</p>
+                            <p class="user-visits-count">2</p>
                             <h5>Total User Visits</h5>
                         </h5>
                     </div>
@@ -538,6 +539,27 @@
                            </h6>
                            <p>
                             A seasoned software professional with a deep-rooted passion for gardening. With years of experience in the tech industry, skills have been honed to navigate and excel in the dynamic world of software development. Outside of the digital realm, joy and tranquility are found in gardening, tending to plants and cultivating vibrant gardens as a beloved pastime. This unique combination of technical expertise and a love for nature highlights diverse interests and dedication to growth, both in the virtual and natural worlds. </p>
+                        </div>
+                     </div>
+                  </div>
+                      <div class="carousel-item">
+                     <div class="box col-lg-10 mx-auto">
+                        <div class="img_container">
+                           <div class="img-box">
+                              <div class="img_box-inner">
+                                 <img src="{% static 'images/Kevin.jpg' %}" alt="">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="detail-box">
+                           <h5>
+                             Kevin Austin
+                           </h5>
+                           <h6>
+                              Developer
+                           </h6>
+                           <p>
+                       With a wealth of experience in software development, I bring a blend of technical expertise and creative problem-solving to the GreenLeaf Hub project. My role involves crafting the profile and edit profile pages, ensuring a smooth and personalized user experience. Outside of my professional life, I am passionate about gardening, where I find relaxation and joy in nurturing plants and creating beautiful garden spaces. This balance of technical skills and a love for the outdoors reflects my dedication to both innovation and nature.
                         </div>
                      </div>
                   </div>

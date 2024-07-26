@@ -5,34 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d22d73dd-6d32-48f2-95cf-39ea183d8e15" name="Changes" comment="order-history update">
-      <change afterPath="$PROJECT_DIR$/GreenWebsite/SubscriberAdmin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenLeafHub/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenLeafHub/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GreenWebsite/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0002_userprofile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0003_remove_userprofile_user_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0004_delete_userprofile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0005_userprofile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0006_alter_userprofile_user_reviewrating.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0007_cart_cartitem.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0008_cart_is_paid.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0009_articles.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0009_order_orderitem.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0010_merge_0009_articles_0009_order_orderitem.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0011_remove_product_image_url_product_image_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0002_userdailyvisit.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/GreenWebsite/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GreenWebsite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order_history.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/payment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pagination.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pagination.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/product_gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product_gallery.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/registration/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +171,7 @@
       <workItem from="1720897657268" duration="45674000" />
       <workItem from="1721096252029" duration="6248000" />
       <workItem from="1721828133506" duration="29557000" />
-      <workItem from="1721970597520" duration="10134000" />
+      <workItem from="1721970597520" duration="23270000" />
     </task>
     <task id="LOCAL-00001" summary="revert-arniish">
       <option name="closed" value="true" />
