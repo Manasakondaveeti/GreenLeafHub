@@ -46,9 +46,9 @@
             margin-left: auto; /* Pushes the date to the right */
         }
         hr {
-            {#border: none; /* Remove default border */#}
-            {#color: black;#}
-            background-color:#b0b0b0;  /*Light gray color */
+            border: none; /* Remove default border */
+
+            background-color: #b0b0b0; /* Light gray color */
             margin: 10px 0; /* Space around the line */
         }
     </style>
@@ -135,11 +135,10 @@
                 </div>
 
                 <div class="col-md-11 mt-5">
+
                     <div class="row text-center">
                         <div class="col-12"><h3>What our customers are saying </h3></div>
-                        <div class="col-12">
-                            <hr>
-                        </div>
+                        <hr>
                         <div class="col-12"><h4>{{ product.rating }}</h4></div>
                         <div class="col-12 rating-star">
                             <span>
@@ -156,9 +155,7 @@
 
                     <div class="row">
                         <div class="col-12" style="font-family: Verdana"><h5>REVIEWS</h5></div>
-                        <div class="col-12">
-                            <hr>
-                        </div>
+                        <hr>
                         <div class="col-12">
 {#                            Filter Reviews#}
                             {% for review in reviews %}
@@ -180,9 +177,7 @@
                                                     <i class="fa fa-star{% if review.rating == 3.5 %}-half-o{% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
                                                     <i class="fa fa-star{% if review.rating == 4.5 %}-half-o{% elif review.rating < 5 %}-o {% endif %}" aria-hidden="true"></i>
                                                 </span>
-                                                <span style="color:#8aa479">&nbsp;&nbsp;{{review.rating}}</span>
                                             </div>
-
                                         </div>
                                         <h6 style="font-weight: bold;">{{ review.subject }}</h6>
                                         <p>
@@ -190,11 +185,7 @@
                                         </p>
                                         </div>
                                 </div>
-                                 {% if not forloop.last %}
-                                    <div class="col-12">
-                                        <hr>
-                                    </div>
-                                {% endif %}
+                                <hr>
                             {% endfor %}
                         </div>
                     </div>

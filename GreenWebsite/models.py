@@ -20,7 +20,7 @@ class Product(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='userprofile', on_delete=models.CASCADE)
-    image = models.ImageField(default='default.png', blank=True, null=True, upload_to='profile_img/')
+    #image = models.ImageField(default='default.png', blank=True, null=True, upload_to='profile_img/')
     address_line1 = models.CharField(max_length=100)
     address_line2 = models.CharField(max_length=100, blank=True, null=True)
     phone_number = models.CharField(max_length=10)
@@ -127,3 +127,22 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+
+
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True)
+    date_subscribed = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+class UserDailyVisit(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateField()
+    visits = models.IntegerField(default=0)
+
+    class Meta:
+        unique_together = ('user', 'date')
+
+    def _str_(self):
+        return f"{self.user.username} on {self.date}: {self.visits}visits"

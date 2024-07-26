@@ -4,19 +4,31 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from .models import ReviewRating
-from .models import Product
+from .models import Product , Subscriber
 class UserRegisterForm(UserCreationForm):
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Enter your email'
+    }))
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'class': 'form-control'})
-        self.fields['password1'].widget.attrs.update({'class': 'form-control'})
-        self.fields['password2'].widget.attrs.update({'class': 'form-control'})
+        super(UserRegisterForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'Choose a username'
+        })
+        self.fields['password1'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'Enter password'
+        })
+        self.fields['password2'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'Repeat password'
+        })
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
@@ -27,7 +39,7 @@ class UserProfileForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100,widget=forms.TextInput(attrs={'class': 'form-control',
                                                                                               'placeholder': 'Email or Username'  ,  'autocapitalize': 'none'}))
-    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter Password'}))
 
 
 class CustomPasswordResetForm(PasswordResetForm):
@@ -68,4 +80,9 @@ class ProductForm(forms.ModelForm):
         }
 
     image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'form-control'}))
+
+class SubscriptionForm(forms.ModelForm):
+    class Meta:
+        model = Subscriber
+        fields = ['email']
 

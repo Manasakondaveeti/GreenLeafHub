@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
 from django.urls import reverse_lazy
-
-
-from .models import Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles
+from django.utils import timezone
+from django.db.models import Sum
+from .models import UserDailyVisit ,Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles
 
 from django.contrib import messages
 from . import forms
@@ -38,8 +38,39 @@ def send_test_email(request):
 
 
 def dashboard(request):
-    products = Product.objects.all()
-    return render(request, 'dashboard.html', {'products': products})
+    today = timezone.now().date()
+    session_key = f"visited_{today}"
+    context = {
+        'products': Product.objects.all(),
+
+    }
+
+    if request.user.is_authenticated:
+        user_visit, created = UserDailyVisit.objects.get_or_create(
+            user=request.user, date=today,
+            defaults={'visits': 0}
+        )
+        if not request.session.get(session_key):
+            user_visit.visits += 1
+            user_visit.save()
+            request.session[session_key] = True
+
+        # Context data only for authenticated users
+        context.update({
+            'user_visits_today': user_visit.visits,
+            'total_user_visits': UserDailyVisit.objects.filter(user=request.user).aggregate(Sum('visits'))[
+                                     'visits__sum'] or 0,
+            'total_visits_today': UserDailyVisit.objects.filter(date=today).aggregate(Sum('visits'))[
+                                      'visits__sum'] or 0,
+            'total_visits_all_time': UserDailyVisit.objects.aggregate(Sum('visits'))['visits__sum'] or 0,
+            'user': request.user  # Passing the user object to the template
+        })
+
+    if request.method == 'POST' and context['form'].is_valid():
+        return redirect('main')
+
+    return render(request, 'dashboard.html', context)
+
 
 
 # Create your views here.
@@ -90,21 +121,28 @@ def login_user(request):
                     # If it's not a valid email or user with that email doesn't exist
                     user = None
 
+                print("if user is none")
+
             if user is not None:
                 login(request, user)
                 messages.success(request, f'{user.username} logged in successfully')
+                print("if user is none")
                 return redirect('dashboard')  # Redirect to dashboard on successful login
+
             else:
                 # Handle invalid credentials
                 form.add_error(None, 'Invalid username or password.')
                 messages.warning(request, 'Invalid username or password.')
+                print("invalid cred")
         else:
+            print("form is not valid")
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.warning(request, f'{field}: {error}')
     else:
+        print("form is not post")
         form = forms.LoginForm()
-
+    print("last line")
     return render(request, 'registration/login.html', {'form': form})
 
 
@@ -259,6 +297,7 @@ def view_cart(request):
     for item in cart_items:
         total_price = item.product.price * item.quantity
         cart_items_with_totals.append({
+            'id': item.id,
             'product': item.product,
             'quantity': item.quantity,
             'total_price': total_price
@@ -307,7 +346,29 @@ def remove_from_cart(request, product_id):
 
 @login_required
 def payment_view(request):
-    return render(request, 'payment.html')
+    cart_items = CartItem.objects.filter(cart__user=request.user)
+    cart_items_with_totals = []
+    cart_subtotal = 0
+
+    for item in cart_items:
+        total_price = item.product.price * item.quantity
+        cart_items_with_totals.append({
+            'product': item.product,
+            'quantity': item.quantity,
+            'total_price': total_price
+        })
+        cart_subtotal += total_price
+
+    cart_grand_total = cart_subtotal  # Add additional calculations for discounts, etc., if needed
+
+    context = {
+        'cart_items': cart_items_with_totals,
+        'cart_subtotal': cart_subtotal,
+        'cart_grand_total': cart_grand_total,
+        'is_cart_empty': len(cart_items) == 0
+    }
+
+    return render(request, 'payment.html' , context)
 
 
 @csrf_exempt
@@ -364,9 +425,26 @@ def search(request):
         results = Product.objects.filter(name__icontains=query)
         print(results)
 
-    return render(request, 'dashboard.html', {'query': query, 'products': results})
+    return render(request, 'product_gallery.html', {'query': query, 'products': results})
 
+def update_cart(request):
+    print("manasa");
+    if request.method == 'POST':
+        item_id = request.POST.get('item_id')
+        action = request.POST.get('action')  # 'increase' or 'decrease'
 
+        cart_item = get_object_or_404(CartItem, id=item_id)
+        if action == 'increase':
+            cart_item.quantity += 1
+        elif action == 'decrease' and cart_item.quantity > 1:
+            cart_item.quantity -= 1
+        cart_item.save()
+
+        return redirect(reverse('cart'))  # Redirect to the same view
+
+    cart = get_object_or_404(Cart, user=request.user)  # Adjust depending on how your Cart is related to the User
+    cart_items = CartItem.objects.filter(cart=cart)
+    return render(request, 'cart.html', {'cart_items': cart_items})
 
 def product_search(request):
     query = request.GET.get('q')
@@ -495,3 +573,20 @@ def edit_profile(request):
 
     context = {'user': user, 'profile': profile}
     return render(request, 'edit_profile.html', context)
+
+
+from .forms import SubscriptionForm
+def subscribe(request):
+    if request.method == 'POST':
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your subscription was successful!')
+            return redirect('dashboard')
+    else:
+        form = SubscriptionForm()
+
+    return render(request, 'dashboard.html', {'form': form})
+
+
+

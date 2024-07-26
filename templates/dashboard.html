@@ -17,13 +17,13 @@
                                     <span>
                                    Start Your Gardening Journey Today
                                     </span>
-
-
+                                   
+                                    
                                  </h1>
                                  <p>
                                   Let us help you transform your garden into a flourishing oasis. With Green Leaf Hub, you’re planting more than seeds—you’re cultivating a lifetime of beautiful, sustainable gardens. Browse our articles and shop our selections now to bring your green dreams to life! </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="{% url 'product_gallery' %}" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>
@@ -36,20 +36,20 @@
                      <div class="container ">
                         <div class="row">
                            <div class="col-md-7 col-lg-6 " style=" background-color: rgba(0, 0, 0, 0.5); /* Highlight background */box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Popping up effect */">
-
+        
                               <div class="detail-box">
                                  <h1>
                                     <span>
                                     Start Your Gardening Journey Today
                                     </span>
                                     <br>
-
+                                  
                                  </h1>
                                  <p>
                                     Let us help you transform your garden into a flourishing oasis. With Green Leaf Hub, you’re planting more than seeds—you’re cultivating a lifetime of beautiful, sustainable gardens. Browse our articles and shop our selections now to bring your green dreams to life! </p>
                                 </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="{% url 'product_gallery' %}" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>
@@ -62,20 +62,20 @@
                      <div class="container ">
                         <div class="row">
                            <div class="col-md-7 col-lg-6 "style=" background-color: rgba(0, 0, 0, 0.5); /* Highlight background */box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Popping up effect */">
-
+        
                               <div class="detail-box">
                                  <h1>
                                     <span>
                                    Discount sale On Everything
                                     </span>
-
-
+                                   
+                                    
                                  </h1>
                                  <p>
                                     Let us help you transform your garden into a flourishing oasis. With Green Leaf Hub, you’re planting more than seeds—you’re cultivating a lifetime of beautiful, sustainable gardens. Browse our articles and shop our selections now to bring your green dreams to life! </p>
                                 </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="{% url 'product_gallery' %}" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>
@@ -104,7 +104,7 @@
                <h2>
                   Why Shop With Us
                </h2>
-
+           
             <div class="row">
                <div class="col-md-4">
                   <div class="box ">
@@ -345,6 +345,7 @@
          </div>
       </section>
       <!-- end why section -->
+      
 
       <!-- arrival section -->
       <section class="arrival_section">
@@ -364,17 +365,16 @@
                      <p style="margin-top: 20px;margin-bottom: 30px;">
                       Discover our latest collection of garden plants, perfect for transforming your outdoor space. Whether you're looking for vibrant flowers, lush greenery, or rare species, we've got you covered. Shop now to bring life and color to your garden!
     </p>
-                     <a href="">
-                     Shop Now
-
-                     </a>
+                      <a href="{% url 'product_gallery' %}" class="btn1">
+                                    Shop Now
+                                    </a>
                   </div>
                </div>
             </div>
          </div>
       </section>
       <!-- end arrival section -->
-
+      
       <!-- product section -->
       <section class="product_section layout_padding">
          <div class="container" style=" width: 100%;  margin: 0 auto; ">
@@ -382,15 +382,15 @@
                <h2>
                   Our <span>products</span>
                </h2>
-
-
+                
+           
             <div class="row" style=" width: 100%;">
-                {% for product in products %}
-
-
-
+                {% for product in products|slice:":6" %}
+               
+              
+               
                <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="box">
+                <div class="box" style="height: 360px; width: 300px;">
                 <div class="option_container">
                     <div class="options">
                         <a href="{% url 'add_to_cart' product.id %}" class="option1">
@@ -411,18 +411,18 @@
                 </div>
             </div>
                </div>
-
-
-
+               
+           
+               
            {% endfor %}
-
-
-
-
+          
+            
+               
+         
             </div>
-
+         
             <div class="btn-box">
-               <a href="">
+               <a href="{% url 'product_gallery' %}">
                View All products
                </a>
             </div>
@@ -441,7 +441,7 @@
                         <div class="heading_container heading_center">
                            <h3>Subscribe To Get Discount Offers</h3>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                        <p>Please subscribe so that you dont miss out on offers</p>
                         <form action="">
                            <input type="email" placeholder="Enter your email">
                            <button>
@@ -454,6 +454,61 @@
             </div>
          </div>
       </section>
+
+{% if user.is_authenticated %}
+    <section id="UserHistory" class="why_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                User History
+            </h2>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box ">
+                    <div class="icon-box1">
+                        <img src="{% static 'images/person.png' %}" alt="Audience">
+                    </div>
+                    <div class="detail-box">
+                        <h5>
+                             <p class="user-visits-count">{{ user_visits_today }}</p>
+                             <h5>Visits Today</h5>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box ">
+                    <div class="icon-box">
+                        <img src="{% static 'images/audience.png' %}" alt="Audience">
+
+                    </div>
+                    <div class="detail-box">
+                        <h5>
+                            <p class="user-visits-count">{{ total_visits_all_time }}</p>
+                             <h5>Total Visits All Time</h5>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box " >
+                    <div class="icon-box">
+                        <img src="{% static 'images/audience.png' %}" alt="Audience">
+                    </div>
+                    <div class="detail-box">
+                        <h5>
+                            <p class="user-visits-count">{{ total_user_visits }}</p>
+                            <h5>Total User Visits</h5>
+                        </h5>
+                    </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    {% endif %}
       <!-- end subscribe section -->
       <!-- client section -->
       <section class="client_section layout_padding">
@@ -462,7 +517,7 @@
                <h2>
                   Our Team
                </h2>
-
+           
             <div id="carouselExample3Controls" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
                   <div class="carousel-item active">
@@ -491,21 +546,60 @@
                         <div class="img_container">
                            <div class="img-box">
                               <div class="img_box-inner">
-                                 <img src="{% static 'images/client.jpg' %}" alt="">
+                                 <img src="{% static 'images/joshua.jpg' %}" alt="">
                               </div>
                            </div>
                         </div>
                         <div class="detail-box">
                            <h5>
-                              Anna Trevor
+                              Joshua Daniel Garikimukkula
                            </h5>
                            <h6>
-                              Customer
+                              Developer
                            </h6>
                            <p>
-                              Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
-                           </p>
+                         A software developer with a passion for gardening and greenery, combining technical expertise with a deep appreciation for the environment. Dedicated to crafting efficient and effective software solutions, focusing on sustainability and eco-friendly practices. This unique blend of interests not only enhances technological approaches but also enriches personal life through active engagement in gardening. A commitment to green technologies and sustainable development characterizes both professional projects and personal pursuits.  </p>
                         </div>
+                     </div>
+                  </div>
+                    <div class="carousel-item">
+                     <div class="box col-lg-10 mx-auto">
+                        <div class="img_container">
+                           <div class="img-box">
+                              <div class="img_box-inner">
+                                 <img src="{% static 'images/arnish.jpg' %}" alt="">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="detail-box">
+                           <h5>
+                              Arniish Mahender
+                           </h5>
+                           <h6>
+                              Developer
+                           </h6>
+                           <p>
+                         Iam a Software developer with a strong interest in gardening and nursery operations. Skilled in building dependable applications using Java and Python, adept at tackling intricate software problems. Away from coding, maintains a flourishing garden and manages a small nursery, merging technical acumen with a passion for sustainable gardening. This blend of technological expertise and environmental care showcases a unique intersection of interests.</div>
+                     </div>
+                  </div>
+                    <div class="carousel-item">
+                     <div class="box col-lg-10 mx-auto">
+                        <div class="img_container">
+                           <div class="img-box">
+                              <div class="img_box-inner">
+                                 <img src="{% static 'images/nikhil.jpg' %}" alt="">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="detail-box">
+                           <h5>
+                              Nikhil Kakumanu
+                           </h5>
+                           <h6>
+                              Developer
+                           </h6>
+                           <p>
+                       Experienced SAP Professional with a fervent passion for gardening and nursery management. Specializes in crafting robust applications using Java and Python, demonstrating a keen ability to resolve complex software challenges efficiently. Beyond the digital realm, boasts a thriving garden and operates a small nursery, blending technical expertise with a deep commitment to sustainable gardening practices. This unique combination of skills highlights a blend of tech-savviness and environmental mindfulness. </div>
                      </div>
                   </div>
                   <div class="carousel-item">
@@ -513,20 +607,19 @@
                         <div class="img_container">
                            <div class="img-box">
                               <div class="img_box-inner">
-                                 <img src="{% static 'images/client.jpg' %}" alt="">
+                                 <img src="{% static 'images/joel.jpg' %}" alt="">
                               </div>
                            </div>
                         </div>
                         <div class="detail-box">
                            <h5>
-                              Anna Trevor
+                              Joel Mathew Joy Cherian
                            </h5>
                            <h6>
-                              Customer
+                              Software Engineer
                            </h6>
                            <p>
-                              Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
-                           </p>
+                            I am a dedicated software engineer with 3 years of experience in solving complex software challenges and improving performance. I excel in leadership roles within Agile teams, driving innovation and efficiency. I have proficiency in Java, Python, SQL, and various cloud services like AWS and GCP. My background includes automating processes, migrating backend systems, and enhancing API infrastructures. Currently, I am pursuing a Master of Applied Computing at the University of Windsor, where I continue to expand my technical skills and knowledge.    </p>
                         </div>
                      </div>
                   </div>

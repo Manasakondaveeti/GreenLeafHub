@@ -5,9 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d22d73dd-6d32-48f2-95cf-39ea183d8e15" name="Changes" comment="order-history update">
-      <change beforePath="$PROJECT_DIR$/.idea/GreenLeafHub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GreenLeafHub.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GreenWebsite/SubscriberAdmin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreenLeafHub/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenLeafHub/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenLeafHub/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenLeafHub/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0002_userprofile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0003_remove_userprofile_user_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0004_delete_userprofile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0005_userprofile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0006_alter_userprofile_user_reviewrating.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0007_cart_cartitem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0008_cart_is_paid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0009_articles.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0009_order_orderitem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0010_merge_0009_articles_0009_order_orderitem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/migrations/0011_remove_product_image_url_product_image_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order_history.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/payment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product_gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product_gallery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +46,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -70,31 +96,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.Django.executor": "Run",
-    "Django Server.GreenLeaf.executor": "Run",
-    "Django Server.GreenLeafHub.executor": "Run",
-    "JavaScript Debug.dashboard.html.executor": "Run",
-    "JavaScript Debug.product_card.html.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/konda/PycharmProjects/GreenLeafHub/manage.py",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.intellij.python.django.customization.DjangoModulesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.Django.executor&quot;: &quot;Run&quot;,
+    &quot;Django Server.GreenLeaf.executor&quot;: &quot;Run&quot;,
+    &quot;Django Server.GreenLeafHub.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.dashboard.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.product_card.html.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/konda/PycharmProjects/GreenLeafHub/manage.py&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.python.django.customization.DjangoModulesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\joel9\OneDrive\Desktop\django_project\GreenLeafHub\media\article_bg_img" />
@@ -161,6 +187,7 @@
       <workItem from="1720897657268" duration="45674000" />
       <workItem from="1721096252029" duration="6248000" />
       <workItem from="1721828133506" duration="29557000" />
+      <workItem from="1721970597520" duration="10134000" />
     </task>
     <task id="LOCAL-00001" summary="revert-arniish">
       <option name="closed" value="true" />

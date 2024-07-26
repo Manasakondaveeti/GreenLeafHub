@@ -30,8 +30,9 @@ from GreenWebsite.views import (Articles,
 
 from GreenWebsite.views import (dashboard, logout_user, signup_view, login_user,CustomPasswordResetConfirmView, CustomPasswordResetView,
                                 send_test_email,product,submit_review,add_to_cart,remove_from_cart,view_cart,add_product ,
-                                product_list,edit_product, payment_view, process_payment,search,order_history,product_gallery)
-
+                                product_list,
+                                update_cart , edit_product, payment_view, process_payment,search,order_history,product_gallery)
+from GreenWebsite.views import subscribe
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -52,7 +53,7 @@ urlpatterns = [
     path('send_mail/',send_test_email,name='send_mail'),
     path('product/<int:pk>',product,name='product'),
     path('search/', search, name='search'),
-    # path('product_detail/<int:pk>',product,name='product'),
+
     path('product-gallery/',product_gallery,name='product_gallery'),
 
     path('submit_review/<int:product_id>/',submit_review,name='submit_review'),
@@ -64,15 +65,17 @@ urlpatterns = [
     path('cart/', view_cart, name='cart'),
     path('payment/', payment_view, name='payment_page'),
     path('process_payment/', process_payment, name='process_payment'),
-    # path for articles and contact us pages.
     path('article-home/', ArticleListView.as_view(), name='article-home'),
-    path('article-detail/<int:pk>/', ArticleDetailView.as_view(), name='article-detail'), # pk is default for the DetailView to fetch from db.
+    path('article-detail/<int:pk>/', ArticleDetailView.as_view(), name='article-detail'),
     path('article-new/', ArticleCreateView.as_view(), name='article-create'),
-    path('article-detail/<int:pk>/update/', ArticleUpdateView.as_view(), name='article-update'), # pk is default for the DetailView to fetch from db.
+    path('article-detail/<int:pk>/update/', ArticleUpdateView.as_view(), name='article-update'),
     path('article-detail/<int:pk>/delete', ArticleDeleteView.as_view(), name='article-delete'),
     path('user-articles/<str:username>', UserArticleListView.as_view(), name='user-articles'),
     path('order_history/', order_history, name='order_history'),
     path('payment/', payment_view, name='payment_page'),
+path('update-cart/', update_cart, name='update_cart'),
+path('subscribe/', subscribe, name='subscribe'),
+
 
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
