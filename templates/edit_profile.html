@@ -1,102 +1,154 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>{{ user.first_name }}</title>
+<title>{{ user.first_name }}'s Profile Edit</title>
 {% endblock %}
 
 {% block body %}
-<div class="m-5 numans">
-    <form method="post" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="d-flex gap-2">
-            <div class="row border shadow rounded-3 p-4 justify-content-center align-items-center">
-                <img class="img-fluid col-6 img-crop center-cropped" src="{{ profile.image.url }}" alt="{{ profile.image }}">
-                <div class="w-50 d-flex flex-column">
-                    <label for="file-upload" class="custom-file-upload mb-1 rounded">
-                        Change Picture
-                    </label>
-                    <input id="file-upload" type="file" name="profile_img" id="profile_img">
-                    <button type="submit" class="btn btn-primary">Apply Changes <span><i class="fa fa-solid fa-check"></i></span></button>
+<style>
+    .edit-profile-header {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 1rem;
+    }
+
+    .edit-profile-header img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        margin-right: 1rem;
+    }
+
+    .edit-profile-header h2 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+    .edit-profile-header small {
+        color: #666;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: end;
+        margin-top: 1rem;
+    }
+
+    .form-actions .btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .profile-form {
+        padding: 1.5rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        margin-bottom: 1rem;
+    }
+
+    .profile-form label {
+        font-weight: bold;
+    }
+
+    .profile-form input {
+        border: none;
+        background-color: #e9ecef;
+        padding: 0.5rem;
+        border-radius: 4px;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .custom-file-upload {
+        display: inline-block;
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        margin-bottom: 1rem;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="edit-profile-header">
+                <img class="img-fluid" src="{{ profile.image.url }}" alt="{{ user.first_name }}'s profile picture">
+                <div>
+                    <h2>Edit Profile</h2>
+                    <small>{{ user.username }}</small>
                 </div>
             </div>
-            <div class="border p-4 ms-3 shadow rounded-3">
-                <div class="row">
-                    <div class="mb-3 col-4">
-                        <label for="fname" class="form-label">First Name</label>
-                        <div class="">
+            <form method="post" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="profile-form">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="file-upload" class="custom-file-upload">
+                                Change Picture
+                            </label>
+                            <input id="file-upload" type="file" name="profile_img" id="profile_img">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="fname">First Name</label>
                             <input type="text" required class="form-control" name="fname" id="fname" value="{{ user.first_name }}">
                         </div>
-                    </div>
-                    <div class="mb-3 col-4">
-                        <label for="lname" class="form-label">Last Name</label>
-                        <div class="">
+                        <div class="mb-3 col-md-6">
+                            <label for="lname">Last Name</label>
                             <input type="text" required class="form-control" name="lname" id="lname" value="{{ user.last_name }}">
                         </div>
-                    </div>
-                    <div class="mb-3 col-4">
-                        <label for="email" class="form-label">Email</label>
-                        <div class="">
+                        <div class="mb-3 col-md-6">
+                            <label for="email">Email</label>
                             <input type="email" required class="form-control" name="email" id="email" value="{{ user.email }}">
                         </div>
-                    </div>
-                </div>
-    
-                <hr>
-    
-                <div class="row">
-                    <div class="mb-3 col-4">
-                        <label for="phno" class="form-label">Phone Number</label>
-                        <div class="">
-                            <input type="tel" required class="form-control" name="phno" id="phno" value="{{ profile.phone_number }}">
+                        <div class="mb-3 col-md-6">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" required class="form-control" name="phone" id="phone" value="{{ profile.phone_number }}">
                         </div>
-                    </div>
-                    <div class="mb-3 col-4">
-                        <label for="city" class="form-label">City</label>
-                        <div class="">
+                        <div class="mb-3 col-md-6">
+                            <label for="city">City</label>
                             <input type="text" required class="form-control" name="city" id="city" value="{{ profile.city }}">
                         </div>
-                    </div>
-                    <div class="mb-3 col-4">
-                        <label for="province" class="form-label">Province</label>
-                        <div class="">
+                        <div class="mb-3 col-md-6">
+                            <label for="province">Province</label>
                             <input type="text" required class="form-control" name="province" id="province" value="{{ profile.province }}">
                         </div>
-                    </div>
-                </div>
-    
-                <div class="row">
-                    <div class="mb-3 col-4">
-                        <label for="country" class="form-label">Country</label>
-                        <div class="">
+                        <div class="mb-3 col-md-6">
+                            <label for="country">Country</label>
                             <input type="text" required class="form-control" name="country" id="country" value="{{ profile.country }}">
                         </div>
-                    </div>
-                    <div class="mb-3 col-4">
-                        <label for="zip" class="form-label">Zip Code</label>
-                        <div class="">
+                        <div class="mb-3 col-md-6">
+                            <label for="zip">Zip Code</label>
                             <input type="text" required class="form-control" name="zip" id="zip" value="{{ profile.zip_code }}">
                         </div>
-                    </div>
-                </div>
-    
-                <hr>
-    
-                <div class="row">
-                    <div class="mb-3 col-6">
-                        <label for="address1" class="form-label">Address Line 1</label>
-                        <div class="">
+                        <div class="mb-3 col-md-6">
+                            <label for="address1">Address Line 1</label>
                             <input type="text" required class="form-control" name="address1" id="address1" value="{{ profile.address_line1 }}">
                         </div>
-                    </div>
-                    <div class="mb-3 col-6">
-                        <label for="address2" class="form-label">Address Line 2</label>
-                        <div class="">
+                        <div class="mb-3 col-md-6">
+                            <label for="address2">Address Line 2</label>
                             <input type="text" class="form-control" name="address2" id="address2" value="{{ profile.address_line2 }}">
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Apply Changes <span><i class="fa fa-check"></i></span></button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 {% endblock %}
