@@ -30,7 +30,7 @@ from GreenWebsite.views import (Articles,
 
 from GreenWebsite.views import (dashboard, logout_user, signup_view, login_user,CustomPasswordResetConfirmView, CustomPasswordResetView,
                                 send_test_email,product,submit_review,add_to_cart,remove_from_cart,view_cart,add_product ,
-                                product_list,
+                                product_list,profile,edit_profile,create_profile,
                                 update_cart , edit_product, payment_view, process_payment,search,order_history,product_gallery)
 from GreenWebsite.views import subscribe
 
@@ -73,8 +73,11 @@ urlpatterns = [
     path('user-articles/<str:username>', UserArticleListView.as_view(), name='user-articles'),
     path('order_history/', order_history, name='order_history'),
     path('payment/', payment_view, name='payment_page'),
-path('update-cart/', update_cart, name='update_cart'),
-path('subscribe/', subscribe, name='subscribe'),
+    path('update-cart/', update_cart, name='update_cart'),
+    path('subscribe/', subscribe, name='subscribe'),
+    path('profile/',profile,name='profile'),
+    path('edit_profile/',edit_profile,name='edit_profile'),
+    path('create_profile/',create_profile,name='create_profile'),
 
 
 ]

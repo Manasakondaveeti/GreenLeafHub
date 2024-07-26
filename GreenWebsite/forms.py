@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from .models import ReviewRating
-from .models import Product , Subscriber
+from .models import (Product , Subscriber)
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={
         'class': 'form-control',
@@ -37,8 +37,7 @@ class UserProfileForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label='Username', max_length=100,widget=forms.TextInput(attrs={'class': 'form-control',
-                                                                                              'placeholder': 'Email or Username'  ,  'autocapitalize': 'none'}))
+    username = forms.CharField(label='Username', max_length=100,widget=forms.TextInput(attrs={'class': 'form-control','placeholder': 'Email or Username'  ,  'autocapitalize': 'none'}))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter Password'}))
 
 
@@ -64,19 +63,15 @@ class ProductForm(forms.ModelForm):
         fields = [
             'name',
             'price',
-            'on_sale',
             'image',
             'description',
-            'review_count',
-            'rating',
+            'countInStock',
         ]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'maxlength': 200, 'required': True}),
             'price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01', 'required': True}),
-            'on_sale': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'required': True}),
-            'review_count': forms.NumberInput(attrs={'class': 'form-control', 'required': True}),
-            'rating': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1', 'required': True}),
+            'countInStock': forms.NumberInput(attrs={'class': 'form-control', 'required': True}),
         }
 
     image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'form-control'}))

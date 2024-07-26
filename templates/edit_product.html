@@ -4,7 +4,7 @@
 {% block body %}
     <div class="form-body">
         <div class="container-fluid">
-            <form method="post" class="mx-auto">
+            <form method="post" class="mx-auto" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h4 class="text-center">Edit Product</h4>
                 <div class="mb-3 mt-5">
@@ -15,25 +15,19 @@
                     <label for="id_price" class="form-label">Price</label>
                     <input type="number" name="price" id="id_price" class="form-control" value="{{ product.price }}" step="0.01" required>
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" name="on_sale" id="id_on_sale" class="form-check-input" {% if product.on_sale %}checked{% endif %}>
-                    <label for="id_on_sale" class="form-check-label">On Sale</label>
-                </div>
                 <div class="mb-3">
-                    <label for="id_image_url" class="form-label">Image URL</label>
-                    <input type="url" name="image_url" id="id_image_url" class="form-control" value="{{ product.image_url }}" required>
+                    <label for="image" >
+                        Edit Product Image
+                    </label>
+                    <input id="image" type="file" name="image" class="form-control-file" required>
                 </div>
                 <div class="mb-3">
                     <label for="id_description" class="form-label">Description</label>
                     <textarea name="description" id="id_description" rows="4" class="form-control" required>{{ product.description }}</textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="id_review_count" class="form-label">Review Count</label>
-                    <input type="number" name="review_count" id="id_review_count" class="form-control" value="{{ product.review_count }}" required>
-                </div>
-                <div class="mb-3">
-                    <label for="id_rating" class="form-label">Rating</label>
-                    <input type="number" name="rating" id="id_rating" class="form-control" value="{{ product.rating }}" step="0.1" required>
+                    <label for="countInStock" class="form-label">count In Stock </label>
+                    <input type="number" name="countInStock" id="countInStock" class="form-control" value="{{ product.countInStock }}" required>
                 </div>
                 <button type="submit" class="btn btn-success mt-4">Save Changes</button>
             </form>

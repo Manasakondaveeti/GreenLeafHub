@@ -4,8 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.db.models import Sum
-from .models import SiteVisit ,Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles
-
+from .models import (SiteVisit ,Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles,SiteVisit, UserSession,Subscriber)
 from django.contrib import messages
 from . import forms
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
@@ -24,7 +23,10 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-
+from django.utils import timezone
+import datetime
+from datetime import timedelta
+from django.contrib.sessions.models import Session
 
 def send_test_email(request):
     send_mail(
@@ -38,24 +40,26 @@ def send_test_email(request):
 
 
 def dashboard(request):
-    # response = render(request, 'dashboard.html', {'products': products})
     site_visit, created = SiteVisit.objects.get_or_create(id=1)
+
+    # Create the initial context
     context = {
         'products': Product.objects.all(),
-
     }
 
     if request.user.is_authenticated:
         # Check if the site_visit cookie is present
         if request.COOKIES.get('site_visit'):
             # Delete the site_visit cookie
+            response = render(request, 'dashboard.html', context)
             response.delete_cookie('site_visit')
 
             # Increment the login_site_visit counter
-
             site_visit.login_site_visit += 1
             site_visit.save()
             print(f"Updated login visit count to: {site_visit.login_site_visit}")
+        else:
+            response = render(request, 'dashboard.html', context)
     else:
         # Check if the site_visit cookie is present
         if not request.COOKIES.get('site_visit'):
@@ -65,14 +69,20 @@ def dashboard(request):
             print(f"Updated global visit count to: {site_visit.visit_count}")
 
             # Set the site_visit cookie with a 24-hour expiration
-            # response.set_cookie('site_visit', 'true', max_age=60 * 60 * 24)
-    context.update({
-        'user_visits_today': site_visit.visit_count,
-        'login_user_visits': site_visit.login_site_visit,
+            response = render(request, 'dashboard.html', context)
+            response.set_cookie('site_visit', 'true', max_age=60 * 60 * 24)
+        else:
+            response = render(request, 'dashboard.html', context)
 
+    # Update the context with the visit counts
+    context.update({
+        'user_visits': site_visit.visit_count,
+        'login_user_visits': site_visit.login_site_visit,
     })
 
-    return render(request, 'dashboard.html', context)
+    # Render the response with the updated context
+    response = render(request, 'dashboard.html', context)
+    return response
 
 
 
@@ -124,28 +134,21 @@ def login_user(request):
                     # If it's not a valid email or user with that email doesn't exist
                     user = None
 
-                print("if user is none")
-
             if user is not None:
                 login(request, user)
                 messages.success(request, f'{user.username} logged in successfully')
-                print("if user is none")
                 return redirect('dashboard')  # Redirect to dashboard on successful login
 
             else:
                 # Handle invalid credentials
                 form.add_error(None, 'Invalid username or password.')
                 messages.warning(request, 'Invalid username or password.')
-                print("invalid cred")
         else:
-            print("form is not valid")
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.warning(request, f'{field}: {error}')
     else:
-        print("form is not post")
         form = forms.LoginForm()
-    print("last line")
     return render(request, 'registration/login.html', {'form': form})
 
 
@@ -217,20 +220,21 @@ def submit_review(request, product_id):
                 return redirect(url)
 
 
-def add_cart(request, pk):
-    pass
 
 
 @login_required
 @user_passes_test(lambda u: u.is_staff)
 def add_product(request):
     if request.method == 'POST':
-        # Your logic for processing the form and adding a product
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            # Optionally, redirect to the product list page after adding the product
+            messages.success(request, 'Product added successfully!')
             return redirect('product_list')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.warning(request, f'{field}: {error}')
     else:
         form = ProductForm()
 
@@ -372,6 +376,8 @@ def payment_view(request):
     }
 
     return render(request, 'payment.html' , context)
+
+
 
 
 @csrf_exempt
@@ -529,21 +535,59 @@ class UserArticleListView(ListView):
         return Articles.objects.filter(author=user).order_by('-date_posted')
 
 
-def get_profile_context(request):
-    user = request.user
-    user_profile = UserProfile.objects.filter(user=user).first()
-    context = {
-        'user': user,
-        'profile': user_profile,
-    }
+def create_profile(request):
+    if request.method == 'POST':
+        form = forms.UserProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            user_profile = form.save(commit=False)
+            user_profile.user = request.user
+            user_profile.save()
+            user = request.user
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.save()
+            return redirect('profile')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.warning(request, f'{field}: {error}')
 
-    return context
-
+    else:
+        form = forms.UserProfileForm()
+    return render(request, 'create_profile.html', {'form': form})
 
 # Displays profile detail
 def profile(request):
-    context = get_profile_context(request)
-    return render(request, 'profile.html', context)
+    last_login_message=''
+    try:
+        profile = UserProfile.objects.get(user=request.user)
+        print('profile  is - ',profile)
+        if profile:
+            last_login = request.session.get('last_login')
+            if last_login:
+                last_login_message = f"Your last login is on {last_login}"
+
+        latest_login_session = UserSession.objects.filter(user=request.user).order_by('-created_at').first()
+        if latest_login_session:
+            latest_login = latest_login_session.created_at.strftime('%Y-%m-%d %H:%M:%S')
+            last_login_message = f"Your last login was on {latest_login}"
+        else:
+            last_login_message = "No login history available."
+
+    except UserProfile.DoesNotExist:
+        print("user does not exist")
+        return redirect(create_profile)
+
+    # latest_login_session = UserSession.objects.filter(user=request.user).order_by('-created_at').first()
+    # if latest_login_session:
+    #     latest_login = latest_login_session.created_at.strftime('%Y-%m-%d %H:%M:%S')
+    #     last_login_message = f"Your last login is on {latest_login}"
+    all_history = UserSession.objects.filter(user=request.user).order_by('-created_at')
+    one_day_ago = UserSession.objects.filter(user=request.user, created_at__gte=timezone.now() - timedelta(days=1))
+    seven_day_ago = UserSession.objects.filter(user=request.user, created_at__gte=timezone.now() - timedelta(days=7))
+    # latest_login = one_day_ago.order_by('-created_at').first().strftime('%Y-%m-%d %H:%M:%S')
+    # last_login_message = f"Your last login is on {latest_login}"
+    return render(request, 'profile.html', {'profile':profile, 'last_login_message':last_login_message,'all_history': all_history,'title': 'Login History', 'one_day_ago': one_day_ago,'seven_day_ago': seven_day_ago})
 
 # Edit profile profile
 @login_required
@@ -557,7 +601,7 @@ def edit_profile(request):
         user.email = request.POST.get('email', '')
         user.save()
 
-        profile.phone_number = request.POST.get('phno', '')
+        profile.phone_number = request.POST.get('phone', '')
         profile.city = request.POST.get('city', '')
         profile.province = request.POST.get('province', '')
         profile.country = request.POST.get('country', '')
@@ -566,7 +610,8 @@ def edit_profile(request):
         profile.address_line2 = request.POST.get('address2', '')
 
         if 'profile_img' in request.FILES:
-            profile.image.delete(save=False)
+            if profile.image and profile.image != 'profile_img/default.png':
+                profile.image.delete(save=False)  # Deleting old image
             profile.image = request.FILES['profile_img']
 
         profile.save()
@@ -577,19 +622,44 @@ def edit_profile(request):
     context = {'user': user, 'profile': profile}
     return render(request, 'edit_profile.html', context)
 
+def send_subscription_email(user_email):
+    subject = 'Thank You for Subscribing!'
+    message = (
+        f"Dear Subscriber,\n\n"
+        f"Thank you for subscribing to our newsletter. We're excited to keep you updated "
+        f"with the latest news, updates, and special offers from our team.\n\n"
+        f"If you have any questions or need assistance, feel free to reach out to us at "
+        f"greeleafhub@gmail.com.\n\n"
+        f"Best regards,\n"
+        f"Greenleaf Hub Team"
+    )
+    send_mail(
+        subject,
+        message,
+        'greenleafhub@gmail.com',  # From email address
+        [user_email],  # To email address
+        fail_silently=False,  # Raise an exception if sending fails
+    )
 
-from .forms import SubscriptionForm
 def subscribe(request):
     if request.method == 'POST':
-        form = SubscriptionForm(request.POST)
+        form = forms.SubscriptionForm(request.POST)
         if form.is_valid():
+            print()
             form.save()
+            email = form.cleaned_data['email']
+            print(email)
+            send_subscription_email(email)
             messages.success(request, 'Your subscription was successful!')
             return redirect('dashboard')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.warning(request, f'{field}: {error}')
     else:
-        form = SubscriptionForm()
+        print("giving form")
+        form = forms.SubscriptionForm()
 
     return render(request, 'dashboard.html', {'form': form})
-
 
 

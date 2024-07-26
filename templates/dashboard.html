@@ -456,7 +456,6 @@
          </div>
       </section>
 
-{% if user.is_authenticated %}
     <section id="UserHistory" class="why_section layout_padding">
     <div class="container">
         <div class="heading_container heading_center">
@@ -472,8 +471,13 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                             <p class="user-visits-count">{{ user_visits_today }}</p>
-                             <h5>Visits Today</h5>
+                            {% if user.is_authenticated %}
+                                 <p class="user-visits-count">Your Visits Today</p>
+                                 <h5>Your Visits Today</h5>
+                            {% else %}
+                                 <br>
+                                 <h5>Login to know Your Visits Today</h5>
+                            {% endif %}
                         </h5>
                     </div>
                 </div>
@@ -486,8 +490,8 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            <p class="user-visits-count">{{ login_user_visits }}</p>
-                             <h5>Total Visits All Time</h5>
+                            <p class="user-visits-count">{{ user_visits }}</p>
+                             <h5>Total Visits of Anonymous Users</h5>
                         </h5>
                     </div>
                 </div>
@@ -499,8 +503,8 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            <p class="user-visits-count">2</p>
-                            <h5>Total User Visits</h5>
+                            <p class="user-visits-count">{{ login_user_visits }}</p>
+                            <h5>Total Visits of Authenticated Users</h5>
                         </h5>
                     </div>
                    </div>
@@ -509,7 +513,6 @@
         </div>
     </div>
 </section>
-    {% endif %}
       <!-- end subscribe section -->
       <!-- client section -->
       <section class="client_section layout_padding">

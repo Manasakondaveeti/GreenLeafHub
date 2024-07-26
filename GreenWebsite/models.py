@@ -10,17 +10,30 @@ from django.urls import reverse
 class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    on_sale = models.BooleanField(default=False)
-    on_sale_price = models.DecimalField(max_digits=10, decimal_places=2, default=0, blank=True, null=True)
+    countInStock = models.IntegerField(default=0)
     image = models.ImageField(default='default.png', blank=True, null=True, upload_to='product_img/')
     description = models.TextField()
     review_count = models.IntegerField(default=0)
     rating = models.FloatField(default=0.0)
 
+class SiteVisit(models.Model):
+    visit_count = models.IntegerField(default=0)
+    login_site_visit = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"Site Visit Count: {self.visit_count}, Login Visit Count: {self.login_site_visit}"
+
+class UserSession(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    session_key = models.CharField(max_length=60)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user.username} - {self.session_key}'
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='userprofile', on_delete=models.CASCADE)
-    #image = models.ImageField(default='default.png', blank=True, null=True, upload_to='profile_img/')
+    image = models.ImageField(default='profile_img/default.png', blank=True, null=True, upload_to='profile_img/')
     address_line1 = models.CharField(max_length=100)
     address_line2 = models.CharField(max_length=100, blank=True, null=True)
     phone_number = models.CharField(max_length=10)
@@ -28,6 +41,7 @@ class UserProfile(models.Model):
     province = models.CharField(max_length=20)
     country = models.CharField(max_length=15)
     zip_code = models.CharField(max_length=7)
+    last_visit = models.DateTimeField(null=True, blank=True)
 
     def delete(self, *args, **kwargs):
         if self.image and self.image.name != 'default.png':
@@ -129,19 +143,17 @@ class OrderItem(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
 
-class Subscriber(models.Model):
-    email = models.EmailField(unique=True)
-    date_subscribed = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.email
-
-
-
-
 class SiteVisit(models.Model):
     visit_count = models.IntegerField(default=0)
     login_site_visit = models.IntegerField(default=0)
 
     def _str_(self):
         return f"Site Visit Count: {self.visit_count}, Login Visit Count: {self.login_site_visit}"
+
+
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True)
+    date_subscribed = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
