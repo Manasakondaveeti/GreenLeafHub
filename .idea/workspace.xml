@@ -5,23 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d22d73dd-6d32-48f2-95cf-39ea183d8e15" name="Changes" comment="order-history update">
-      <change afterPath="$PROJECT_DIR$/media/article_bg_img/article_b_img_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/article_bg_img/article_b_img_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/article_bg_img/article_b_img_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/article_bg_img/article_b_img_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/article_bg_img/article_b_img_5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/articles-detail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/articles-form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/articles-user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GreenLeafHub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GreenLeafHub.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/articles-home.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/articles-home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articles/article-home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/article-home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articles/article_delete_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/article_delete_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articles/articles_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/articles_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articles/articles_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/articles_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articles/user-articles.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/user-articles.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenLeafHub/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenLeafHub/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,8 +83,8 @@
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "Joel",
-    "last_opened_file_path": "C:/Users/joel9/OneDrive/Desktop/django_project/GreenLeafHub/media/article_bg_img",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/konda/PycharmProjects/GreenLeafHub/manage.py",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -119,28 +105,7 @@
       <recent name="C:\Users\Joshua Daniel\PycharmProjects\GreenLeafHub\templates\registration" />
     </key>
   </component>
-  <component name="RunManager" selected="Django Server.GreenLeafHub">
-    <configuration name="Unnamed" type="DjangoTestsConfigurationType" nameIsGenerated="true">
-      <module name="GreenLeafHub" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager">
     <configuration name="GreenLeaf" type="Python.DjangoServer" factoryName="Django server">
       <module name="GreenLeafHub" />
       <option name="ENV_FILES" value="" />
@@ -166,37 +131,6 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="GreenLeafHub" type="Python.DjangoServer" factoryName="Django server">
-      <module name="GreenLeafHub" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="GreenLeafHub.settings" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (GreenLeafHub)" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\joel9\OneDrive\Desktop\django_project\GreenLeafHub" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="localhost" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Django Server.GreenLeafHub" />
-      <item itemvalue="Django Server.GreenLeaf" />
-      <item itemvalue="Django tests.Unnamed" />
-    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
