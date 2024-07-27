@@ -93,13 +93,28 @@ class CartItem(models.Model):
     def __str__(self):
         return self.cart.user.username+"'s product is "+ self.product.name
 
+class BotanicalEntry(models.Model):
+    botanical_name = models.CharField(max_length=100, help_text="Enter the botanical name")
+    family = models.CharField(max_length=100, help_text="Enter the family name")
+    origin = models.CharField(max_length=100, help_text="Enter the origin")
+    chromosome_number = models.CharField(max_length=20, help_text="Enter the chromosome number")
+    common_name = models.CharField(max_length=100, help_text="Enter the common name")
+    soil = models.CharField(max_length=100, help_text="Enter the soil type")
+    propagation = models.CharField(max_length=100, help_text="Enter the propagation method")
+    seed_germination_temperature = models.CharField(max_length=50, help_text="Enter the seed germination temperature range")
+    yield_info = models.CharField(max_length=100, help_text="Enter the yield information")
+    varieties = models.TextField(help_text="Enter the varieties, separated by commas")
+    pests_and_diseases = models.TextField(help_text="Enter the pests and diseases, separated by commas")
 
+    def __str__(self):
+        return self.botanical_name
 # article and contact-us related models
 class Articles(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    botanical_entry = models.ForeignKey(BotanicalEntry, on_delete=models.CASCADE, related_name='articles',  null=True, blank=True)  # Default to an existing BotanicalEntry ID
 
     # one to many realtionship, one author can have many posts, one post has only one author
     def __str__(self):
@@ -120,3 +135,18 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+
+
+class ContactMessage(models.Model):
+    first_name = models.CharField(max_length=50, help_text="Enter your first name")
+    last_name = models.CharField(max_length=50, help_text="Enter your last name")
+    email = models.EmailField(help_text="Enter your email address")
+    phone_number = models.CharField(max_length=15, help_text="Enter your phone number")
+    country = models.CharField(max_length=50, help_text="Enter your country")
+    city = models.CharField(max_length=50, help_text="Enter your city")
+    subject = models.CharField(max_length=200, help_text="Enter the subject of your message")
+    message = models.TextField(help_text="Enter your message")
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"Message from {self.first_name} {self.last_name} - {self.subject}"

@@ -3,13 +3,12 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.urls import reverse_lazy
 
-
-from .models import Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles
+from .models import Product, UserProfile, ReviewRating, Cart, CartItem, Order, OrderItem, Articles, BotanicalEntry
 
 from django.contrib import messages
 from . import forms
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
-from .forms import ProductForm
+from .forms import ProductForm, ContactMessageForm
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
@@ -117,6 +116,7 @@ class CustomPasswordResetView(PasswordResetView):
     form_class = forms.CustomPasswordResetForm
     template_name = 'registration/password_reset.html'
 
+
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
     form_class = forms.CustomPassResetConfirmForm
     template_name = 'registration/password_reset_confirm.html'
@@ -126,12 +126,10 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
         print("Form is valid")
         return super().form_valid(form)
 
-
     def form_invalid(self, form):
         print("Form is invalid")
         print(form.errors)  # Print form errors to debug
         return super().form_invalid(form)
-
 
 
 def product(request, pk):
@@ -151,6 +149,7 @@ def product_gallery(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
     return render(request, 'product_gallery.html', {'products': products})
+
 
 def submit_review(request, product_id):
     url = request.META.get('HTTP_REFERER')
@@ -293,7 +292,6 @@ def add_to_cart(request, product_id):
     return redirect(url)
 
 
-
 @login_required
 def remove_from_cart(request, product_id):
     url = request.META.get('HTTP_REFERER')
@@ -301,8 +299,6 @@ def remove_from_cart(request, product_id):
     cart_item = get_object_or_404(CartItem, cart=cart, product_id=product_id)
     cart_item.delete()
     return redirect(url)
-
-
 
 
 @login_required
@@ -367,7 +363,6 @@ def search(request):
     return render(request, 'dashboard.html', {'query': query, 'products': results})
 
 
-
 def product_search(request):
     query = request.GET.get('q')
     results = []
@@ -375,6 +370,7 @@ def product_search(request):
         results = Product.objects.filter(name__icontains=query)
         print(results)
     return render(request, 'product_gallery.html', {'products': results})
+
 
 # article and contact-us related methods from here on
 # @login_required()
@@ -396,46 +392,52 @@ class ArticleDetailView(DetailView):
     template_name = "articles/articles_detail.html"
 
 
-class ArticleCreateView(LoginRequiredMixin, CreateView): # mixin instead of the loginrequire decorator
+class ArticleCreateView(LoginRequiredMixin, CreateView):  # mixin instead of the loginrequire decorator
     model = Articles
     fields = ['title', 'content']
     template_name = 'articles/articles_form.html'
 
     def get_success_url(self):
         return reverse("article-detail", kwargs={'pk': self.object.pk})
+
     # There is another way of doing it and it is present in the present(Commented) in the Articles Models class
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 
-class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView): # mixin instead of the loginrequire decorator
+class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin,
+                        UpdateView):  # mixin instead of the loginrequire decorator
     model = Articles
     fields = ['title', 'content']
     template_name = 'articles/articles_form.html'
 
     def get_success_url(self):
         return reverse("article-detail", kwargs={'pk': self.object.pk})
+
     # There is another way of doing it and it is present in the present(Commented) in the Articles Models class
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def test_func(self): # this is to check and pass if the article is of the logged in user itself
+    def test_func(self):  # this is to check and pass if the article is of the logged in user itself
         article = self.get_object()
         if article.author == self.request.user:
             return True
         return False
+
 
 class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Articles
     template_name = "articles/article_delete_confirm.html"
     success_url = '/article-home/'
-    def test_func(self): # this is to check and pass if the article is of the logged in user itself
+
+    def test_func(self):  # this is to check and pass if the article is of the logged in user itself
         article = self.get_object()
         if article.author == self.request.user:
             return True
         return False
+
 
 class UserArticleListView(ListView):
     model = Articles
@@ -447,3 +449,22 @@ class UserArticleListView(ListView):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Articles.objects.filter(author=user).order_by('-date_posted')
 
+
+class BotanicalListView(ListView):
+    model = BotanicalEntry
+    template_name = "articles/article_botanica.html"  # model_List.html is the default but since we built it already, we will proceed to change
+
+
+def contact_us(request):
+    if request.method == 'POST':
+        form = ContactMessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your message has been sent successfully!')
+            return redirect('contact_us')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = ContactMessageForm()
+
+    return render(request, 'articles/contact_us.html', {'form': form})

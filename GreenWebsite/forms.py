@@ -4,7 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from .models import ReviewRating
-from .models import Product
+from .models import Product, ContactMessage
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
@@ -69,3 +71,41 @@ class ProductForm(forms.ModelForm):
 
     image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'form-control'}))
 
+class ContactMessageForm(forms.ModelForm):
+    class Meta:
+        model = ContactMessage
+        fields = ['first_name', 'last_name', 'email', 'phone_number', 'country', 'city', 'subject', 'message']
+
+    def __init__(self, *args, **kwargs):
+        super(ContactMessageForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit', css_class='btn btn-primary'))
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not forms.EmailField().clean(email):
+            raise forms.ValidationError("Enter a valid email address.")
+        return email
+
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data.get('phone_number')
+        try:
+            parsed_number = phonenumbers.parse(phone_number, None)
+            if not phonenumbers.is_valid_number(parsed_number):
+                raise forms.ValidationError("Enter a valid phone number.")
+        except phonenumbers.NumberParseException:
+            raise forms.ValidationError("Enter a valid phone number.")
+        return phone_number
+
+    def clean_country(self):
+        country = self.cleaned_data.get('country')
+        if not country.isalpha():
+            raise forms.ValidationError("Enter a valid country name.")
+        return country
+
+    def clean_city(self):
+        city = self.cleaned_data.get('city')
+        if not city.isalpha():
+            raise forms.ValidationError("Enter a valid city name.")
+        return city

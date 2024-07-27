@@ -26,11 +26,11 @@ from GreenWebsite.views import (Articles,
                                 ArticleListView,
                                 ArticleDetailView,
                                 ArticleCreateView, ArticleUpdateView,
-                                ArticleDeleteView,UserArticleListView)
+                                ArticleDeleteView,UserArticleListView, BotanicalListView)
 
 from GreenWebsite.views import (dashboard, logout_user, signup_view, login_user,CustomPasswordResetConfirmView, CustomPasswordResetView,
                                 send_test_email,product,submit_review,add_to_cart,remove_from_cart,view_cart,add_product ,
-                                product_list,edit_product, payment_view, process_payment,search,order_history,product_gallery)
+                                product_list,edit_product, payment_view, process_payment,search,order_history,product_gallery,contact_us)
 
 
 urlpatterns = [
@@ -71,6 +71,9 @@ urlpatterns = [
     path('article-detail/<int:pk>/update/', ArticleUpdateView.as_view(), name='article-update'), # pk is default for the DetailView to fetch from db.
     path('article-detail/<int:pk>/delete', ArticleDeleteView.as_view(), name='article-delete'),
     path('user-articles/<str:username>', UserArticleListView.as_view(), name='user-articles'),
+    path('article-botanica/', BotanicalListView.as_view(), name='botanica-home'),
+    path('contact-us/', contact_us, name='contact-us'),
+
     path('order_history/', order_history, name='order_history'),
     path('payment/', payment_view, name='payment_page'),
 

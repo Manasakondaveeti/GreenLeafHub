@@ -1,82 +1,266 @@
 [
   {
-    "title": "The Importance of Crop Rotation",
-    "content": "Crop rotation helps maintain soil health and reduces pest and weed pressure. By alternating crops, farmers can prevent soil depletion and improve crop yields. For example, rotating legumes with cereals can help fix nitrogen in the soil, reducing the need for chemical fertilizers. This practice also disrupts the life cycles of pests and diseases, making it harder for them to establish and spread. Overall, crop rotation is a key component of sustainable agriculture that enhances soil fertility and promotes biodiversity.",
-    "user_id": 1
+    "title": "The Beauty and Uses of Rosa spp.",
+    "content": "Rosa spp., commonly known as roses, are cherished for their beauty and fragrance. They have significant cultural and economic importance, used in perfumery, cosmetics, and as ornamental plants. Roses are also valued for their medicinal properties, providing benefits such as anti-inflammatory and antioxidant effects. Cultivating roses requires well-drained loamy soil and a moderate climate, making them popular in various regions.",
+    "user_id": 1,
+    "botanical_entry_id": 1
   },
   {
-    "title": "A Guide to Sustainable Farming Practices",
-    "content": "Sustainable farming practices include using cover crops, reducing chemical inputs, and adopting no-till farming. Cover crops, such as clover or rye, protect the soil from erosion, improve its structure, and add organic matter. Reducing chemical inputs involves using natural alternatives like compost and biological pest control, which are safer for the environment and human health. No-till farming preserves soil structure and reduces erosion by minimizing soil disturbance. These methods collectively help conserve water, improve soil health, and increase biodiversity, ensuring long-term agricultural productivity.",
-    "user_id": 2
+    "title": "Cultivation Techniques for Gladiolus grandifloras",
+    "content": "Gladiolus grandifloras, known as sword lilies, are popular for their vibrant flowers. Cultivating gladiolus requires well-drained sandy loam soil and a sunny location. These plants thrive in temperatures between 16-30°C and require regular watering. They are commonly propagated by corms and tissue culture. With proper care, gladiolus can produce a high yield of marketable spikes, making them a favorite among gardeners and commercial growers.",
+    "user_id": 2,
+    "botanical_entry_id": 2
   },
   {
-    "title": "Top 5 Trees for Reforestation",
-    "content": "Choosing the right trees for reforestation is crucial. Species like Oak, Pine, and Maple are excellent choices due to their adaptability and ecological benefits. Oak trees provide habitat for various wildlife species and improve soil health through their deep root systems. Pine trees are resilient to different climatic conditions and help in carbon sequestration. Maple trees are known for their beautiful foliage and also support local ecosystems. Reforestation with these trees helps restore ecosystems, improve biodiversity, and combat climate change by capturing carbon dioxide from the atmosphere.",
-    "user_id": 14
+    "title": "Dendranthema grandiflora: The Queen of Fall Flowers",
+    "content": "Dendranthema grandiflora, also known as chrysanthemums, are beloved for their diverse flower forms and vibrant colors. These plants prefer well-drained sandy loam soil and require a temperature range of 20-28°C during the day and 15-20°C at night. Chrysanthemums are propagated through suckers, cuttings, and micropropagation. They are highly valued in floral arrangements and garden displays, symbolizing optimism and joy.",
+    "user_id": 14,
+    "botanical_entry_id": 3
   },
   {
-    "title": "Innovative Techniques in Urban Agriculture",
-    "content": "Urban agriculture is transforming cityscapes by introducing rooftop gardens and vertical farming. Rooftop gardens utilize unused spaces to grow vegetables, herbs, and flowers, reducing urban heat islands and improving air quality. Vertical farming employs stacked layers to grow crops in controlled environments, maximizing space and resource efficiency. These techniques allow for fresh produce production within urban environments, reducing transportation costs and carbon footprints. They also engage communities in sustainable practices, provide educational opportunities, and enhance food security by bringing food production closer to consumers.",
-    "user_id": 15
+    "title": "Growing Agave amica: Tips for Success",
+    "content": "Agave amica, commonly known as tuberose, is prized for its fragrant flowers. These plants thrive in well-drained soil and require a temperature range of 20-35°C. Tuberoses are generally planted in February-March in the plains and April-May in the hills. They are propagated by bulbs and require moderate watering. With proper care, tuberoses can produce a high yield of flowers, making them popular in the perfume industry.",
+    "user_id": 15,
+    "botanical_entry_id": 4
   },
   {
-    "title": "Best Practices for Organic Farming",
-    "content": "Organic farming focuses on natural inputs and ecological balance. Farmers use compost, green manure, and biological pest control to maintain healthy crops and soil without synthetic chemicals. Compost enriches the soil with nutrients and improves its structure, while green manure plants, like legumes, add nitrogen and organic matter to the soil. Biological pest control involves using natural predators or beneficial insects to manage pest populations. These practices foster a healthy ecosystem, reduce pollution, and promote biodiversity. Organic farming not only produces nutritious food but also supports environmental sustainability and long-term soil health.",
-    "user_id": 16
+    "title": "The Annual Aster: Callistephus chinensis",
+    "content": "Callistephus chinensis, known as annual asters, are known for their vibrant blooms and versatility in gardens. These plants thrive in well-drained red loamy soils and prefer a temperature range of 20-30°C during the day and 15-17°C at night. Asters are propagated through seeds and require careful soil preparation to ensure healthy growth. They are popular in floral arrangements and garden borders.",
+    "user_id": 16,
+    "botanical_entry_id": 5
   },
   {
-    "title": "The Benefits of Agroforestry Systems",
-    "content": "Agroforestry combines agriculture and forestry to create sustainable land-use systems. Integrating trees into farms can improve biodiversity, enhance soil fertility, and provide additional income sources. Trees act as windbreaks, reducing soil erosion and protecting crops from harsh weather. They also improve soil health by adding organic matter and fixing nitrogen. Agroforestry systems can include alley cropping, silvopasture, and forest farming, each offering unique benefits. These systems support diverse plant and animal species, enhance water conservation, and contribute to carbon sequestration, making agriculture more resilient and sustainable.",
-    "user_id": 1
+    "title": "Anthurium andreanum: The Flamingo Flower",
+    "content": "Anthurium andreanum, commonly known as the flamingo flower, is celebrated for its striking appearance and tropical appeal. These plants thrive in a mix of peat moss, perlite, and coarse sand or bark. They require a night temperature of 18.3°C and a higher night temperature of 21.2 to 23.9°C for flowering. Anthuriums are propagated through seeds, cuttings, suckers, and tissue culture. They are popular as indoor plants and in floral arrangements.",
+    "user_id": 1,
+    "botanical_entry_id": 6
   },
   {
-    "title": "How to Start a Community Garden",
-    "content": "Community gardens bring people together and provide access to fresh produce. Starting one involves organizing volunteers, selecting a suitable site, and planning the garden layout. Begin by gathering a group of interested individuals and forming a planning committee. Identify a location with good sunlight, access to water, and healthy soil. Design the garden layout, considering factors like plot size, paths, and communal areas. Secure funding and resources through grants, donations, or community events. Community gardens promote social interaction, provide educational opportunities, and enhance local food security by encouraging sustainable gardening practices.",
-    "user_id": 2
+    "title": "The African Marigold: Tagetus erecta",
+    "content": "Tagetus erecta, known as the African marigold, is appreciated for its large, vibrant flowers. These plants prefer well-drained loamy soil and a temperature range of 18 to 30°C for seed germination. African marigolds are mainly propagated through seeds and can yield 11-18 t/ha. They are used in ornamental gardens and have various medicinal properties.",
+    "user_id": 2,
+    "botanical_entry_id": 7
   },
   {
-    "title": "The Role of Pollinators in Agriculture",
-    "content": "Pollinators like bees and butterflies are essential for crop production. They facilitate the reproduction of many plants by transferring pollen from one flower to another, enabling fruit and seed development. Protecting their habitats and reducing pesticide use can help maintain healthy pollinator populations and ensure food security. Creating pollinator-friendly gardens with diverse, native plants provides food and shelter for these insects. Implementing integrated pest management reduces the reliance on harmful chemicals. Supporting pollinators not only benefits agriculture but also promotes biodiversity and the health of ecosystems.",
-    "user_id": 14
+    "title": "Cultivating Hibiscus rosasinensis",
+    "content": "Hibiscus rosasinensis, commonly known as hibiscus or shoe flower, is renowned for its beautiful blooms. These plants thrive in well-drained soil amended with organic matter and require temperatures between 60-85°F. Hibiscus is propagated by semi-hardwood cuttings, patch budding, and veneer grafting. They are popular in tropical gardens and are used in herbal remedies.",
+    "user_id": 14,
+    "botanical_entry_id": 8
   },
   {
-    "title": "Sustainable Forestry Management Practices",
-    "content": "Sustainable forestry management involves practices like selective logging, replanting, and protecting old-growth forests. Selective logging minimizes environmental impact by carefully choosing which trees to harvest, preserving the overall structure of the forest. Replanting ensures that harvested areas are regenerated, maintaining the forest's ecological functions. Protecting old-growth forests preserves biodiversity and carbon storage, as these forests contain diverse species and significant amounts of carbon. Sustainable forestry management ensures that forests can continue to provide ecological, economic, and social benefits, supporting wildlife habitats, water quality, and local communities.",
-    "user_id": 15
+    "title": "The Fragrant Jasmine: Jasminum spp.",
+    "content": "Jasminum spp., known as jasmine, is celebrated for its fragrant flowers and is widely used in perfumery. These plants thrive in well-drained but moist sandy loamy soil and prefer temperatures between 60° to 75°F. Jasmine is propagated through semi-hardwood cuttings and can yield 8 t/ha. They are used in ornamental gardens and traditional medicine.",
+    "user_id": 15,
+    "botanical_entry_id": 9
   },
   {
-    "title": "The Impact of Climate Change on Agriculture",
-    "content": "Climate change affects agriculture through altered precipitation patterns, increased temperatures, and more extreme weather events. These changes can disrupt growing seasons, reduce crop yields, and increase the prevalence of pests and diseases. Farmers need to adopt resilient practices to mitigate these impacts and ensure food security. Strategies include diversifying crops, improving water management, and using climate-resistant crop varieties. Agroecological practices, such as agroforestry and conservation agriculture, enhance the resilience of farming systems. Addressing climate change in agriculture is crucial for sustaining food production and supporting rural livelihoods.",
-    "user_id": 16
+    "title": "The Firecracker Flower: Crossandra infundibuliformis",
+    "content": "Crossandra infundibuliformis, known as the firecracker flower, is admired for its vibrant orange blooms. These plants thrive in moist well-draining soil and prefer temperatures of 70 to 75°F. Crossandra is mainly propagated through seeds and can yield 2000 kg of flowers/ha. They are popular in ornamental gardens and as houseplants.",
+    "user_id": 16,
+    "botanical_entry_id": 10
   },
   {
-    "title": "Implementing Precision Agriculture",
-    "content": "Precision agriculture uses technology to monitor and manage crop production more precisely. By utilizing GPS, sensors, and data analytics, farmers can optimize field-level management regarding crop farming. This approach helps in reducing waste, maximizing productivity, and ensuring more efficient use of resources such as water and fertilizers. Precision agriculture enhances decision-making processes, leading to better crop health and higher yields, ultimately contributing to sustainable farming practices.",
-    "user_id": 1
+    "title": "The Diverse World of Orchids",
+    "content": "Orchids, including genera like Phalaenopsis and Dendrobium, are cherished for their diverse and exotic flowers. These plants thrive in an orchid-specific porous mix and prefer temperatures between 20°C to 32°C. Orchids are propagated through cuttings, seeds, tissue culture, and division. They are popular in floral arrangements and as houseplants.",
+    "user_id": 1,
+    "botanical_entry_id": 11
   },
   {
-    "title": "Water Conservation Techniques for Farmers",
-    "content": "Water conservation is critical in agriculture, especially in areas prone to drought. Techniques such as drip irrigation, rainwater harvesting, and soil moisture monitoring help farmers use water more efficiently. Drip irrigation delivers water directly to the plant roots, minimizing evaporation and runoff. Rainwater harvesting involves collecting and storing rainwater for agricultural use. Soil moisture sensors provide real-time data, enabling farmers to water crops only when necessary. These practices not only conserve water but also improve crop health and yield, making farming more sustainable.",
-    "user_id": 2
+    "title": "Rosa spp.: Cultivation and Uses",
+    "content": "Rosa spp., commonly known as roses, are versatile plants used in gardens, perfumery, and cosmetics. These plants require well-drained loamy soil with a pH of 6.0 – 7.5 and good aeration. Roses are propagated through T-budding, seeds, cuttings, layering, and micropropagation. They thrive in moderate climates and can produce 70-80 stems per plant per year.",
+    "user_id": 2,
+    "botanical_entry_id": 1
   },
   {
-    "title": "The Benefits of Cover Crops",
-    "content": "Cover crops are planted to cover the soil rather than for harvest. They offer numerous benefits, including preventing soil erosion, improving soil health, and suppressing weeds. Cover crops such as clover, rye, and vetch add organic matter to the soil, enhance its structure, and increase its nutrient content. They also provide habitat for beneficial insects and reduce the need for chemical inputs. Incorporating cover crops into farming systems is a sustainable practice that enhances soil fertility and promotes overall ecosystem health.",
-    "user_id": 14
+    "title": "Gladiolus grandifloras: Growing and Caring Tips",
+    "content": "Gladiolus grandifloras, known as sword lilies, require well-drained sandy loam soil and full sun exposure. These plants are propagated by corms and tissue culture and thrive in temperatures between 16-30°C. Gladiolus can produce up to 150000 marketable spikes per hectare, making them a popular choice for both gardeners and commercial growers.",
+    "user_id": 14,
+    "botanical_entry_id": 2
   },
   {
-    "title": "Organic Pest Control Methods",
-    "content": "Organic pest control involves using natural methods to manage pest populations. Techniques include introducing beneficial insects, using plant-based insecticides, and employing physical barriers. Beneficial insects like ladybugs and predatory beetles can control aphids and other pests. Plant-based insecticides, such as neem oil, are effective against a variety of pests without harming the environment. Physical barriers, like row covers, protect crops from insect invasion. These methods help maintain a balanced ecosystem and reduce reliance on synthetic chemicals, promoting a healthier and more sustainable agricultural practice.",
-    "user_id": 15
+    "title": "Chrysanthemums: The Queen of Fall Flowers",
+    "content": "Dendranthema grandiflora, or chrysanthemums, are known for their vibrant fall blooms. These plants prefer well-drained sandy loam soil and a temperature range of 20-28°C during the day and 15-20°C at night. Chrysanthemums are propagated through suckers, cuttings, and micropropagation, and can yield 8-15 tonnes per hectare.",
+    "user_id": 15,
+    "botanical_entry_id": 3
   },
   {
-    "title": "Soil Health: The Foundation of Agriculture",
-    "content": "Healthy soil is the foundation of successful agriculture. It supports plant growth, stores and cycles nutrients, and helps manage water. Practices like composting, crop rotation, and reduced tillage improve soil health. Composting adds organic matter and beneficial microorganisms to the soil. Crop rotation prevents soil depletion and reduces pest and disease pressure. Reduced tillage minimizes soil disturbance, preserving soil structure and preventing erosion. Maintaining healthy soil is essential for sustainable agriculture, ensuring long-term productivity and environmental resilience.",
-    "user_id": 16
+    "title": "Agave amica: Growing Tuberoses",
+    "content": "Agave amica, commonly known as tuberoses, are valued for their fragrant flowers. These plants thrive in well-drained soil and temperatures ranging from 20-35°C. Tuberoses are planted in February-March in the plains and April-May in the hills, and are propagated by bulbs. They can yield 14-15 tonnes per hectare, making them popular in the perfume industry.",
+    "user_id": 16,
+    "botanical_entry_id": 4
   },
   {
-    "title": "The Future of Sustainable Agriculture",
-    "content": "The future of sustainable agriculture lies in adopting innovative practices and technologies that enhance productivity while protecting the environment. Practices such as regenerative agriculture, vertical farming, and the use of renewable energy in farming operations are gaining,",
-    "user_id": 14
+    "title": "Callistephus chinensis: Annual Asters",
+    "content": "Callistephus chinensis, or annual asters, are known for their colorful blooms and versatility. These plants thrive in well-drained red loamy soils and prefer temperatures of 20-30°C during the day and 15-17°C at night. Asters are propagated through seeds and can yield 17.7 kg per hectare. They are popular in garden borders and floral arrangements.",
+    "user_id": 1,
+    "botanical_entry_id": 5
+  },
+  {
+    "title": "Anthurium andreanum: The Flamingo Lily",
+    "content": "Anthurium andreanum, known as the flamingo lily, is prized for its striking appearance. These plants thrive in a mix of peat moss, perlite, and coarse sand or bark, and require temperatures of 18.3°C at night and 21.2 to 23.9°C for flowering. Anthuriums are propagated through seeds, cuttings, suckers, and tissue culture, and can produce up to 12 flowers per plant per year.",
+    "user_id": 2,
+    "botanical_entry_id": 6
+  },
+  {
+    "title": "Tagetus erecta: African Marigold",
+    "content": "Tagetus erecta, or African marigold, is known for its large, vibrant flowers. These plants prefer well-drained loamy soil and a temperature range of 18 to 30°C for seed germination. African marigolds are propagated through seeds and can yield 11-18 tonnes per hectare. They are used in ornamental gardens and have various medicinal properties.",
+    "user_id": 14,
+    "botanical_entry_id": 7
+  },
+  {
+    "title": "Hibiscus rosasinensis: Care and Cultivation",
+    "content": "Hibiscus rosasinensis, or hibiscus, is known for its beautiful, large blooms. These plants thrive in well-drained soil amended with organic matter and require temperatures between 60-85°F. Hibiscus is propagated by semi-hardwood cuttings, patch budding, and veneer grafting, and can yield 340 kg per hectare. They are popular in tropical gardens and used in herbal remedies.",
+    "user_id": 15,
+    "botanical_entry_id": 8
+  },
+  {
+    "title": "Jasminum spp.: Growing Jasmine",
+    "content": "Jasminum spp., known as jasmine, is prized for its fragrant flowers. These plants thrive in well-drained but moist sandy loamy soil and prefer temperatures between 60° to 75°F. Jasmine is propagated through semi-hardwood cuttings and can yield 8 tonnes per hectare. They are used in ornamental gardens and traditional medicine.",
+    "user_id": 16,
+    "botanical_entry_id": 9
+  },
+  {
+    "title": "Crossandra infundibuliformis: The Firecracker Flower",
+    "content": "Crossandra infundibuliformis, known as the firecracker flower, is admired for its vibrant orange blooms. These plants thrive in moist well-draining soil and prefer temperatures of 70 to 75°F. Crossandra is mainly propagated through seeds and can yield 2000 kg of flowers per hectare. They are popular in ornamental gardens and as houseplants.",
+    "user_id": 1,
+    "botanical_entry_id": 10
+  },
+  {
+    "title": "Orchids: Cultivation and Care",
+    "content": "Orchids, including genera like Phalaenopsis and Dendrobium, are cherished for their diverse and exotic flowers. These plants thrive in an orchid-specific porous mix and prefer temperatures between 20°C to 32°C. Orchids are propagated through cuttings, seeds, tissue culture, and division, and can yield up to 1000 spikes as the plant age advances.",
+    "user_id": 2,
+    "botanical_entry_id": 11
+  },
+    {
+    "title": "The Beauty and Uses of Rosa spp.",
+    "content": "Rosa spp., commonly known as roses, are cherished for their beauty and fragrance. These flowers have significant cultural and economic importance, used in perfumery, cosmetics, and as ornamental plants. Roses have been cultivated for thousands of years and come in a wide variety of colors, shapes, and sizes. They are also valued for their medicinal properties, providing benefits such as anti-inflammatory and antioxidant effects. Growing roses requires well-drained loamy soil, rich in organic matter, with a pH of 6.0 – 7.5 and good aeration. They thrive in moderate climates and can produce up to 70-80 stems per plant per year. Proper care involves regular pruning, fertilization, and pest management to ensure healthy growth and vibrant blooms.",
+    "user_id": 1,
+    "botanical_entry_id": 1
+  },
+  {
+    "title": "Cultivation Techniques for Gladiolus grandifloras",
+    "content": "Gladiolus grandifloras, known as sword lilies, are popular for their vibrant and showy flowers that come in a variety of colors. These plants are ideal for cut flower production and are commonly used in floral arrangements and garden borders. Cultivating gladiolus requires well-drained sandy loam soil with plenty of organic matter. They thrive in sunny locations and temperatures between 16-30°C. Gladiolus is propagated by corms and tissue culture. Planting is typically done from July to December with a spacing of 02 × 03 cm. Regular watering and fertilization are essential for optimal growth and flowering. With proper care, gladiolus can produce up to 150,000 marketable spikes per hectare, making them a favorite among gardeners and commercial growers.",
+    "user_id": 2,
+    "botanical_entry_id": 2
+  },
+  {
+    "title": "Dendranthema grandiflora: The Queen of Fall Flowers",
+    "content": "Dendranthema grandiflora, commonly known as chrysanthemums, are beloved for their diverse flower forms and vibrant colors that brighten up autumn gardens. These plants are valued for their long-lasting blooms and are often used in floral arrangements and as garden ornamentals. Chrysanthemums prefer well-drained sandy loam soil with good texture and aeration. They thrive in temperatures ranging from 20-28°C during the day and 15-20°C at night. Propagation is done through suckers, cuttings, and micropropagation. Chrysanthemums are known for their resilience and ability to bloom profusely in the fall. They can yield 8-15 tonnes per hectare, making them an important crop for commercial flower production.",
+    "user_id": 14,
+    "botanical_entry_id": 3
+  },
+  {
+    "title": "Growing Agave amica: Tips for Success",
+    "content": "Agave amica, commonly known as tuberose, is prized for its fragrant, white flowers that are widely used in the perfume industry. These plants thrive in well-drained soil and require a temperature range of 20-35°C. Tuberoses are generally planted in February-March in the plains and April-May in the hills. They are propagated by bulbs and require moderate watering. Proper planting depth and spacing are crucial for healthy growth. Tuberoses can yield 14-15 tonnes per hectare with appropriate care, which includes regular weeding, pest control, and fertilization. The flowers are harvested early in the morning when they are fully bloomed to retain their fragrance and quality.",
+    "user_id": 15,
+    "botanical_entry_id": 4
+  },
+  {
+    "title": "The Annual Aster: Callistephus chinensis",
+    "content": "Callistephus chinensis, known as annual asters, are admired for their vibrant and colorful blooms that make them a favorite in gardens and floral arrangements. These plants thrive in well-drained red loamy soils and prefer a temperature range of 20-30°C during the day and 15-17°C at night. Asters are propagated through seeds and require careful soil preparation to ensure healthy growth. They benefit from regular watering and fertilization, especially during the growing season. Annual asters can yield up to 17.7 kg per hectare, making them a popular choice for both home gardeners and commercial growers. Their blooms attract pollinators, adding to the biodiversity of the garden.",
+    "user_id": 16,
+    "botanical_entry_id": 5
+  },
+  {
+    "title": "Anthurium andreanum: The Flamingo Flower",
+    "content": "Anthurium andreanum, commonly known as the flamingo flower or flamingo lily, is celebrated for its striking appearance and tropical appeal. These plants thrive in a mix of peat moss, perlite, and coarse sand or bark, which provides excellent drainage and aeration. They require a night temperature of 18.3°C and a higher night temperature of 21.2 to 23.9°C for flowering. Anthuriums are propagated through seeds, cuttings, suckers, and tissue culture. They are popular as indoor plants and in floral arrangements due to their long-lasting blooms and vibrant colors. With proper care, anthuriums can produce up to 12 flowers per plant per year, making them a valuable addition to any garden or floral collection.",
+    "user_id": 1,
+    "botanical_entry_id": 6
+  },
+  {
+    "title": "The African Marigold: Tagetus erecta",
+    "content": "Tagetus erecta, known as the African marigold, is appreciated for its large, vibrant flowers that are commonly used in ornamental gardens and as cut flowers. These plants prefer well-drained loamy soil and a temperature range of 18 to 30°C for seed germination. African marigolds are mainly propagated through seeds and can yield 11-18 tonnes per hectare. They are known for their pest-repelling properties, making them a popular choice for companion planting in vegetable gardens. Regular watering, fertilization, and pest control are essential for healthy growth and abundant flowering. African marigolds are also used in traditional medicine and cosmetic products due to their anti-inflammatory and antiseptic properties.",
+    "user_id": 2,
+    "botanical_entry_id": 7
+  },
+  {
+    "title": "Cultivating Hibiscus rosasinensis",
+    "content": "Hibiscus rosasinensis, commonly known as hibiscus or shoe flower, is renowned for its beautiful, large blooms that add a tropical touch to any garden. These plants thrive in well-drained soil amended with organic matter and require temperatures between 60-85°F. Hibiscus is propagated by semi-hardwood cuttings, patch budding, and veneer grafting. They benefit from regular watering, especially during dry periods, and require fertilization to support their vigorous growth and flowering. Hibiscus can yield up to 340 kg per hectare, making them a valuable crop for both ornamental and medicinal purposes. The flowers are used in herbal teas and natural remedies, known for their antioxidant and anti-inflammatory properties.",
+    "user_id": 14,
+    "botanical_entry_id": 8
+  },
+  {
+    "title": "The Fragrant Jasmine: Jasminum spp.",
+    "content": "Jasminum spp., known as jasmine, is celebrated for its intensely fragrant flowers that are widely used in perfumery and traditional medicine. These plants thrive in well-drained but moist sandy loamy soil and prefer temperatures between 60° to 75°F. Jasmine is propagated through semi-hardwood cuttings and can yield up to 8 tonnes per hectare. They are commonly planted from June to November. Proper care involves regular pruning, watering, and pest management to ensure healthy growth and abundant flowering. Jasmine flowers are harvested early in the morning when their fragrance is most potent. They are used to make essential oils, teas, and decorative garlands.",
+    "user_id": 15,
+    "botanical_entry_id": 9
+  },
+  {
+    "title": "The Firecracker Flower: Crossandra infundibuliformis",
+    "content": "Crossandra infundibuliformis, known as the firecracker flower, is admired for its vibrant orange blooms that add a splash of color to any garden. These plants thrive in moist, well-draining soil and prefer temperatures of 70 to 75°F. Crossandra is mainly propagated through seeds and can yield up to 2000 kg of flowers per hectare. They are known for their resilience and ability to bloom continuously throughout the growing season. Proper care involves regular watering, fertilization, and pest management to ensure healthy growth and vibrant blooms. Firecracker flowers are popular in ornamental gardens and as houseplants, known for their striking appearance and ease of care.",
+    "user_id": 16,
+    "botanical_entry_id": 10
+  },
+  {
+    "title": "The Diverse World of Orchids",
+    "content": "Orchids, including genera like Phalaenopsis, Cattleya, and Dendrobium, are cherished for their diverse and exotic flowers. These plants thrive in an orchid-specific porous mix that can include sphagnum moss, fir bark, coconut husk, and tree fern fibers. They prefer temperatures between 20°C to 32°C and can tolerate slightly higher temperatures. Orchids are propagated through cuttings, seeds, tissue culture, and division. With proper care, orchids can start yielding flowers from the third year onwards, producing up to 1000 spikes as the plant age advances. Orchids are popular in floral arrangements and as houseplants due to their unique and intricate blooms.",
+    "user_id": 1,
+    "botanical_entry_id": 11
+  },
+  {
+    "title": "Rosa spp.: Cultivation and Uses",
+    "content": "Rosa spp., commonly known as roses, are versatile plants used in gardens, perfumery, and cosmetics. These plants require well-drained loamy soil with a pH of 6.0 – 7.5 and good aeration. Roses are propagated through T-budding, seeds, cuttings, layering, and micropropagation. They thrive in moderate climates and can produce 70-80 stems per plant per year. Proper care involves regular pruning, fertilization, and pest management to ensure healthy growth and vibrant blooms. Roses are also valued for their medicinal properties, providing benefits such as anti-inflammatory and antioxidant effects.",
+    "user_id": 2,
+    "botanical_entry_id": 1
+  },
+  {
+    "title": "Gladiolus grandifloras: Growing and Caring Tips",
+    "content": "Gladiolus grandifloras, known as sword lilies, require well-drained sandy loam soil and full sun exposure. These plants are propagated by corms and tissue culture and thrive in temperatures between 16-30°C. Gladiolus can produce up to 150000 marketable spikes per hectare, making them a popular choice for both gardeners and commercial growers. Regular watering, fertilization, and pest management are essential for healthy growth and abundant flowering. Gladiolus flowers are harvested when the lower two to three florets are open to ensure the best quality and vase life.",
+    "user_id": 14,
+    "botanical_entry_id": 2
+  },
+  {
+    "title": "Chrysanthemums: The Queen of Fall Flowers",
+    "content": "Dendranthema grandiflora, or chrysanthemums, are known for their vibrant fall blooms. These plants prefer well-drained sandy loam soil and a temperature range of 20-28°C during the day and 15-20°C at night. Chrysanthemums are propagated through suckers, cuttings, and micropropagation. They can yield 8-15 tonnes per hectare, making them an important crop for commercial flower production. Proper care involves regular watering, fertilization, and pest management to ensure healthy growth and abundant flowering. Chrysanthemums are used in floral arrangements, garden displays, and as potted plants due to their diverse flower forms and colors.",
+    "user_id": 15,
+    "botanical_entry_id": 3
+  },
+  {
+    "title": "Agave amica: Growing Tuberoses",
+    "content": "Agave amica, commonly known as tuberoses, are valued for their fragrant flowers. These plants thrive in well-drained soil and temperatures ranging from 20-35°C. Tuberoses are planted in February-March in the plains and April-May in the hills, and are propagated by bulbs. They can yield 14-15 tonnes per hectare with proper care. Regular watering, fertilization, and pest management are essential for healthy growth and abundant flowering. Tuberose flowers are harvested early in the morning when they are fully bloomed to retain their fragrance and quality. They are widely used in the perfume industry and as ornamental flowers.",
+    "user_id": 16,
+    "botanical_entry_id": 4
+  },
+  {
+    "title": "Callistephus chinensis: Annual Asters",
+    "content": "Callistephus chinensis, or annual asters, are known for their colorful blooms and versatility. These plants thrive in well-drained red loamy soils and prefer temperatures of 20-30°C during the day and 15-17°C at night. Asters are propagated through seeds and can yield up to 17.7 kg per hectare. Regular watering, fertilization, and pest management are essential for healthy growth and abundant flowering. Annual asters are popular in garden borders, floral arrangements, and as potted plants due to their vibrant colors and ease of care.",
+    "user_id": 1,
+    "botanical_entry_id": 5
+  },
+  {
+    "title": "Anthurium andreanum: The Flamingo Lily",
+    "content": "Anthurium andreanum, known as the flamingo lily, is prized for its striking appearance and tropical appeal. These plants thrive in a mix of peat moss, perlite, and coarse sand or bark. They require a night temperature of 18.3°C and a higher night temperature of 21.2 to 23.9°C for flowering. Anthuriums are propagated through seeds, cuttings, suckers, and tissue culture. They can produce up to 12 flowers per plant per year with proper care. Regular watering, fertilization, and pest management are essential for healthy growth and vibrant blooms. Anthuriums are popular as indoor plants and in floral arrangements due to their long-lasting flowers and vibrant colors.",
+    "user_id": 2,
+    "botanical_entry_id": 6
+  },
+  {
+    "title": "Tagetus erecta: African Marigold",
+    "content": "Tagetus erecta, or African marigold, is known for its large, vibrant flowers. These plants prefer well-drained loamy soil and a temperature range of 18 to 30°C for seed germination. African marigolds are propagated through seeds and can yield 11-18 tonnes per hectare. They are known for their pest-repelling properties, making them a popular choice for companion planting in vegetable gardens. Regular watering, fertilization, and pest management are essential for healthy growth and abundant flowering. African marigolds are also used in traditional medicine and cosmetic products due to their anti-inflammatory and antiseptic properties.",
+    "user_id": 14,
+    "botanical_entry_id": 7
+  },
+  {
+    "title": "Hibiscus rosasinensis: Care and Cultivation",
+    "content": "Hibiscus rosasinensis, or hibiscus, is known for its beautiful, large blooms. These plants thrive in well-drained soil amended with organic matter and require temperatures between 60-85°F. Hibiscus is propagated by semi-hardwood cuttings, patch budding, and veneer grafting. They can yield up to 340 kg per hectare with proper care. Regular watering, fertilization, and pest management are essential for healthy growth and abundant flowering. Hibiscus flowers are used in herbal teas and natural remedies, known for their antioxidant and anti-inflammatory properties. They are popular in tropical gardens and as ornamental plants due to their vibrant colors and ease of care.",
+    "user_id": 15,
+    "botanical_entry_id": 8
+  },
+  {
+    "title": "Jasminum spp.: Growing Jasmine",
+    "content": "Jasminum spp., known as jasmine, is prized for its fragrant flowers. These plants thrive in well-drained but moist sandy loamy soil and prefer temperatures between 60° to 75°F. Jasmine is propagated through semi-hardwood cuttings and can yield up to 8 tonnes per hectare. Proper care involves regular pruning, watering, and pest management to ensure healthy growth and abundant flowering. Jasmine flowers are harvested early in the morning when their fragrance is most potent. They are used to make essential oils, teas, and decorative garlands, making them a valuable addition to any garden or floral arrangement.",
+    "user_id": 16,
+    "botanical_entry_id": 9
+  },
+  {
+    "title": "Crossandra infundibuliformis: The Firecracker Flower",
+    "content": "Crossandra infundibuliformis, known as the firecracker flower, is admired for its vibrant orange blooms. These plants thrive in moist well-draining soil and prefer temperatures of 70 to 75°F. Crossandra is mainly propagated through seeds and can yield up to 2000 kg of flowers per hectare. Regular watering, fertilization, and pest management are essential for healthy growth and abundant flowering. Firecracker flowers are popular in ornamental gardens and as houseplants due to their striking appearance and ease of care. They add a splash of color to any garden and attract pollinators, contributing to the biodiversity of the area.",
+    "user_id": 1,
+    "botanical_entry_id": 10
+  },
+  {
+    "title": "Orchids: Cultivation and Care",
+    "content": "Orchids, including genera like Phalaenopsis and Dendrobium, are cherished for their diverse and exotic flowers. These plants thrive in an orchid-specific porous mix that can include sphagnum moss, fir bark, coconut husk, and tree fern fibers. They prefer temperatures between 20°C to 32°C and can tolerate slightly higher temperatures. Orchids are propagated through cuttings, seeds, tissue culture, and division. With proper care, orchids can start yielding flowers from the third year onwards, producing up to 1000 spikes as the plant age advances. Regular watering, fertilization, and pest management are essential for healthy growth and vibrant blooms. Orchids are popular in floral arrangements and as houseplants due to their unique and intricate blooms.",
+    "user_id": 2,
+    "botanical_entry_id": 11
   }
 ]
