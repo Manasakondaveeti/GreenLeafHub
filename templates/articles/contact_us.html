@@ -10,7 +10,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #e8f5e9; /* Light green background */
+    background: url('{% static "../media/article_bg_img/article_b_img_4.jpg" %}') no-repeat center center fixed; /* Background image */
+    background-size: cover; /* Make the background image cover the entire page */
     color: #2e7d32; /* Dark green text */
 }
 
@@ -23,7 +24,7 @@ body {
 }
 
 .contact-card {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9); /* White background with some transparency */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better look */
     max-width: 600px;
