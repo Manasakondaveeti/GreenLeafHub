@@ -42,46 +42,55 @@ def send_test_email(request):
 def dashboard(request):
     site_visit, created = SiteVisit.objects.get_or_create(id=1)
 
-    # Create the initial context
+
     context = {
         'products': Product.objects.all(),
+        'user_visits': site_visit.visit_count,
+        'login_user_visits': site_visit.login_site_visit,
     }
+    print('before context', context)
 
     if request.user.is_authenticated:
-        # Check if the site_visit cookie is present
-        if request.COOKIES.get('site_visit'):
-            # Delete the site_visit cookie
+        one_day_ago = UserSession.objects.filter(user=request.user, created_at__gte=timezone.now() - timedelta(days=1))
+        context.update({
+            'user_one_day_ago': one_day_ago,
+        })
+        if request.COOKIES.get('login_site_visit'):
+            # Cookie exists, do not increment the login visit count
+            print(f"cookie is present login_site_visit count to: {site_visit.login_site_visit}")
             response = render(request, 'dashboard.html', context)
-            response.delete_cookie('site_visit')
-
-            # Increment the login_site_visit counter
+        else:
+            # Increment login visit count and set a cookie
             site_visit.login_site_visit += 1
             site_visit.save()
             print(f"Updated login visit count to: {site_visit.login_site_visit}")
-        else:
+            context.update({
+                'login_site_visit': site_visit.login_site_visit,
+            })
             response = render(request, 'dashboard.html', context)
+
+            response.set_cookie('login_site_visit', 'true', max_age=60 * 60 * 24)  # Set cookie for 24 hours
+            return response
     else:
-        # Check if the site_visit cookie is present
-        if not request.COOKIES.get('site_visit'):
-            # Increment the site_visit counter
+        if request.COOKIES.get('site_visit'):
+            print(f"cookie is present site_visit count to: {site_visit.visit_count}")
+            response = render(request, 'dashboard.html', context)
+        else:
             site_visit.visit_count += 1
             site_visit.save()
-            print(f"Updated global visit count to: {site_visit.visit_count}")
-
-            # Set the site_visit cookie with a 24-hour expiration
+            print(f"Updated site_visit count to: {site_visit.visit_count}")
+            context.update({
+                'user_visits': site_visit.visit_count,
+            })
             response = render(request, 'dashboard.html', context)
             response.set_cookie('site_visit', 'true', max_age=60 * 60 * 24)
-        else:
-            response = render(request, 'dashboard.html', context)
+            return response
 
-    # Update the context with the visit counts
-    context.update({
-        'user_visits': site_visit.visit_count,
-        'login_user_visits': site_visit.login_site_visit,
-    })
 
-    # Render the response with the updated context
-    response = render(request, 'dashboard.html', context)
+
+    # print('user_visits: ',site_visit.visit_count)
+    # print('login_user_visits: ', site_visit.login_site_visit)
+
     return response
 
 
@@ -154,7 +163,9 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('dashboard')
+    response = redirect('dashboard')
+    response.delete_cookie('login_site_visit')
+    return response
 
 
 class CustomPasswordResetView(PasswordResetView):

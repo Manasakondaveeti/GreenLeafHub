@@ -472,7 +472,7 @@
                     <div class="detail-box">
                         <h5>
                             {% if user.is_authenticated %}
-                                 <p class="user-visits-count">Your Visits Today</p>
+                                 <p class="user-visits-count">{{user_one_day_ago|length}}</p>
                                  <h5>Your Visits Today</h5>
                             {% else %}
                                  <br>
