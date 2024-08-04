@@ -317,38 +317,7 @@ ul li:hover {
        <button class='pay-btn'>Update Cart</button>
 </div>
 </div>
-      <!--  <div class='credit-info'>
-          <div class='credit-info-content'>
-            <table class='half-input-table'>
-              <tr><td>Please select your card: </td><td><div class='dropdown' id='card-dropdown'><div class='dropdown-btn' id='current-card'>Visa</div>
-                <div class='dropdown-select'>
-                <ul>
-                  <li>Master Card</li>
-                  <li>American Express</li>
-                  </ul></div>
-                </div>
-               </td></tr>
-            </table>
-            <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
-            Card Number
-            <input class='input-field'></input>
-            Card Holder
-            <input class='input-field'></input>
-            <table class='half-input-table'>
-              <tr>
-                <td> Expires
-                  <input class='input-field'></input>
-                </td>
-                <td>CVC
-                  <input class='input-field'></input>
-                </td>
-              </tr>
-            </table>
-            <button class='pay-btn' href="">Checkout</button>
 
-          </div>
-
-        </div>-->
 
   <div class='credit-info'>
     <div class='credit-info-content'>
@@ -365,29 +334,30 @@ ul li:hover {
             <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
 
         <form action="{% url 'process_payment' %}" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="cardNumber">Card Number</label>
-                <input type="text" class="form-control input-field" id="cardNumber" name="cardNumber" required>
-            </div>
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="card_number">Card Number</label>
+        <input type="text" class="form-control input-field" id="card_number" name="card_number">
+    </div>
 
-            <div class="row">
-                <div class="col-md-6 form-group">
-                    <label for="expiryDate">Expiry Date</label>
-                    <input type="text" class="form-control input-field" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
-                </div>
-                <div class="col-md-6 form-group">
-                    <label for="cvv">CVV</label>
-                    <input type="text" class="form-control input-field" id="cvv" name="cvv" required>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label for="expiry_date">Expiry Date</label>
+            <input type="text" class="form-control input-field" id="expiry_date" name="expiry_date" placeholder="MM/YY">
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="cvv">CVV</label>
+            <input type="text" class="form-control input-field" id="cvv" name="cvv">
+        </div>
+    </div>
 
-            <div class="form-group">
-                <label for="cardName">Name on Card</label>
-                <input type="text" class="form-control input-field" id="cardName" name="cardName" required>
-            </div>
-            <button type="submit" class="pay-btn">Submit Payment</button>
-        </form>
+    <div class="form-group">
+        <label for="card_name">Name on Card</label>
+        <input type="text" class="form-control input-field" id="card_name" name="card_name">
+    </div>
+    <button type="submit" class="pay-btn">Submit Payment</button>
+</form>
+
     </div>
 
 </div>

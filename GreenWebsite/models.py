@@ -157,3 +157,13 @@ class Subscriber(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Payment(models.Model):
+    card_number = models.CharField(max_length=16)
+    expiry_date = models.CharField(max_length=5)
+    cvv = models.CharField(max_length=3)
+    card_name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.card_name} - {self.card_number[-4:]}"

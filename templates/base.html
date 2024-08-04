@@ -218,7 +218,7 @@
                            <li><a href="{% url 'dashboard' %}">Home</a></li>
 
 
-                           <li><a href="#">Our Team</a></li>
+                           <li><a href="{% url 'dashboard' %}" id="our-team-link">Our Team</a></li>
                             <li><a href="{% url 'article-home' %}">Articles</a></li>
                            <li><a href="{% url 'product_gallery' %}">Our products</a></li>
 
@@ -229,11 +229,21 @@
                      <div class="widget_menu">
                         <h3>Account</h3>
                         <ul>
-                           <li><a href="#">Account</a></li>
-                           <li><a href="{% url 'cart' %}">Checkout</a></li>
-                           <li><a href="{% url 'login' %}">Login</a></li>
-                           <li><a href="{% url 'signup' %}}">Register</a></li>
-                           <li><a href="{% url 'product_gallery' %}">Shopping</a></li>
+
+                           <li><a href="{% url 'product_gallery' %}">Shop Products</a></li>
+
+                            {% if user.is_authenticated %}
+                                <li><a  href="{% url 'cart' %}">Checkout</a></li>
+                                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                              <li><a href="{%  url 'order_history' %}">Order History</a></li>
+                                    <li><a href="/logout">Logout</a></li>
+
+
+                        {% else %}
+                                    <li><a href="/login">Login</a></li>
+                           <li><a href="/signup">Signup</a></li>
+
+                        {% endif %}
 
                         </ul>
                      </div>

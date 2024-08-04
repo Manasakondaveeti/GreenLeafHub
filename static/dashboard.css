@@ -275,9 +275,16 @@ payment-methods {
     width: 100%;
     border:none;
     border-radius:50px;
-    background: linear-gradient(90deg, rgba(0,100,0,1) 0%, rgba(0,150,0,1) 60%, rgba(0,210,0,1) 100%);
+    background: linear-gradient(90deg, rgb(124, 114, 5) 0%, rgb(236, 218, 28) 60%, rgb(149, 136, 4) 100%);
 }
-
+.form-body .btn-success {
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    background-color: #7c7205;
+    border-color: #7c7205;
+}
 .form-body .form-control{
     color: rgba(0,0,0,.87);
     border-bottom-color: rgba(0,0,0,.42);

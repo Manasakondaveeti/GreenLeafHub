@@ -392,13 +392,16 @@
                <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="box" style="height: 360px; width: 300px;">
                 <div class="option_container">
-                    <div class="options">
-                        <a href="{% url 'add_to_cart' product.id %}" class="option1">
-                            Add To Cart
+
+                     <div class="options">
+                         <a href="{% url 'product' product.id %}" class="option1">
+                            View Detail
                         </a>
                         <a href="{% url 'add_to_cart' product.id %}" class="option2">
-                            Buy Now
+                            Add To Cart
                         </a>
+
+
                     </div>
                 </div>
                 <div class="img-box">
@@ -463,13 +466,15 @@
                 User History
             </h2>
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="box ">
+        <div class="row" >
+            <div class="col-md-4" >
+                <div class="box "  style="height: 450px ; width: 360px">
+                    <br>
                     <div class="icon-box1">
-                        <img src="{% static 'images/person.png' %}" alt="Audience">
+                        <img src="{% static 'images/person.png' %}" alt="Audience" style="height: 200px ; width: 200px">
                     </div>
                     <div class="detail-box">
+                        <br>
                         <h5>
                             {% if user.is_authenticated %}
                                  <p class="user-visits-count">{{user_one_day_ago|length}}</p>
@@ -483,7 +488,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="box ">
+                <div class="box " style="height: 450px ; width: 360px">
                     <div class="icon-box">
                         <img src="{% static 'images/audience.png' %}" alt="Audience">
 
@@ -497,7 +502,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="box " >
+                <div class="box " style="height: 450px ; width: 360px">
                     <div class="icon-box">
                         <img src="{% static 'images/audience.png' %}" alt="Audience">
                     </div>
@@ -515,7 +520,7 @@
 </section>
       <!-- end subscribe section -->
       <!-- client section -->
-      <section class="client_section layout_padding">
+      <section id="client-section" class="client_section layout_padding">
          <div class="container">
             <div class="heading_container heading_center">
                <h2>
@@ -666,3 +671,4 @@
       <!-- end client section -->
       <!-- footer start -->
 {% endblock %}
+

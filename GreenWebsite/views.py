@@ -8,7 +8,7 @@ from .models import (SiteVisit ,Product, UserProfile, ReviewRating , Cart , Cart
 from django.contrib import messages
 from . import forms
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
-from .forms import ProductForm
+from .forms import ProductForm , PaymentForm
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
@@ -391,44 +391,54 @@ def payment_view(request):
 
 
 
-@csrf_exempt
+@login_required
 def process_payment(request):
     if request.method == 'POST':
-        card_number = request.POST.get('cardNumber')
-        expiry_date = request.POST.get('expiryDate')
-        cvv = request.POST.get('cvv')
-        card_name = request.POST.get('cardName')
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            card_number = form.cleaned_data.get('card_number')
+            expiry_date = form.cleaned_data.get('expiry_date')
+            cvv = form.cleaned_data.get('cvv')
+            card_name = form.cleaned_data.get('card_name')
 
-        # Process the payment here
-        # You can use a payment gateway API like Stripe, PayPal, etc.
 
-        # For simplicity, let's assume the payment is successful
-        cart = Cart.objects.get(user=request.user)
-        cart_items = CartItem.objects.filter(cart=cart)
+            cart = Cart.objects.get(user=request.user)
+            cart_items = CartItem.objects.filter(cart=cart)
 
-        # Create an order
-        order = Order.objects.create(
-            user=request.user,
-            total_amount=sum(item.product.price * item.quantity for item in cart_items),
-            status='Completed'
-        )
 
-        # Create order items
-        for item in cart_items:
-            OrderItem.objects.create(
-                order=order,
-                product=item.product,
-                quantity=item.quantity,
-                price=item.product.price
+            order = Order.objects.create(
+                user=request.user,
+                total_amount=sum(item.product.price * item.quantity for item in cart_items),
+                status='Completed'
             )
 
-        # Clear the cart
-        cart_items.delete()
-        cart.delete()
+            # Create order items
+            for item in cart_items:
+                OrderItem.objects.create(
+                    order=order,
+                    product=item.product,
+                    quantity=item.quantity,
+                    price=item.product.price
+                )
 
-        return render(request, 'payment_success.html')
+            # Clear the cart
+            cart_items.delete()
+            cart.delete()
 
+            return render(request, 'payment_success.html', {'order': order})
+        else:
+            # Append form errors to messages
+            for field in form:
+                for error in field.errors:
+                    messages.error(request, f"{field.label}: {error}")
+            for error in form.non_field_errors():
+                messages.error(request, error)
+
+            return redirect('payment_page')
+    else:
+        form = PaymentForm()
     return redirect('payment_page')
+
 
 
 def order_history(request):
@@ -644,13 +654,26 @@ def send_subscription_email(user_email):
         f"Best regards,\n"
         f"Greenleaf Hub Team"
     )
-    send_mail(
-        subject,
-        message,
-        'greenleafhub@gmail.com',  # From email address
-        [user_email],  # To email address
-        fail_silently=False,  # Raise an exception if sending fails
-    )
+    try:
+        send_mail(
+            subject,
+            message,
+            'greeleafhub@gmail.com',  # From email address
+            [user_email],  # To email address
+            fail_silently=False,  # Raise an exception if sending fails
+        )
+    except BadHeaderError:
+        print("Invalid header found.")
+        return "Invalid header found."
+    except SMTPException as e:
+        print("SMTP error occurred: {str(e)}")
+        return f"SMTP error occurred: {str(e)}"
+    except Exception as e:
+        print("An error occurred: {str(e)}")
+        return f"An error occurred: {str(e)}"
+
+    return "Email sent successfully."
+
 
 def subscribe(request):
     if request.method == 'POST':

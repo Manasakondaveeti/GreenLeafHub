@@ -4,7 +4,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from .models import ReviewRating
-from .models import (Product , Subscriber)
+from .models import (Product , Subscriber ,Payment)
+from django.core.exceptions import ValidationError
+import re
+from datetime import datetime
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={
         'class': 'form-control',
@@ -81,3 +84,29 @@ class SubscriptionForm(forms.ModelForm):
         model = Subscriber
         fields = ['email']
 
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = ['card_number', 'expiry_date', 'cvv', 'card_name']
+
+    def clean_card_number(self):
+        card_number = self.cleaned_data.get('card_number')
+        if not re.match(r'^\d{16}$', card_number):
+            raise ValidationError("Card number must be 16 digits.")
+        return card_number
+
+    def clean_cvv(self):
+        cvv = self.cleaned_data.get('cvv')
+        if not re.match(r'^\d{3}$', cvv):
+            raise ValidationError("CVV must be 3 digits.")
+        return cvv
+
+    def clean_expiry_date(self):
+        expiry_date = self.cleaned_data.get('expiry_date')
+        try:
+            expiry = datetime.strptime(expiry_date, '%m/%y')
+            if expiry < datetime.now():
+                raise ValidationError("The expiry date is in the past.")
+        except ValueError:
+            raise ValidationError("Expiry date must be in MM/YY format.")
+        return expiry_date

@@ -2,9 +2,14 @@
 {% load static %}
 {% block title %} Add Product {% endblock %}
 {% block body %}
-    <div class="form-body" >
-        <div class="container-fluid">
-            <form method="post" class="mx-auto" enctype="multipart/form-data">
+<style>
+
+</style>
+<div class="bg-success" style=" background:-webkit-linear-gradient(#c5e5e5, #ccddf9);
+  background: linear-gradient(#e1a90b, #091e0e);">
+        <div class="form-body">
+            <div class="container-fluid">
+               <form method="post" class="mx-auto" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h4 class="text-center">Add Product</h4>
                 <div class="mb-3 mt-5">
@@ -31,6 +36,7 @@
                 </div>
                 <button type="submit" class="btn btn-success mt-4">Add Product</button>
             </form>
+            </div>
         </div>
     </div>
 {% endblock %}

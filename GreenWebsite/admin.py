@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import (Product, UserProfile,SiteVisit,ReviewRating , Cart , CartItem, Order  ,OrderItem, Articles, UserSession,Subscriber )
+from .models import (Payment , Product, UserProfile,SiteVisit,ReviewRating , Cart , CartItem, Order  ,OrderItem, Articles, UserSession,Subscriber )
 
 admin.site.register(Product)
 admin.site.register(UserProfile)
@@ -14,4 +14,5 @@ admin.site.register(Subscriber)
 
 admin.site.register(SiteVisit)
 admin.site.register(UserSession)
+admin.site.register(Payment)
 
