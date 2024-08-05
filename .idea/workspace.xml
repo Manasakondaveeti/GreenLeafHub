@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d22d73dd-6d32-48f2-95cf-39ea183d8e15" name="Changes" comment="order-history update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GreenWebsite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GreenWebsite/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/articles-home.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/articles-home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/articles/article-home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/article-home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/articles/articles_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/articles_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/articles/contact_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/contact_us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/articles/user-articles.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/user-articles.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +169,7 @@
       <workItem from="1721828133506" duration="29557000" />
       <workItem from="1721970597520" duration="23270000" />
       <workItem from="1722807979524" duration="6390000" />
-      <workItem from="1722888008876" duration="7079000" />
+      <workItem from="1722888008876" duration="8730000" />
     </task>
     <task id="LOCAL-00001" summary="revert-arniish">
       <option name="closed" value="true" />

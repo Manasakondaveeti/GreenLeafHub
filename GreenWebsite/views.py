@@ -709,9 +709,9 @@ def contact_us(request):
             form.save()
             email = form.cleaned_data['email']
             print(email)
-            # send_contact_us_email(email)
+            send_contact_us_email(email)
             messages.success(request, 'Your message has been sent successfully!')
-            return redirect('contact_us')
+            return redirect('contact-us')
         else:
             messages.error(request, 'Please correct the errors below.')
     else:
