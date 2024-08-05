@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #e8f5e9; /* Light green background */
+    color: #2e7d32; /* Dark green text */
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+}
+
+.contact-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better look */
+    max-width: 600px;
+    width: 100%;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+h1 {
+    color: #1b5e20; /* Dark green */
+    font-weight: bold;
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2e7d32; /* Dark green */
+}
+
+.btn-primary {
+    background-color: #218838; /* Green background */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px; /* Rounded corners */
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #d4af37; /* Gold color on hover */
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.5); /* Outline on focus */
+}
+
+.alert-success {
+    color: #1b5e20; /* Dark green text */
+    background-color: #d4edda; /* Light green background */
+    border-color: #c3e6cb; /* Border matching background */
+    margin-top: 20px;
+    text-align: center;
+}

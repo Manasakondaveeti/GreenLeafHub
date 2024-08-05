@@ -26,12 +26,12 @@ from GreenWebsite.views import (Articles,
                                 ArticleListView,
                                 ArticleDetailView,
                                 ArticleCreateView, ArticleUpdateView,
-                                ArticleDeleteView,UserArticleListView)
+                                ArticleDeleteView,UserArticleListView, BotanicalListView)
 
 from GreenWebsite.views import (dashboard, logout_user, signup_view, login_user,CustomPasswordResetConfirmView, CustomPasswordResetView,
                                 send_test_email,product,submit_review,add_to_cart,remove_from_cart,view_cart,add_product ,
                                 product_list,profile,edit_profile,create_profile,
-                                update_cart , edit_product, payment_view, process_payment,search,order_history,product_gallery)
+                                update_cart , edit_product, payment_view, process_payment,search,order_history,product_gallery, contact_us)
 from GreenWebsite.views import subscribe
 
 urlpatterns = [
@@ -78,7 +78,8 @@ urlpatterns = [
     path('profile/',profile,name='profile'),
     path('edit_profile/',edit_profile,name='edit_profile'),
     path('create_profile/',create_profile,name='create_profile'),
-
+    path('article-botanica/', BotanicalListView.as_view(), name='botanica-home'),
+    path('contact-us/', contact_us, name='contact-us')
 
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

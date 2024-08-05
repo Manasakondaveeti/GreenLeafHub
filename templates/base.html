@@ -24,6 +24,8 @@
       <link href="{% static 'css/style.css' %}?v={{ STATIC_VERSION }}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+       {% block article-bootstrap %} {% endblock article-bootstrap %}
+
    </head>
    <body>
    <style>

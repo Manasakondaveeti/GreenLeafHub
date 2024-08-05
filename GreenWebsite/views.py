@@ -4,11 +4,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.db.models import Sum
-from .models import (SiteVisit ,Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles,SiteVisit, UserSession,Subscriber)
+from .models import (SiteVisit ,Product, UserProfile, ReviewRating , Cart , CartItem , Order , OrderItem, Articles,SiteVisit, UserSession,Subscriber, BotanicalEntry, ContactMessage)
 from django.contrib import messages
 from . import forms
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
-from .forms import ProductForm , PaymentForm
+from .forms import ProductForm , PaymentForm, ContactMessageForm
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
@@ -696,4 +696,56 @@ def subscribe(request):
 
     return render(request, 'dashboard.html', {'form': form})
 
+
+class BotanicalListView(ListView):
+    model = BotanicalEntry
+    template_name = "articles/article_botanica.html"  # model_List.html is the default but since we built it already, we will proceed to change
+
+
+def contact_us(request):
+    if request.method == 'POST':
+        form = ContactMessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data['email']
+            print(email)
+            # send_contact_us_email(email)
+            messages.success(request, 'Your message has been sent successfully!')
+            return redirect('contact_us')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = ContactMessageForm()
+
+    return render(request, 'articles/contact_us.html', {'form': form})
+
+def send_contact_us_email(user_email):
+    subject = 'Thank You for Contacting Us!'
+    message = (
+        f"Dear Subscriber,\n\n"
+        f"Thank you for contacting us through the form. Rest assured our Customer Service Team will be in touch with you very soon.  "
+        f"If you have any questions or need assistance, feel free to reach out to us at "
+        f"greeleafhub@gmail.com.\n\n"
+        f"Best regards,\n"
+        f"Greenleaf Hub Team"
+    )
+    try:
+        send_mail(
+            subject,
+            message,
+            'greeleafhub@gmail.com',  # From email address
+            [user_email],  # To email address
+            fail_silently=True,  # Raise an exception if sending fails
+        )
+    except BadHeaderError:
+        print("Invalid header found.")
+        return "Invalid header found."
+    except SMTPException as e:
+        print("SMTP error occurred: {str(e)}")
+        return f"SMTP error occurred: {str(e)}"
+    except Exception as e:
+        print("An error occurred: {str(e)}")
+        return f"An error occurred: {str(e)}"
+
+    return "Email sent successfully."
 
